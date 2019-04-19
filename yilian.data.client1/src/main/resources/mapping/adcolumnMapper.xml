@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yijie.data.client.dao.AdcolumnMapper">
+
+<!-- 关联返回map定义 -->
+<resultMap type="com.yijie.data.client.model.Adcolumn" id="AdcolumnMap">  
+    <id property="id" column="id" />  
+    <result property="uuid" column="uuid" />
+    <result property="title" column="title" />
+    <result property="imgurl" column="imgurl" />
+</resultMap>
+
+    
+    
+
+<!-- 条件拼接 -->
+<sql id="Adcolumn_where">
+    <where>
+        <if test="id != null and id != ''">
+            and id = #{id}
+        </if>
+        <if test="uuid != null and uuid != ''">
+            and uuid = #{uuid}
+        </if>      
+        <if test="title != null and title != ''">
+            and title = #{title}
+        </if>      
+        <if test="imgurl != null and imgurl != ''">
+            and imgurl = #{imgurl}
+        </if>
+        
+    </where>
+</sql>
+    
+
+    
+    
+    <insert id="adcolumnInsert" parameterType="com.yijie.data.client.model.Adcolumn">
+        insert into yl_adcolumn(uuid,title,imgurl) value(#{uuid},#{title},#{imgurl})
+    </insert>
+    
+    <select id="adcolumnSelect" parameterType="com.yijie.data.client.model.Adcolumn" resultMap="AdcolumnMap">
+        select * from yl_adcolumn
+        <include refid="Adcolumn_where"></include>
+        
+    </select>
+    
+    <update id="adcolumnUpdate" parameterType="com.yijie.data.client.model.Adcolumn">
+        update yl_adcolumn
+    <trim prefix="set" suffixOverrides=",">
+        <if test="title != null and title != ''">title = #{title},</if>
+         <if test="imgurl != null and imgurl != ''">imgurl = #{imgurl}, </if>
+    </trim>
+     <where>
+     <if test="uuid != null and uuid != ''">
+            and uuid = #{uuid}
+        </if>
+     </where>
+    </update>
+    <delete id="adcolumnDelete" parameterType="com.yijie.data.client.model.Adcolumn">
+        delete from yl_adcolumn
+        <include refid="Adcolumn_where"></include>
+    </delete>
+
+</mapper>

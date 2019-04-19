@@ -2,6 +2,7 @@ package com.yijie.yilian.client.model;
 
 public class ScoreRule {
 	private Integer id;
+	//策略uuid
     private String uuid;
     //最大预算
     private double  max_budget;

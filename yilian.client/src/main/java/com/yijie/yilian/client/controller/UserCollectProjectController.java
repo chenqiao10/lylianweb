@@ -21,7 +21,7 @@ import com.yijie.yilian.client.service.UserCollectProjectService;
 @RequestMapping("/user")
 
 public class UserCollectProjectController {
-	Map<String, Object> result = new HashMap<String, Object>();
+	
 	@Autowired
 	UserCollectProjectService userCollectProjectService;
 /**
@@ -31,6 +31,7 @@ public class UserCollectProjectController {
  */
 	@RequestMapping("/uesrCollectProjectTable")
 	public  Map<String, Object> uesrCollectProjectTable(@RequestBody UserCollectProject userCollectProject) {
+		Map<String, Object> result = new HashMap<String, Object>();
 		try {
 		List<UserCollectProject> list = userCollectProjectService.UserCollectProjecttable(userCollectProject);
 		result.put("list", list);
@@ -52,6 +53,8 @@ public class UserCollectProjectController {
 	 */
 	@RequestMapping("/userColProAdd")
 	public Map<String, Object> userColProAdd(@RequestBody UserCollectProject userCollectProject){
+		
+		Map<String, Object> result = new HashMap<String, Object>();
 		try{
 			System.out.println(userCollectProject);
 		Integer code =userCollectProjectService.userColProAdd(userCollectProject);
@@ -69,7 +72,8 @@ public class UserCollectProjectController {
 	 */
 	@RequestMapping("/userColProDelete")
 	public Map<String, Object> userColProDelete(@RequestBody UserCollectProject userCollectProject){
-		try{
+		
+		Map<String, Object> result = new HashMap<String, Object>();try{
 			Integer code =userCollectProjectService.userColProDelete(userCollectProject);
 		result.put("code", code);
 		return result;

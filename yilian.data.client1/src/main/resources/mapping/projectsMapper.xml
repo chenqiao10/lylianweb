@@ -84,7 +84,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     
     <insert id="projectInsert" parameterType="com.yijie.data.client.model.Projects">
-        insert into yl_project(uuid,user_uuid,title,message,area,days,min_budget,max_budget,phone,OICQ,type,audit,click_count,date) value(#{uuid},#{user_uuid},#{title},#{message},#{area},#{days},#{min_budget},#{max_budget},#{phone},#{OICQ},#{type},#{click_count},#{cha_count},#{date},0)
+        insert into yl_project(
+        uuid,user_uuid,title,message,area,
+        days,min_budget,max_budget,phone,
+        OICQ,type,audit,click_count,cha_count,date) 
+        value(#{uuid},#{user_uuid},#{title},
+        #{message},#{area},#{days},#{min_budget},
+        #{max_budget},#{phone},#{OICQ},#{type},0,
+        #{click_count},#{cha_count},#{date})
     </insert>
     
     <select id="projectSelect" parameterType="com.yijie.data.client.model.Projects" resultMap="projectMap">

@@ -42,131 +42,115 @@ public class User {
 	
 	// 分页数据（初始条数）
 	private Integer begin;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
+	//邀请码
+	private String  inviteUUid;
+	public User(Integer id, String uuid, String openid, String qQuid, String num, String password, String name,
+			Integer balance, Integer level, String license, Integer audit, Integer begin, String inviteUUid) {
+		super();
 		this.id = id;
-	}
-
-	public String getUuid() {
-		return uuid;
-	}
-
-	public void setUuid(String uuid) {
 		this.uuid = uuid;
-	}
-
-	public String getOpenid() {
-		return openid;
-	}
-
-	public void setOpenid(String openid) {
 		this.openid = openid;
-	}
-
-	public String getQQuid() {
-		return QQuid;
-	}
-
-	public void setQQuid(String qQuid) {
-		this.QQuid = qQuid;
-	}
-
-	public String getNum() {
-		return num;
-	}
-
-	public void setNum(String num) {
+		QQuid = qQuid;
 		this.num = num;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Integer getBalance() {
-		return balance;
-	}
-
-	public void setBalance(Integer balance) {
 		this.balance = balance;
-	}
-
-	public Integer getLevel() {
-		return level;
-	}
-
-	public void setLevel(Integer level) {
 		this.level = level;
-	}
-
-	public String getLicense() {
-		return license;
-	}
-
-	public void setLicense(String license) {
 		this.license = license;
-	}
-
-	public Integer getAudit() {
-		return audit;
-	}
-
-	public void setAudit(Integer audit) {
 		this.audit = audit;
-	}
-
-	public Integer getBegin() {
-		return begin;
-	}
-
-	public void setBegin(Integer begin) {
 		this.begin = begin;
+		this.inviteUUid = inviteUUid;
 	}
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", uuid=" + uuid + ", openid=" + openid + ", QQuid=" + QQuid + ", num=" + num
 				+ ", password=" + password + ", name=" + name + ", balance=" + balance + ", level=" + level
-				+ ", license=" + license + ", audit=" + audit + ", begin=" + begin + "]";
+				+ ", license=" + license + ", audit=" + audit + ", begin=" + begin + ", inviteUUid=" + inviteUUid + "]";
 	}
-
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
+		// TODO 自动生成的构造函数存根
 	}
-
-	public User(Integer id, String uuid, String openid, String qQuid, String num, String password, String name,
-			Integer balance, Integer level, String license, Integer audit, Integer begin) {
-		super();
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
 		this.id = id;
+	}
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
 		this.uuid = uuid;
+	}
+	public String getOpenid() {
+		return openid;
+	}
+	public void setOpenid(String openid) {
 		this.openid = openid;
-		this.QQuid = qQuid;
+	}
+	public String getQQuid() {
+		return QQuid;
+	}
+	public void setQQuid(String qQuid) {
+		QQuid = qQuid;
+	}
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
 		this.num = num;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
 		this.name = name;
+	}
+	public Integer getBalance() {
+		return balance;
+	}
+	public void setBalance(Integer balance) {
 		this.balance = balance;
+	}
+	public Integer getLevel() {
+		return level;
+	}
+	public void setLevel(Integer level) {
 		this.level = level;
+	}
+	public String getLicense() {
+		return license;
+	}
+	public void setLicense(String license) {
 		this.license = license;
+	}
+	public Integer getAudit() {
+		return audit;
+	}
+	public void setAudit(Integer audit) {
 		this.audit = audit;
+	}
+	public Integer getBegin() {
+		return begin;
+	}
+	public void setBegin(Integer begin) {
 		this.begin = begin;
 	}
+	public String getInviteUUid() {
+		return inviteUUid;
+	}
+	public void setInviteUUid(String inviteUUid) {
+		this.inviteUUid = inviteUUid;
+	}
 	
+	
+
 	
 }

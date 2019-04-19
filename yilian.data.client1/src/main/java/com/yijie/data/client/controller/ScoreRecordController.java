@@ -16,7 +16,7 @@ import com.yijie.data.client.service.ScoreRecordService;
  *
  */
 @RestController
-@RequestMapping("/ScoreRecord")
+@RequestMapping("/user")
 public class ScoreRecordController {
 	
 	@Autowired

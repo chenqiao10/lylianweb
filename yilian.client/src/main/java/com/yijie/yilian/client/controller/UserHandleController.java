@@ -50,6 +50,7 @@ public class UserHandleController {
 		return result;
 	}
 	
+	
 	/**
 	 * @描述 用户注册（个人）
 	 * @param user
@@ -89,7 +90,6 @@ public class UserHandleController {
 	 * @return 0为存在1不存在
 	 */
 	@RequestMapping("/userPhoneExist")
-	@ResponseBody
 	public Map<String,Object> userPhoneExist(@RequestBody String num){
 		Map<String,Object> result = new HashMap<String,Object>();
 		User user = userHandleService.userPhoneExist(num);
@@ -103,5 +103,5 @@ public class UserHandleController {
 		return result;
 	
 	}
-	
+
 	}

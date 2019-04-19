@@ -40,11 +40,16 @@ public class UserChangeProjectController {
 		}
 		
 	}
-
+/**
+ * 添加项目交换记录
+ * @param userChangeProject
+ * @return
+ */
 	@RequestMapping("/userCheProAdd")
 	public Map<String, Object> userCheProAdd(@RequestBody UserChangeProject userChangeProject) {
 		try {
 			Integer code = userChangeProjectService.userCheProAdd(userChangeProject);
+			
 			result.put("code", code);
 			return result;
 		} catch (Exception e) {

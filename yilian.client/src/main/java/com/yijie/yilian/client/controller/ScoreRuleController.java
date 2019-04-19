@@ -19,10 +19,9 @@ public class ScoreRuleController {
 	@Autowired
 	ScoreRuleService ScoreRuleService;
 	
-	Map<String, Object> result = new HashMap<String, Object>();
 	@RequestMapping("/scoreRuleSelect")
 	public Map<String, Object> scoreRuleSelect(@RequestBody ScoreRule ScoreRule) {
-		
+		Map<String, Object> result = new HashMap<String, Object>();
 		System.out.println(ScoreRule);
 		try {
 			List<ScoreRule> list = ScoreRuleService.scoreRuleSelect(ScoreRule);
@@ -40,7 +39,7 @@ public class ScoreRuleController {
 
 	@RequestMapping("/scoreRuleAdd")
 	public Map<String, Object> scoreRuleAdd(@RequestBody ScoreRule ScoreRule) {
-		
+		Map<String, Object> result = new HashMap<String, Object>();
 		try {
 			Integer code = ScoreRuleService.scoreRuleAdd(ScoreRule);
 
@@ -57,6 +56,7 @@ public class ScoreRuleController {
 
 	@RequestMapping("/scoreRuleUpdate")
 	public Map<String, Object> scoreRuleUpdate(@RequestBody ScoreRule ScoreRule) {
+		Map<String, Object> result = new HashMap<String, Object>();
 		try {
 			Integer code = ScoreRuleService.scoreRuleUpdate(ScoreRule);
 
@@ -73,7 +73,7 @@ public class ScoreRuleController {
 
 	@RequestMapping("/scoreRuleDelete")
 	public Map<String, Object> scoreRuleDelete(@RequestBody ScoreRule ScoreRule) {
-		
+		Map<String, Object> result = new HashMap<String, Object>();
 		try {
 			Integer code = ScoreRuleService.scoreRuleDelete(ScoreRule);
 			result.put("code", code);

@@ -36,7 +36,8 @@ public class UserDaoController {
 	
 	// 用户注册
 	@RequestMapping("/userRegist")
-	public Integer userRegist(@RequestBody User user){
+	public Integer userRegist(@RequestBody User user ){
+		
 		return userDaoService.userRegist(user);
 	}
 	

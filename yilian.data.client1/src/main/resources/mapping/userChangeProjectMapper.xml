@@ -20,6 +20,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="title != null and title != ''">
             and title like %#{title}%
         </if>
+        <if test="phone != null and phone != ''">
+            and phone = #{phone}
+        </if>
+        <if test="date != null and date != ''">
+            and date = #{date}
+        </if>
     </where>
 </sql>
     
@@ -32,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     
     <insert id="projectInsert" parameterType="com.yijie.data.client.model.UserChangeProject">
-        insert into yl_userChePro(pro_uuid,user_uuid,title) value(#{pro_uuid},#{user_uuid},#{title})
+        insert into yl_userChePro(pro_uuid,user_uuid,title,date,phone) value(#{pro_uuid},#{user_uuid},#{title},#{date},#{phone})
     </insert>
     
     <select id="projectSelect" parameterType="com.yijie.data.client.model.UserChangeProject" resultType="com.yijie.data.client.model.UserChangeProject">

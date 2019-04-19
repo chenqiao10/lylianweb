@@ -43,6 +43,7 @@ public class User {
 	private Integer registtype;
 	// 分页数据（初始条数）
 	private Integer begin;
+	
 
 	public Integer getId() {
 		return id;
