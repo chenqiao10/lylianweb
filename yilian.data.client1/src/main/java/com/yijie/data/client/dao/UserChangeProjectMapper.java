@@ -15,4 +15,6 @@ public interface UserChangeProjectMapper {
 	
 	public void projectDelete(UserChangeProject userChangeProject);
 
+	public void projectUpdate(UserChangeProject userChangeProject);
+
 }

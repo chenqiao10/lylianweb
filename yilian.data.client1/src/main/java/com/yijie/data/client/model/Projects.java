@@ -244,7 +244,7 @@ public class Projects {
 		this.min_budget = min_budget;
 		this.max_budget = max_budget;
 		this.phone = phone;
-		OICQ = oICQ;
+		this.OICQ = oICQ;
 		this.type = type;
 		this.price = price;
 		this.audit = audit;
@@ -253,6 +253,5 @@ public class Projects {
 		this.designs = designs;
 		this.begin = begin;
 		this.date = date;
-	
 
 }}

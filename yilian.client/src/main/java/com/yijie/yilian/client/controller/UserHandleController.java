@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.yijie.yilian.client.model.User;
 import com.yijie.yilian.client.service.UserHandleService;
+import com.yijie.yilian.client.utils.Uuid;
 
 /**
  * @描述 用户功能块
@@ -61,6 +62,7 @@ public class UserHandleController {
 	public Map<String,Object> userRegistForOwn(@RequestBody User user){
 		Map<String,Object> result = new HashMap<String,Object>();
 		//个人账户默认审核通过
+		user.setUuid(Uuid.getUuid());
 		user.setAudit(1);
 		Integer code = userHandleService.userRegist(user);
 		result.put("code", code);
@@ -76,6 +78,7 @@ public class UserHandleController {
 	
 	public Map<String,Object> userRegistForComplane(@RequestBody User user){
 		Map<String,Object> result = new HashMap<String,Object>();
+		user.setUuid(Uuid.getUuid());
 		//企业账户默认审核未通过
 		user.setAudit(0);
 		Integer code = userHandleService.userRegist(user);

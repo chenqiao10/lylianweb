@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.yijie.yilian.client.model.ScoreRule;
 import com.yijie.yilian.client.service.ScoreRuleService;
+import com.yijie.yilian.client.utils.Uuid;
 
 @RestController
 @RequestMapping("/user")
@@ -24,6 +25,7 @@ public class ScoreRuleController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		System.out.println(ScoreRule);
 		try {
+			ScoreRule.setUuid(Uuid.getUuid());
 			List<ScoreRule> list = ScoreRuleService.scoreRuleSelect(ScoreRule);
 			result.put("list", list);
 			result.put("code", 1);

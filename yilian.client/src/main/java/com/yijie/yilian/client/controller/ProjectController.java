@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yijie.yilian.client.model.ProjectDesign;
 import com.yijie.yilian.client.model.Projects;
 import com.yijie.yilian.client.service.ProjectService;
+import com.yijie.yilian.client.utils.Uuid;
 
 /**
  * @描述 项目执行模块
@@ -34,6 +35,7 @@ public class ProjectController {
 	@RequestMapping("/projectBuild")
 	@ResponseBody
 	public Map<String,Object> projectBuild(@RequestBody Projects projects){
+		projects.setUser_uuid(Uuid.getUuid());
 		Map<String,Object> result = new HashMap<String, Object>();
 		Integer code = projectService.projectBuild(projects);
 		result.put("code", code);

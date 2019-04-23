@@ -48,9 +48,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             and user_uuid = #{user_uuid}
         </if>
         <if test="title != null and title != ''">
+              <bind name="title" value="'%'+title+'%'"/>
             and title like %#{title}%
         </if>
         <if test="area != null and area != ''">
+              <bind name="area" value="'%'area'%'"/>
             and area like %#{area}%
         </if>
         <if test="min_budget != null and min_budget != ''">
@@ -87,10 +89,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         insert into yl_project(
         uuid,user_uuid,title,message,area,
         days,min_budget,max_budget,phone,
-        OICQ,type,audit,click_count,cha_count,date) 
+        OICQ,type,price,audit,click_count,cha_count,date) 
         value(#{uuid},#{user_uuid},#{title},
         #{message},#{area},#{days},#{min_budget},
-        #{max_budget},#{phone},#{OICQ},#{type},0,
+        #{max_budget},#{phone},#{OICQ},#{type},#{price},0,
         #{click_count},#{cha_count},#{date})
     </insert>
     

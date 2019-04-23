@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yijie.yilian.client.daoClient.ScoreDao;
 import com.yijie.yilian.client.model.ScoreRecord;
 import com.yijie.yilian.client.service.ScoreRecordService;
+import com.yijie.yilian.client.utils.Uuid;
 /**
  * 积分记录
  * 
@@ -56,6 +57,7 @@ public class ScoreRecordController {
 	public Map<String, Object> ScoreRecordInsert(@RequestBody ScoreRecord scoreRecord){
 		Map<String, Object> result = new HashMap<String, Object>();
 		try {
+			scoreRecord.setUuid(Uuid.getUuid());
 			Integer code = scoreRecordService.scoreRecordAdd(scoreRecord);
 			result.put("code", code);
 			return result;

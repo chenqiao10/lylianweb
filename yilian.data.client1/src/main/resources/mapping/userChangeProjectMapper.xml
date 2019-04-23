@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             and user_uuid = #{user_uuid}
         </if>
         <if test="title != null and title != ''">
+       <bind name="title" value="'%'+title+'%'"/>
             and title like %#{title}%
         </if>
         <if test="phone != null and phone != ''">
@@ -25,6 +26,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
         <if test="date != null and date != ''">
             and date = #{date}
+        </if>
+        <if test="type != null and type != ''">
+            and type = #{type}
         </if>
     </where>
 </sql>
@@ -38,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     
     <insert id="projectInsert" parameterType="com.yijie.data.client.model.UserChangeProject">
-        insert into yl_userChePro(pro_uuid,user_uuid,title,date,phone) value(#{pro_uuid},#{user_uuid},#{title},#{date},#{phone})
+        insert into yl_userChePro(pro_uuid,user_uuid,title,date,phone,type) value(#{pro_uuid},#{user_uuid},#{title},#{date},#{phone},#{type})
     </insert>
     
     <select id="projectSelect" parameterType="com.yijie.data.client.model.UserChangeProject" resultType="com.yijie.data.client.model.UserChangeProject">
@@ -51,5 +55,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         delete from yl_userChePro
         <include refid="project_where"></include>
     </delete>
+    
+	<update id="projectUpdate" parameterType="com.yijie.data.client.model.UserChangeProject">
+		update yl_userChePro
+		<trim prefix="set" suffixOverrides=",">
+			<if test="id != null and id != ''">
+          id = #{id}
+        </if>
+        <if test="pro_uuid != null and pro_uuid != ''">
+             pro_uuid = #{pro_uuid}
+        </if>
+        <if test="user_uuid != null and user_uuid != ''">
+            user_uuid = #{user_uuid}
+        </if>
+        <if test="title != null and title != ''">
+            title like %#{title}%
+        </if>
+        <if test="phone != null and phone != ''">
+             phone = #{phone}
+        </if>
+        <if test="date != null and date != ''">
+             date = #{date}
+        </if>
+        <if test="type != null and type != ''">
+            type = #{type}
+        </if>
+		</trim>
+		<include refid="user_where"></include>
+	</update>
 
 </mapper>

@@ -28,10 +28,6 @@ public class UserChangeProject {
 
 	private String begin;
 
-	public UserChangeProject() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 
 
@@ -119,20 +115,23 @@ public class UserChangeProject {
 
 
 
-	@Override
-	public String toString() {
-		return "UserChangeProject [id=" + id + ", pro_uuid=" + pro_uuid + ", user_uuid=" + user_uuid + ", phone="
-				+ phone + ", title=" + title + ", date=" + date + ", type=" + type + ", getId()=" + getId()
-				+ ", getPro_uuid()=" + getPro_uuid() + ", getUser_uuid()=" + getUser_uuid() + ", getPhone()="
-				+ getPhone() + ", getTitle()=" + getTitle() + ", getDate()=" + getDate() + ", getType()=" + getType()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+	
+
+
+	public String getBegin() {
+		return begin;
+	}
+
+
+
+	public void setBegin(String begin) {
+		this.begin = begin;
 	}
 
 
 
 	public UserChangeProject(Integer id, String pro_uuid, String user_uuid, String phone, String title, Date date,
-			String type) {
+			String type, String begin) {
 		super();
 		this.id = id;
 		this.pro_uuid = pro_uuid;
@@ -141,6 +140,21 @@ public class UserChangeProject {
 		this.title = title;
 		this.date = date;
 		this.type = type;
+		this.begin = begin;
+	}
+
+
+	public UserChangeProject() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "UserChangeProject [id=" + id + ", pro_uuid=" + pro_uuid + ", user_uuid=" + user_uuid + ", phone="
+				+ phone + ", title=" + title + ", date=" + date + ", type=" + type + ", begin=" + begin + "]";
 	}
 
 }

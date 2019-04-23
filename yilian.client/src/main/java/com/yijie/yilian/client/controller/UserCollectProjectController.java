@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.yijie.yilian.client.model.UserCollectProject;
 import com.yijie.yilian.client.service.UserCollectProjectService;
+import com.yijie.yilian.client.utils.Uuid;
 
 /**
  * @描述 用户收藏
@@ -56,6 +57,7 @@ public class UserCollectProjectController {
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		try{
+			
 			System.out.println(userCollectProject);
 		Integer code =userCollectProjectService.userColProAdd(userCollectProject);
 		result.put("code", code);
@@ -73,7 +75,8 @@ public class UserCollectProjectController {
 	@RequestMapping("/userColProDelete")
 	public Map<String, Object> userColProDelete(@RequestBody UserCollectProject userCollectProject){
 		
-		Map<String, Object> result = new HashMap<String, Object>();try{
+		Map<String, Object> result = new HashMap<String, Object>();
+		try{
 			Integer code =userCollectProjectService.userColProDelete(userCollectProject);
 		result.put("code", code);
 		return result;

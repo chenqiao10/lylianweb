@@ -38,19 +38,19 @@ public interface ScoreDao {
 
 	
 	//积分记录查询
-	@RequestMapping("/ScoreRecord/ScoreRecordSelect")
+	@RequestMapping("/user/ScoreRecordSelect")
 	public List<ScoreRecord> scoreRecordSelect(ScoreRecord scoreRecord);
 	
 	//积分记录添加
-	@RequestMapping("/ScoreRecord/ScoreRecordInsert")
+	@RequestMapping("/user/ScoreRecordInsert")
 	public Integer scoreRecordInsert(ScoreRecord scoreRecord);
 	
 	//积分记录更新
-	@RequestMapping("/ScoreRecord/ScoreRecordDelete")
+	@RequestMapping("/user/ScoreRecordDelete")
 	public Integer scoreRecordUpdate(ScoreRecord scoreRecord);
 	
 	//积分记录删除
-	@RequestMapping("/ScoreRecord/ScoreRecordUpdate")
+	@RequestMapping("/user/ScoreRecordUpdate")
 	public Integer scoreRecordDelete(ScoreRecord scoreRecord);
 
 }

@@ -71,7 +71,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				 type = #{type},
 			</if>
 			<if test="user_uuid != null and user_uuid != ''">
-				ad user_uuid = #{user_uuid},
+				 user_uuid = #{user_uuid},
 			</if>
 			<if test="score != null and score != ''">
 				 score = #{score},
