@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yijie.data.client.dao.VisitMapper">
+
+	<!-- 关联返回map定义 -->
+	<resultMap type="com.yijie.data.client.model.Visit"
+		id="visitMap">
+		<id property="id" column="id" />
+		
+		<result property="visit" column="visit" />
+		<result property="date" column="date" />
+
+	</resultMap>
+
+	
+
+	<!-- 条件拼接 -->
+	<sql id="visit_where">
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="visit != null and visit != ''">
+				and visit = #{visit}
+			</if>
+			<if test="date != null and date != ''">
+				and date = #{date}
+			</if>
+			
+		</where>
+	</sql>
+
+	
+
+
+	<insert id="visitInsert"
+		parameterType="com.yijie.data.client.model.Visit">
+		insert into yl_visit(
+		visit,date)
+		value(#{visit},#{date})
+	</insert>
+
+	<select id="visitSelect"
+		parameterType="com.yijie.data.client.model.Visit"
+		resultMap="visitMap">
+		select * from yl_visit
+		<include refid="visit_where"></include>
+
+	</select>
+
+	<update id="visitUpdate"
+		parameterType="com.yijie.data.client.model.Visit">
+		update yl_visit
+		<trim prefix="set" suffixOverrides=",">
+			<if test="visit != null and visit != ''">visit = #{visit},</if>
+			<if test="date != null and date != ''">date = #{date},</if>
+			<if test="area != null and area != ''">area = #{area},</if>
+		</trim>
+		<where>
+			<if test="uuid != null and uuid != ''">
+				and uuid = #{uuid}
+			</if>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+		</where>
+	</update>
+
+	<delete id="visitDelete"
+		parameterType="com.yijie.data.client.model.Visit">
+		delete from yl_visit
+		<include refid="visit_where"></include>
+	</delete>
+
+</mapper>

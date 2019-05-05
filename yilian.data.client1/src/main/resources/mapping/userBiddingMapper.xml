@@ -21,7 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             and tender_uuid = #{tender_uuid}
         </if>
         <if test="title != null and title != ''">
-            and title like %#{title}%
+        	<bind name="title" value="'%'+title+'%'"/>	
+            and title like #{title}
         </if>
         <if test="type != null and type != ''">
             and type = #{type}
@@ -40,17 +41,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
     </sql>
     
-    <insert id="biddingInsert" parameterType="com.yijie.data.client.model.UserBidding">
+    <insert id="userBiddingInsert" parameterType="com.yijie.data.client.model.UserBidding">
         insert into yl_user_bidding(user_uuid,user_phone,tender_uuid,title,type,price,license,audit) value(#{user_uuid},#{user_phone},#{tender_uuid},#{title},#{type},#{price},#{license},0)
     </insert>
     
-    <select id="biddingSelect" parameterType="com.yijie.data.client.model.UserBidding" resultType="com.yijie.data.client.model.UserBidding">
+    <select id="userBiddingSelect" parameterType="com.yijie.data.client.model.UserBidding" resultType="com.yijie.data.client.model.UserBidding">
         select * from yl_user_bidding
         <include refid="bidding_where"></include>
         <include refid="limit_cond"></include>
     </select>
     
-    <update id="biddingUpdate" parameterType="com.yijie.data.client.model.UserBidding">
+    <update id="userBiddingUpdate" parameterType="com.yijie.data.client.model.UserBidding">
         update yl_user_bidding
     <trim prefix="set" suffixOverrides=",">
         <if test="user_phone != null and user_phone != ''">user_phone = #{user_phone},</if>
@@ -61,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <include refid="bidding_where"></include>
     </update>
     
-    <delete id="biddingDelete" parameterType="com.yijie.data.client.model.UserBidding">
+    <delete id="userBiddingDelete" parameterType="com.yijie.data.client.model.UserBidding">
         delete from yl_user_bidding
         <include refid="bidding_where"></include>
     </delete>

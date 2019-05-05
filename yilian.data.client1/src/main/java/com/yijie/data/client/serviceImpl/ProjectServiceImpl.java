@@ -116,4 +116,10 @@ public class ProjectServiceImpl implements ProjectService {
 		}
 	}
 
+	@Override
+	public Integer projectCount(Projects projects) {
+		// TODO 自动生成的方法存根
+		return projectsMapper.projectCount(projects);
+	}
+
 }

@@ -42,7 +42,6 @@ public class AdminDaoController {
 		 return  adminService.adminInsert(admin);
 		   
 	   }
-	   //管理登录
 	   @RequestMapping("/adminLogin")
 	   public Admin adminLogin(@RequestBody Admin admin) {
 		   return adminService.adminLogin(admin);

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yijie.data.client.dao.SafeLogMapper">
+
+	<!-- 条件拼接 -->
+	<sql id="log_where">
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="handle_name != null and handle_name != ''">
+				and handle_name = #{handle_name}
+			</if>
+			<if test="handle_id != null and handle_id != ''">
+				and handle_id = #{handle_id}
+			</if>
+			<if test="handle != null and handle != ''">
+				and handle = #{handle}
+			</if>
+			<if test="handle_date != null and handle_date != ''">
+				and handle_date = #{handle_date}
+			</if>
+			
+		</where>
+	</sql>
+
+
+	<!-- 分页拼接 -->
+	<sql id="limit_con">
+		<if test="begin !=null">
+			    limit #{begin,jdbcType=INTEGER},12
+			</if>
+	</sql>
+
+	<insert id="logInsert" parameterType="com.yijie.data.client.model.SafeLog">
+		insert into
+		yl_safe_log(handle_name,handle_id,handle_date,
+		handle)
+		value(#{handle_name},#{handle_id},
+		#{handle_date},#{handle})
+	</insert>
+	<select id="logSelect" parameterType="com.yijie.data.client.model.SafeLog"
+		resultType="com.yijie.data.client.model.SafeLog">
+		select * from yl_safe_log
+		<include refid="log_where"></include>
+		<include refid="limit_con"></include>
+	</select>
+
+	<update id="logUpdate" parameterType="com.yijie.data.client.model.SafeLog">
+		update yl_safe_log
+		<trim prefix="set" suffixOverrides=",">
+			
+			
+			<if test="handle_id != null and handle_id != ''">
+				 handle_id = #{handle_id},
+			</if>
+			<if test="handle != null and handle != ''">
+				 handle = #{handle},
+			</if>
+			<if test="handle_name != null and handle_name != ''">
+				 handle_name = #{handle_name},
+			</if>
+			<if test="handle_date != null and handle_date != ''">
+				 handle_date = #{handle_date},
+			</if>
+		</trim>
+		<where>
+		    <if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+					    
+		</where>
+	</update>
+
+	<delete id="logDelete" parameterType="com.yijie.data.client.model.SafeLog">
+		delete from yl_safe_log
+		<include refid="log_where"></include>
+	</delete>
+
+</mapper>

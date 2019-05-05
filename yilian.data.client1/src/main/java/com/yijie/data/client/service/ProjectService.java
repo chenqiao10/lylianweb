@@ -25,5 +25,6 @@ public interface ProjectService {
 
 	// 项目附件删除
 	public Integer projectDesignDelete(ProjectDesign projectDesign);
-
+	//查询项目条数
+	public Integer projectCount(Projects projects);
 }

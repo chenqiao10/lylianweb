@@ -1,6 +1,6 @@
 package com.yijie.data.client.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * @描述 用户已交换项目
@@ -25,110 +25,84 @@ public class UserChangeProject {
 	private Date date;
 	//项目 类型
 	private String type;
-
+	
+	//分页数据
 	private String begin;
-
-
-
 
 	public Integer getId() {
 		return id;
 	}
 
-
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-
 
 	public String getPro_uuid() {
 		return pro_uuid;
 	}
 
-
-
 	public void setPro_uuid(String pro_uuid) {
 		this.pro_uuid = pro_uuid;
 	}
-
-
 
 	public String getUser_uuid() {
 		return user_uuid;
 	}
 
-
-
 	public void setUser_uuid(String user_uuid) {
 		this.user_uuid = user_uuid;
 	}
-
-
 
 	public String getPhone() {
 		return phone;
 	}
 
-
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-
 
 	public String getTitle() {
 		return title;
 	}
 
-
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-
 
 	public Date getDate() {
 		return date;
 	}
 
-
-
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-
 
 	public String getType() {
 		return type;
 	}
 
-
-
 	public void setType(String type) {
 		this.type = type;
 	}
-
-
-
-	
-
 
 	public String getBegin() {
 		return begin;
 	}
 
-
-
 	public void setBegin(String begin) {
 		this.begin = begin;
 	}
 
+	@Override
+	public String toString() {
+		return "UserChangeProject [id=" + id + ", pro_uuid=" + pro_uuid + ", user_uuid=" + user_uuid + ", phone="
+				+ phone + ", title=" + title + ", date=" + date + ", type=" + type + ", begin=" + begin + "]";
+	}
 
+	public UserChangeProject() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public UserChangeProject(Integer id, String pro_uuid, String user_uuid, String phone, String title, Date date,
 			String type, String begin) {
@@ -142,19 +116,4 @@ public class UserChangeProject {
 		this.type = type;
 		this.begin = begin;
 	}
-
-
-	public UserChangeProject() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "UserChangeProject [id=" + id + ", pro_uuid=" + pro_uuid + ", user_uuid=" + user_uuid + ", phone="
-				+ phone + ", title=" + title + ", date=" + date + ", type=" + type + ", begin=" + begin + "]";
-	}
-
 }

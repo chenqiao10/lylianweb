@@ -1,6 +1,6 @@
 package com.yijie.data.client.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,7 +41,7 @@ public class Projects {
 	private String phone;
 
 	// 联系微信
-	private String OICQ;
+	private String oicq;
 
 	// 项目类型
 	private String type;
@@ -51,18 +51,19 @@ public class Projects {
 
 	// 是否通过审核（1.通过，0.未通过，2.审核中）
 	private Integer audit;
-	//项目点击量
+	//点击量
 	private Integer click_count;
-	//项目交换
+	//交换次数
 	private Integer cha_count;
+	//提交时间
+	private Date date;
 	// 项目对应附件
+	
+	
 	private List<ProjectDesign> designs;
 	
 	// 分页数据（初始条数）
 	private Integer begin;
-	
-	//提交时间
-	private Date date;
 
 	public Integer getId() {
 		return id;
@@ -144,12 +145,12 @@ public class Projects {
 		this.phone = phone;
 	}
 
-	public String getOICQ() {
-		return OICQ;
+	public String getOicq() {
+		return oicq;
 	}
 
-	public void setOICQ(String oICQ) {
-		OICQ = oICQ;
+	public void setOicq(String oicq) {
+		this.oicq = oicq;
 	}
 
 	public String getType() {
@@ -192,6 +193,14 @@ public class Projects {
 		this.cha_count = cha_count;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public List<ProjectDesign> getDesigns() {
 		return designs;
 	}
@@ -208,21 +217,13 @@ public class Projects {
 		this.begin = begin;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
 	@Override
 	public String toString() {
 		return "Projects [id=" + id + ", uuid=" + uuid + ", user_uuid=" + user_uuid + ", title=" + title + ", message="
 				+ message + ", area=" + area + ", days=" + days + ", min_budget=" + min_budget + ", max_budget="
-				+ max_budget + ", phone=" + phone + ", OICQ=" + OICQ + ", type=" + type + ", price=" + price
-				+ ", audit=" + audit + ", click_count=" + click_count + ", cha_count=" + cha_count + ", designs="
-				+ designs + ", begin=" + begin + ", date=" + date + "]";
+				+ max_budget + ", phone=" + phone + ", oicq=" + oicq + ", type=" + type + ", price=" + price
+				+ ", audit=" + audit + ", click_count=" + click_count + ", cha_count=" + cha_count + ", date=" + date
+				+ ", designs=" + designs + ", begin=" + begin + "]";
 	}
 
 	public Projects() {
@@ -231,8 +232,8 @@ public class Projects {
 	}
 
 	public Projects(Integer id, String uuid, String user_uuid, String title, String message, String area, Integer days,
-			Double min_budget, Double max_budget, String phone, String oICQ, String type, Integer price, Integer audit,
-			Integer click_count, Integer cha_count, List<ProjectDesign> designs, Integer begin, Date date) {
+			Double min_budget, Double max_budget, String phone, String oicq, String type, Integer price, Integer audit,
+			Integer click_count, Integer cha_count, Date date, List<ProjectDesign> designs, Integer begin) {
 		super();
 		this.id = id;
 		this.uuid = uuid;
@@ -244,14 +245,15 @@ public class Projects {
 		this.min_budget = min_budget;
 		this.max_budget = max_budget;
 		this.phone = phone;
-		this.OICQ = oICQ;
+		this.oicq = oicq;
 		this.type = type;
 		this.price = price;
 		this.audit = audit;
 		this.click_count = click_count;
 		this.cha_count = cha_count;
+		this.date = date;
 		this.designs = designs;
 		this.begin = begin;
-		this.date = date;
+	}
 
-}}
+}

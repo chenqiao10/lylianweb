@@ -5,127 +5,139 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.yijie.data.client.dao.ProjectsMapper">
 
-<!-- 关联返回map定义 -->
-<resultMap type="com.yijie.data.client.model.Projects" id="projectMap">  
-    <id property="id" column="id" />  
-    <result property="uuid" column="uuid" />
-    <result property="user_uuid" column="user_uuid" />
-    <result property="title" column="title" />
-    <result property="message" column="message" />
-    <result property="area" column="area" />
-    <result property="days" column="days" />
-    <result property="min_budget" column="min_budget" />
-    <result property="max_budget" column="max_budget" />
-    <result property="phone" column="phone" />
-    <result property="OICQ" column="OICQ" />
-    <result property="type" column="type" />
-    <result property="price" column="price" />
-    <result property="audit" column="audit" />
-    <result property="click_count" column="click_count" />
-    <result property="cha_count" column="cha_count" />
-    <result property="date" column="date" />
-    <association property="designs" column="id"  
-        select="getDesign" /> 
-</resultMap>
+	<!-- 关联返回map定义 -->
+	<resultMap type="com.yijie.data.client.model.Projects" id="projectMap">
+		<id property="id" column="id" />
+		<result property="uuid" column="uuid" />
+		<result property="user_uuid" column="user_uuid" />
+		<result property="title" column="title" />
+		<result property="message" column="message" />
+		<result property="area" column="area" />
+		<result property="days" column="days" />
+		<result property="min_budget" column="min_budget" />
+		<result property="max_budget" column="max_budget" />
+		<result property="phone" column="phone" />
+		<result property="oicq" column="oicq" />
+		<result property="type" column="type" />
+		<result property="price" column="price" />
+		<result property="audit" column="audit" />
+		<result property="click_count" column="click_count" />
+		<result property="cha_count" column="cha_count" />
+		<result property="date" column="date" />
+		<association property="designs" column="id" select="getDesign" />
+	</resultMap>
 
-<!-- 关联查询对应信息 -->
-<select id="getDesign" parameterType="int"  resultType="com.yijie.data.client.model.ProjectDesign">  
-        SELECT * FROM yl_project_design WHERE project_id=#{id}
-</select>
-    
-    
+	<!-- 关联查询对应信息 -->
+	<select id="getDesign" parameterType="int"
+		resultType="com.yijie.data.client.model.ProjectDesign">
+		SELECT * FROM yl_project_design WHERE project_id=#{id}
+	</select>
 
-<!-- 条件拼接 -->
-<sql id="project_where">
-    <where>
-        <if test="id != null and id != ''">
-            and id = #{id}
-        </if>
-        <if test="uuid != null and uuid != ''">
-            and uuid = #{uuid}
-        </if>
-        <if test="user_uuid != null and user_uuid != ''">
-            and user_uuid = #{user_uuid}
-        </if>
-        <if test="title != null and title != ''">
-              <bind name="title" value="'%'+title+'%'"/>
-            and title like %#{title}%
-        </if>
-        <if test="area != null and area != ''">
-              <bind name="area" value="'%'area'%'"/>
-            and area like %#{area}%
-        </if>
-        <if test="min_budget != null and min_budget != ''">
-            and min_budget &gt;= #{min_budget}
-        </if>
-        <if test="max_budget != null and max_budget != ''">
-            and max_budget &lt;= #{max_budget}
-        </if>
-        <if test="audit != null and audit != ''">
-            and audit = #{audit}
-        </if>
-        
-        <if test="click_count != null and click_count != ''">
-            and click_count = #{click_count}
-        </if>
-        <if test="cha_count != null and cha_count != ''">
-            and cha_count = #{cha_count}
-        </if>
-        <if test="date != null and date != ''">
-            and date = #{date}
-        </if>
-    </where>
-</sql>
-    
-<!-- 分页拼接 -->
-<sql id="limit_cond">
-    <if test="begin != null and begin != ''">
-            limit #{begin},12
-    </if>
-</sql>
-    
-    
-    <insert id="projectInsert" parameterType="com.yijie.data.client.model.Projects">
-        insert into yl_project(
-        uuid,user_uuid,title,message,area,
-        days,min_budget,max_budget,phone,
-        OICQ,type,price,audit,click_count,cha_count,date) 
-        value(#{uuid},#{user_uuid},#{title},
-        #{message},#{area},#{days},#{min_budget},
-        #{max_budget},#{phone},#{OICQ},#{type},#{price},0,
-        #{click_count},#{cha_count},#{date})
-    </insert>
-    
-    <select id="projectSelect" parameterType="com.yijie.data.client.model.Projects" resultMap="projectMap">
-        select * from yl_project
-        <include refid="project_where"></include>
-        <include refid="limit_cond"></include>
-    </select>
-    
-    <update id="projectUpdate" parameterType="com.yijie.data.client.model.Projects">
-        update yl_project
-    <trim prefix="set" suffixOverrides=",">
-        <if test="title != null and title != ''">title = #{title},</if>
-        <if test="message != null and message != ''">message = #{message},</if>
-        <if test="area != null and area != ''">area = #{area},</if>
-        <if test="days != null and days != ''">days = #{days},</if>
-        <if test="phone != null and phone != ''">phone = #{phone},</if>
-        <if test="OICQ != null and OICQ != ''">OICQ = #{OICQ},</if>
-        <if test="audit != null and audit != ''">audit = #{audit},</if>
-        <if test="click_count != null and click_count != ''">click_count = #{click_count},</if>
-         <if test="cha_count != null and click_count != ''">cha_count = #{cha_count},</if>
-          <if test="date != null and date != ''">date = #{date},</if>
-    </trim>
-     <where>
-     <if test="uuid != null and uuid != ''">
-            and uuid = #{uuid}
-        </if>
-     </where>
-    </update>
-    
-    <delete id="projectDelete" parameterType="com.yijie.data.client.model.Projects">
-        delete from yl_project
-        <include refid="project_where"></include>
-    </delete>
+
+
+	<!-- 条件拼接 -->
+	<sql id="project_where">
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="uuid != null and uuid != ''">
+				and uuid = #{uuid}
+			</if>
+			<if test="user_uuid != null and user_uuid != ''">
+				and user_uuid = #{user_uuid}
+			</if>
+			<if test="title != null and title != ''">
+				<bind name="title" value="'%'+title+'%'" />
+				and title like #{title}
+			</if>
+			<if test="area != null and area != ''">
+				<bind name="area" value="'%'area'%'" />
+				and area like #{area}
+			</if>
+			<if test="min_budget != null and min_budget != ''">
+				and min_budget &gt;= #{min_budget}
+			</if>
+			<if test="max_budget != null and max_budget != ''">
+				and max_budget &lt;= #{max_budget}
+			</if>
+			<if test="audit != null">
+				and audit = #{audit,jdbcType=INTEGER}
+			</if>
+
+			<if test="click_count != null and click_count != ''">
+				and click_count = #{click_count}
+			</if>
+			<if test="cha_count != null and cha_count != ''">
+				and cha_count = #{cha_count}
+			</if>
+			<if test="date != null and date != ''">
+				and date = #{date}
+			</if>
+		</where>
+	</sql>
+
+	<!-- 分页拼接 -->
+	<sql id="limit_cond">
+		<if test="begin !=null">
+			limit #{begin,jdbcType=INTEGER},12
+		</if>
+
+	</sql>
+	<sql id="order"> order by date desc </sql>
+
+	<insert id="projectInsert" parameterType="com.yijie.data.client.model.Projects">
+		insert into yl_project(
+		uuid,user_uuid,title,message,area,
+		days,min_budget,max_budget,phone,
+		oicq,type,price,audit,click_count,cha_count,date)
+		value(#{uuid},#{user_uuid},#{title},
+		#{message},#{area},#{days},#{min_budget},
+		#{max_budget},#{phone},#{oicq},#{type},0,#{audit},
+		0,0,#{date})
+	</insert>
+
+	<select id="projectSelect" parameterType="com.yijie.data.client.model.Projects"
+		resultMap="projectMap">
+		select * from yl_project
+		<include refid="project_where"></include>
+		<include refid="order"></include>
+		<include refid="limit_cond"></include>
+	</select>
+
+	<update id="projectUpdate" parameterType="com.yijie.data.client.model.Projects">
+		update yl_project
+		<trim prefix="set" suffixOverrides=",">
+			<if test="title != null and title != ''">title = #{title},</if>
+			<if test="message != null and message != ''">message = #{message},</if>
+			<if test="area != null and area != ''">area = #{area},</if>
+			<if test="days != null and days != ''">days = #{days},</if>
+			<if test="phone != null and phone != ''">phone = #{phone},</if>
+			<if test="oicq != null and oicq != ''">oicq = #{oicq},</if>
+			<if test="audit !=null">
+				audit = #{audit,jdbcType=INTEGER}
+			</if>
+			<if test="click_count != null and click_count != ''">click_count = #{click_count},</if>
+			<if test="cha_count != null and click_count != ''">cha_count = #{cha_count},</if>
+			<if test="date != null and date != ''">date = #{date},</if>
+		</trim>
+		<where>
+			<if test="uuid != null and uuid != ''">
+				and uuid = #{uuid}
+			</if>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+		</where>
+	</update>
+	<select id="projectCount" resultType="java.lang.Integer"
+		parameterMap="com.yijie.data.client.model.Projects">
+		select count(*) from yl_project
+		<include refid="project_where"></include>
+	</select>
+	<delete id="projectDelete" parameterType="com.yijie.data.client.model.Projects">
+		delete from yl_project
+		<include refid="project_where"></include>
+	</delete>
 
 </mapper>

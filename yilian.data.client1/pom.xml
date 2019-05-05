@@ -79,11 +79,7 @@
 			<scope>test</scope>
 		</dependency>
 		
-<dependency>
-        <groupId>org.apache.httpcomponents</groupId>
-        <artifactId>httpcore</artifactId>
-        <version>4.3.3</version><!--$NO-MVN-MAN-VER$-->
-</dependency>
+
 
 	</dependencies>
 

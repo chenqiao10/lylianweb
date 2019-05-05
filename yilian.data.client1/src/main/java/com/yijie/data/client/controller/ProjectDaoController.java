@@ -62,5 +62,9 @@ public class ProjectDaoController {
 	public Integer projectDesignDelete(@RequestBody ProjectDesign projectDesign){
 		return projectService.projectDesignDelete(projectDesign);
 	}
-
+	// 项目删除
+	@RequestMapping("/projectCount")
+	public Integer projectCount(@RequestBody Projects pro){
+		return projectService.projectCount(pro);
+	}
 }

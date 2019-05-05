@@ -30,16 +30,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 分页拼接 -->
 	<sql id="limit_cond">
-		<if test="id != null and id != ''">
-			limit #{begin},12
-		</if>
+		<if test="begin !=null">
+			    limit #{begin,jdbcType=INTEGER},12
+			</if>
 	</sql>
 
 	<!-- 	添加积分记录 -->
 	<insert id="scoreRecordInsert" parameterType="com.yijie.data.client.model.ScoreRecord">
 		insert into yl_score_record(
 		uuid,date,type,user_uuid,score
-		)value(
+		)values(
 		#{uuid},#{date},#{type},#{user_uuid},#{score}
 		)
 	</insert>

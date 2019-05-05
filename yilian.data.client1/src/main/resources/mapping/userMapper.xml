@@ -17,8 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="openid != null and openid != ''">
 				and openid = #{openid}
 			</if>
-			<if test="QQuid != null and QQuid != ''">
-				and QQuid = #{QQuid}
+			<if test="qquid != null and qquid != ''">
+				and qquid = #{qquid}
 			</if>
 			<if test="num != null and num != ''">
 				and num = #{num}
@@ -26,11 +26,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="level != null and level != ''">
 				and level = #{level}
 			</if>
-			<if test="audit != null and audit != ''">
-				and audit = #{audit}
+			<if test="audit != null">
+				and audit = #{audit,jdbcType=INTEGER}
 			</if>
 			<if test="registtype != null and registtype != ''">
 				and registtype = #{registtype}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password}
 			</if>
 		</where>
 	</sql>
@@ -38,39 +44,62 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 分页拼接 -->
 	<sql id="limit_cond">
-		<if test="begin != null and begin != ''">
-			limit #{begin},12
-		</if>
+		<if test="begin !=null">
+			    limit #{begin,jdbcType=INTEGER},12
+			</if>
 	</sql>
 
-	<insert id="userInsert" parameterType="com.yijie.data.client.model.User">
+	<insert id="userInsert"
+		parameterType="com.yijie.data.client.model.User">
 		insert into
-		yl_user(uuid,num,password,name,balance,level,license,audit,registtype)
-		value(#{uuid},#{num},#{password},#{name},0,#{level},#{license},#{audit},#{registtype})
+		yl_user(uuid,num,password,name,balance,level,license,audit,registtype,qquid,openid)
+		values(#{uuid},#{num},#{password},#{name},50,#{level},#{license},#{audit},#{registtype},#{qquid},#{openid})
 	</insert>
 
-	<select id="userSelect" parameterType="com.yijie.data.client.model.User"
+	<select id="userSelect"
+		parameterType="com.yijie.data.client.model.User"
 		resultType="com.yijie.data.client.model.User">
 		select * from yl_user
 		<include refid="user_where"></include>
 		<include refid="limit_cond"></include>
 	</select>
 
-	<update id="userUpdate" parameterType="com.yijie.data.client.model.User">
+	<!-- 修改用户信息 -->
+	<update id="userUpdate"
+		parameterType="com.yijie.data.client.model.User">
 		update yl_user
 		<trim prefix="set" suffixOverrides=",">
-			<if test="password != null and password != ''">password = #{password},</if>
-			<if test="name != null and name != ''">name = #{name},</if>
-			<if test="balance != null and balance != ''">balance = #{balance},</if>
-			<if test="level != null and level != ''">level = #{level},</if>
-			<if test="license != null and license != ''">license = #{license},</if>
-			<if test="audit != null and audit != ''">audit = #{audit},</if>
-			<if test="registtype != null and registtype != ''">registtype = #{registtype},</if>
+			<if test="audit !=null">
+				audit = #{audit,jdbcType=INTEGER},
+			</if>
+			<if test="password != null and password != ''">
+				password = #{password},
+			</if>
+			<if test="name != null and name != ''">
+				name = #{name},
+			</if>
+			<if test="level != null">
+				and level = #{level,jdbcType=INTEGER},
+			</if>
+		
+			<if test="registtype != null and registtype != ''">
+				registtype = #{registtype},
+			</if>
+			<if test="balance != null and balance != ''">
+				balance = #{balance},
+			</if>
 		</trim>
-		<include refid="user_where"></include>
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="uuid != null and uuid != ''">
+				and uuid = #{uuid}
+			</if>
+		</where>
 	</update>
-
-	<delete id="userDelete" parameterType="com.yijie.data.client.model.User">
+	<delete id="userDelete"
+		parameterType="com.yijie.data.client.model.User">
 		delete from yl_user
 		<include refid="user_where"></include>
 	</delete>

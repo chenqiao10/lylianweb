@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </sql>
     
     <insert id="scoreRuleInsert" parameterType="com.yijie.data.client.model.ScoreRule">
-        insert into yl_score_rule(uuid,min_budget,max_budget,score_budget) value(#{uuid},#{min_budget},#{max_budget},#{score_budget})
+        insert into yl_score_rule(uuid,min_budget,max_budget,score_budget) values(#{uuid},#{min_budget},#{max_budget},#{score_budget})
     </insert>
     <select id="scoreRuleSelect" parameterType="com.yijie.data.client.model.ScoreRule" resultType="com.yijie.data.client.model.ScoreRule">
         select * from yl_score_rule

@@ -46,10 +46,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             and user_uuid = #{user_uuid}
         </if>
         <if test="title != null and title != ''">
-            and title like %#{title}%
+        	<bind name="title" value="'%'+title+'%'"/>	
+            and title like #{title}
         </if>
         <if test="area != null and area != ''">
-            and area like %#{area}%
+        	<bind name="area" value="'%'area'%'"/>	
+            and area like #{area}
         </if>
         <if test="min_budget != null and min_budget != ''">
             and min_budget &gt;= #{min_budget}

@@ -1,6 +1,6 @@
 package com.yijie.data.client.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * 积分记录表
@@ -11,7 +11,7 @@ import java.sql.Date;
 public class ScoreRecord {
 	
 	//自增id
-	private int id;
+	private Integer id;
 	
 	//系统生成的UUID
 	private String uuid;
@@ -31,12 +31,8 @@ public class ScoreRecord {
 	// 分页数据（初始条数）
 	private Integer begin;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getUuid() {
@@ -87,13 +83,22 @@ public class ScoreRecord {
 		this.begin = begin;
 	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "ScoreRecord [id=" + id + ", uuid=" + uuid + ", date=" + date + ", type=" + type + ", user_uuid="
 				+ user_uuid + ", score=" + score + ", begin=" + begin + "]";
 	}
 
-	public ScoreRecord(int id, String uuid, Date date, String type, String user_uuid, String score, Integer begin) {
+	public ScoreRecord() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ScoreRecord(Integer id, String uuid, Date date, String type, String user_uuid, String score, Integer begin) {
 		super();
 		this.id = id;
 		this.uuid = uuid;
@@ -103,10 +108,4 @@ public class ScoreRecord {
 		this.score = score;
 		this.begin = begin;
 	}
-
-	public ScoreRecord() {
-		super();
-		// TODO 自动生成的构造函数存根
-	}
-	
 }

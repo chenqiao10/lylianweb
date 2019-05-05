@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      <where>
      <if test="uuid != null and uuid != ''">
             and uuid = #{uuid}
-        </if>
+    </if>
      </where>
     </update>
     <delete id="adcolumnDelete" parameterType="com.yijie.data.client.model.Adcolumn">

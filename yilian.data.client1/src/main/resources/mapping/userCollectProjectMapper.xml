@@ -18,30 +18,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             and user_uuid = #{user_uuid}
         </if>
         <if test="title != null and title != ''">
-              <bind name="title" value="'%'+title+'%'"/>
-            and title like %#{title}%
+       		<bind name="title" value="'%'+title+'%'"/>	
+            and title like #{title}
         </if>
     </where>
 </sql>
     
 <!-- 分页拼接 -->
 <sql id="limit_cond">
-    <if test="begin != null and begin != ''">
-            limit #{begin},12
-    </if>
+    <if test="begin !=null">
+			    limit #{begin,jdbcType=INTEGER},12
+			</if>
 </sql>
     
     
     <insert id="projectInsert" parameterType="com.yijie.data.client.model.UserCollectProject">
         insert into yl_userColPro(pro_uuid,user_uuid,title) value(#{pro_uuid},#{user_uuid},#{title})
     </insert>
-    
     <select id="projectSelect" parameterType="com.yijie.data.client.model.UserCollectProject" resultType="com.yijie.data.client.model.UserCollectProject">
         select * from yl_userColPro
         <include refid="project_where"></include>
         <include refid="limit_cond"></include>
     </select>
-    
+   <select id="projectSele" parameterType="com.yijie.data.client.model.UserCollectPro" resultType="com.yijie.data.client.model.UserCollectPro"> 
+          select * from yl_userColPro
+          <where>
+              <if test="user_uuid != null and user_uuid != ''">
+            	and user_uuid = #{user_uuid} 
+       		  </if>
+       		  <if test="type != null and type != ''">
+            	and type = #{type} 
+       		  </if>
+       		   <if test="max_budget != null and max_budget != ''">
+            	and max_budget = #{max_budget} 
+       		  </if>
+          </where>
+        <include refid="limit_cond"></include>
+    </select>
     <delete id="projectDelete" parameterType="com.yijie.data.client.model.UserCollectProject">
         delete from yl_userColPro
         <include refid="project_where"></include>
