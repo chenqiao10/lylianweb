@@ -33,7 +33,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     
     <insert id="projectInsert" parameterType="com.yijie.data.client.model.UserCollectProject">
-        insert into yl_userColPro(pro_uuid,user_uuid,title) value(#{pro_uuid},#{user_uuid},#{title})
+        insert into yl_userColPro(pro_uuid,user_uuid,title,max_budget,min_budget,type) 
+        values
+        (#{pro_uuid},#{user_uuid},#{title},#{max_budget},#{min_budget},#{type})
     </insert>
     <select id="projectSelect" parameterType="com.yijie.data.client.model.UserCollectProject" resultType="com.yijie.data.client.model.UserCollectProject">
         select * from yl_userColPro
