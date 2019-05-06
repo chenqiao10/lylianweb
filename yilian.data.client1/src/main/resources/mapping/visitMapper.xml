@@ -9,10 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="com.yijie.data.client.model.Visit"
 		id="visitMap">
 		<id property="id" column="id" />
-		
 		<result property="visit" column="visit" />
 		<result property="date" column="date" />
-
 	</resultMap>
 
 	
@@ -45,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="visitSelect"
 		parameterType="com.yijie.data.client.model.Visit"
-		resultMap="visitMap">
+		resultMap="com.yijie.data.client.model.Visit">
 		select * from yl_visit
 		<include refid="visit_where"></include>
 
@@ -57,12 +55,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<trim prefix="set" suffixOverrides=",">
 			<if test="visit != null and visit != ''">visit = #{visit},</if>
 			<if test="date != null and date != ''">date = #{date},</if>
-			<if test="area != null and area != ''">area = #{area},</if>
 		</trim>
 		<where>
-			<if test="uuid != null and uuid != ''">
-				and uuid = #{uuid}
-			</if>
 			<if test="id != null and id != ''">
 				and id = #{id}
 			</if>
