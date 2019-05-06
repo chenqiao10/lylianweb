@@ -25,7 +25,7 @@ public class VisitServiceImpl implements VisitService {
 
 	}
 
-//
+
 	@Override
 	public List<Visit> visitSelect(Visit visit) {
 		try {

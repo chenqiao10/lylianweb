@@ -40,7 +40,7 @@ public class VisitDaoController {
 
 	// 项目列表
 	@RequestMapping("/visitSelect")
-	List<Visit> visitSelect(@RequestBody Visit visit) {
+	public List<Visit> visitSelect(@RequestBody Visit visit) {
 		return visitService.visitSelect(visit);
 	}
 }

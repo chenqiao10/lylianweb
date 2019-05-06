@@ -43,10 +43,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="visitSelect"
 		parameterType="com.yijie.data.client.model.Visit"
-		resultMap="com.yijie.data.client.model.Visit">
+		resultType="com.yijie.data.client.model.Visit">
 		select * from yl_visit
 		<include refid="visit_where"></include>
-
 	</select>
 
 	<update id="visitUpdate"
