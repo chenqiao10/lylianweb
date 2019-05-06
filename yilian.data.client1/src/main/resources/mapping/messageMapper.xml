@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</sql>
 	<insert id="messageInsert" parameterType="com.yijie.data.client.model.Message">
 		insert into yl_message(user_id,name,admin_id,status,title,content,date)
-		value(#{user_id},#{name},#{admin_id},0,#{title},#{content},#{date})
+		values(#{user_id},#{name},#{admin_id},0,#{title},#{content},#{date})
 	</insert>
 	<select id="messageSelect" parameterType="com.yijie.data.client.model.Message"
 		resultMap="MessageMap">
