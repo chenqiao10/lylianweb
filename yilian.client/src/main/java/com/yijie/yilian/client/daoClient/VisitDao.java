@@ -16,15 +16,15 @@ import com.yijie.yilian.client.model.Visit;
 public interface VisitDao {
 
 	// 积分记录查询
-	@RequestMapping("/yilianData/Visit/VisitSelect")
+	@RequestMapping("/yilianData/visit/visitSelect")
 	public List<Visit> visitSelect(Visit visit);
 
 	// 积分记录添加
-	@RequestMapping("/yilianData/Visit/VisitInsert")
+	@RequestMapping("/yilianData/visit/visitInsert")
 	public Integer visitInsert(Visit visit);
 
 	// 积分记录更新
-	@RequestMapping("/yilianData/Visit/VisitUpdate")
+	@RequestMapping("/yilianData/visit/visitUpdate")
 	public Integer visitUpdate(Visit visit);
 
 }

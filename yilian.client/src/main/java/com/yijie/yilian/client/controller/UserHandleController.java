@@ -3,6 +3,13 @@ package com.yijie.yilian.client.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.hash.Md5Hash;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +31,35 @@ public class UserHandleController {
 	@Autowired
 	private UserHandleService userHandleService;
 
+	/*	*//**
+			 * @描述 用户登录
+			 * @param user
+			 * @return
+			 *//*
+				 * @RequestMapping("/userLogin") public Map<String, Object>
+				 * userLogin(@RequestBody User user) { Map<String, Object> result = new
+				 * HashMap<String, Object>(); String msg = null; if (user.getNum() != null &&
+				 * user.getPassword() != null) {// 根据电话号登录 User u =
+				 * userHandleService.userLogin(user); if (u == null) { result.put("code", 0);
+				 * msg = "账户不存在或密码错误！"; } else if (u.getAudit() == 2) { result.put("code", 0);
+				 * msg = "审核中！"; } else if (u.getAudit() == 0) { result.put("code", 0); msg =
+				 * "账户不存在或密码错误！"; }else { result.put("code", 1); msg = "登录成功！"; }
+				 * result.put("user", u); result.put("msg", msg); return result; } else {
+				 * result.put("code", 0); msg = "账户不存在或密码错误！"; return result; } }
+				 */
+	/**
+	 * @描述 用户拦截
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping("/toLogin")
+	public Map<String, Object> toLogin() {
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("code", 0);
+		result.put("msg", "请先登录");
+		return result;
+	}
+	
 	/**
 	 * @描述 用户登录
 	 * @param user
@@ -32,28 +68,30 @@ public class UserHandleController {
 	@RequestMapping("/userLogin")
 	public Map<String, Object> userLogin(@RequestBody User user) {
 		Map<String, Object> result = new HashMap<String, Object>();
-		String msg = null;
-		if (user.getNum() != null && user.getPassword() != null) {// 根据电话号登录
-			User u = userHandleService.userLogin(user);
-			if (u == null) {
+//		String msg = null;
+		// Shiro认证登录
+		Subject subject = SecurityUtils.getSubject();
+		Md5Hash hash = new Md5Hash(user.getPassword(), user.getNum(), 2);
+		AuthenticationToken token = new UsernamePasswordToken(user.getNum(), hash.toString());
+		try {
+			subject.login(token);
+			User u = (User) subject.getPrincipal();
+			if (u.getAudit() != 1) {
 				result.put("code", 0);
-				msg = "账户不存在或密码错误！";
-			} else if (u.getAudit() == 2) {
-				result.put("code", 0);
-				msg = "审核中！";
-			} else if (u.getAudit() == 0) {
-				result.put("code", 0);
-				msg = "账户不存在或密码错误！";
-			}else {
+				result.put("msg", "审核中");
+			} else {
 				result.put("code", 1);
-				msg = "登录成功！";
+				result.put("user", u);
+				result.put("msg", "登录成功");
 			}
-			result.put("user", u);
-			result.put("msg", msg);
 			return result;
-		} else {
+		} catch (UnknownAccountException e) {
 			result.put("code", 0);
-			msg = "账户不存在或密码错误！";
+			result.put("msg", "账户不存在");
+			return result;
+		} catch (IncorrectCredentialsException e) {
+			result.put("code", 0);
+			result.put("msg", "密码错误");
 			return result;
 		}
 	}

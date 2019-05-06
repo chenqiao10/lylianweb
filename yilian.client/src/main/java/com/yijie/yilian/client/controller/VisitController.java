@@ -19,7 +19,7 @@ import com.yijie.yilian.client.service.VisitService;
  *
  */
 @RestController
-@RequestMapping("/Visit")
+@RequestMapping("/visit")
 public class VisitController {
 
 	@Autowired

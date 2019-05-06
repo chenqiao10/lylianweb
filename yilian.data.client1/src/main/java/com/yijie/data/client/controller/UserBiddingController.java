@@ -19,14 +19,14 @@ import com.yijie.data.client.service.UserBiddingService;
  *
  */
 @RestController
-@RequestMapping("/UserBidding")
+@RequestMapping("/userBidding")
 public class UserBiddingController {
 
 	@Autowired
 	private UserBiddingService userBiddingService;
 
 	// 用户竞标列表
-	@RequestMapping("/UserBiddingTable")
+	@RequestMapping("/userBiddingTable")
 	public Map<String, Object> UserBiddingTable(@RequestBody UserBidding userBidding) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
@@ -43,7 +43,7 @@ public class UserBiddingController {
 	}
 
 	// 用户竞标添加
-	@RequestMapping("/UserBiddingInsert")
+	@RequestMapping("/userBiddingInsert")
 	public Map<String, Object> UserBiddingInsert(@RequestBody UserBidding userBidding) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		Integer code = userBiddingService.userBiddingInsert(userBidding);
@@ -52,7 +52,7 @@ public class UserBiddingController {
 	}
 
 	// 用户竞标修改
-	@RequestMapping("/UserBiddingUpdate")
+	@RequestMapping("/userBiddingUpdate")
 	public Map<String, Object> userBiddingUpdate(@RequestBody UserBidding userBidding) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		Integer code = userBiddingService.userBiddingUpdate(userBidding);
@@ -61,7 +61,7 @@ public class UserBiddingController {
 	}
 
 	// 用户竞标删除
-	@RequestMapping("/UserBiddingDelete")
+	@RequestMapping("/userBiddingDelete")
 	public Map<String, Object> userBiddingDelete(@RequestBody UserBidding userBidding) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		Integer code = userBiddingService.userBiddingDelete(userBidding);

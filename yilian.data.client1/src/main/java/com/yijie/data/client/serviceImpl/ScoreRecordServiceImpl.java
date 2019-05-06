@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import com.yijie.data.client.dao.ScoreRecordMapper;
 import com.yijie.data.client.model.ScoreRecord;
 import com.yijie.data.client.service.ScoreRecordService;
+
 @Service
-public class ScoreRecordServiceImpl implements ScoreRecordService{
-	
+public class ScoreRecordServiceImpl implements ScoreRecordService {
+
 	@Autowired
 	private ScoreRecordMapper scoreRecordMapper;
 
