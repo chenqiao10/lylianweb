@@ -2,7 +2,6 @@ package com.yijie.data.client.dao;
 
 import java.util.List;
 
-import com.yijie.data.client.model.SafeLog;
 import com.yijie.data.client.model.Visit;
 
 public interface VisitMapper {

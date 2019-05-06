@@ -1,8 +1,6 @@
 package com.yijie.yilian.client.service;
 
-import java.util.List;
 
-import com.yijie.yilian.client.model.Projects;
 import com.yijie.yilian.client.model.User;
 
 /**

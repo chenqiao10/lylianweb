@@ -3,11 +3,9 @@ package com.yijie.yilian.client.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.yijie.yilian.client.daoClient.UserCheProDao;
-import com.yijie.yilian.client.daoClient.UserDao;
 import com.yijie.yilian.client.model.UserChangeProject;
 import com.yijie.yilian.client.service.UserChangeProjectService;
 

@@ -34,7 +34,6 @@ public class UserHandleController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		String msg = null;
 		if (user.getNum() != null && user.getPassword() != null) {// 根据电话号登录
-			user.setAudit(1);// 1是审核通过得账号
 			User u = userHandleService.userLogin(user);
 			if (u == null) {
 				result.put("code", 0);
@@ -42,7 +41,10 @@ public class UserHandleController {
 			} else if (u.getAudit() == 2) {
 				result.put("code", 0);
 				msg = "审核中！";
-			} else {
+			} else if (u.getAudit() == 0) {
+				result.put("code", 0);
+				msg = "账户不存在或密码错误！";
+			}else {
 				result.put("code", 1);
 				msg = "登录成功！";
 			}

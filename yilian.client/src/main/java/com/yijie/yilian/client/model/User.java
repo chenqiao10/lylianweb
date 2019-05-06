@@ -37,7 +37,7 @@ public class User {
 	//企业级别账户对应营业执照
 	private String license;
 	
-	//是否通过审核(1.通过，0.未通过)
+	//是否通过审核(1.通过，0.未通过,2审核中)
 	private Integer audit;
 	
 	// 分页数据（初始条数）

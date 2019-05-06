@@ -1,7 +1,6 @@
 package com.yijie.data.client.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import com.yijie.data.client.model.UserCollectProject;
 

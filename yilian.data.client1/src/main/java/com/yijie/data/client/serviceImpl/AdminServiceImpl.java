@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.yijie.data.client.dao.AdminMapper;
 import com.yijie.data.client.model.Admin;
-import com.yijie.data.client.model.User;
 import com.yijie.data.client.service.AdminService;
 
 @Service
