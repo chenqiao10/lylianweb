@@ -13,38 +13,27 @@ public class ScoreRecord {
 	//自增id
 	private Integer id;
 	
-	//系统生成的UUID
-	private String uuid;
-	
 	//领取时间
 	private Date date;
 	
 	//积分类型(0签到 1邀请 2发布 3兑换 4注册)
-	private String type;
+	private Integer type;
 	
 	//用户id
 	private String user_uuid;
 	
 	//领取积分
-	private String score;
+	private Integer score;
 	
 	// 分页数据（初始条数）
 	private Integer begin;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getUuid() {
-		return uuid;
-	}
-
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
 	}
 
 	public Date getDate() {
@@ -55,11 +44,11 @@ public class ScoreRecord {
 		this.date = date;
 	}
 
-	public String getType() {
+	public Integer getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 
@@ -71,11 +60,11 @@ public class ScoreRecord {
 		this.user_uuid = user_uuid;
 	}
 
-	public String getScore() {
+	public Integer getScore() {
 		return score;
 	}
 
-	public void setScore(String score) {
+	public void setScore(Integer score) {
 		this.score = score;
 	}
 
@@ -89,14 +78,18 @@ public class ScoreRecord {
 
 	@Override
 	public String toString() {
-		return "ScoreRecord [id=" + id + ", uuid=" + uuid + ", date=" + date + ", type=" + type + ", user_uuid="
-				+ user_uuid + ", score=" + score + ", begin=" + begin + "]";
+		return "ScoreRecord [id=" + id + ", date=" + date + ", type=" + type + ", user_uuid=" + user_uuid + ", score="
+				+ score + ", begin=" + begin + "]";
 	}
 
-	public ScoreRecord(int id, String uuid, Date date, String type, String user_uuid, String score, Integer begin) {
+	public ScoreRecord() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ScoreRecord(Integer id, Date date, Integer type, String user_uuid, Integer score, Integer begin) {
 		super();
 		this.id = id;
-		this.uuid = uuid;
 		this.date = date;
 		this.type = type;
 		this.user_uuid = user_uuid;
@@ -104,9 +97,4 @@ public class ScoreRecord {
 		this.begin = begin;
 	}
 
-	public ScoreRecord() {
-		super();
-		// TODO 自动生成的构造函数存根
-	}
-	
 }

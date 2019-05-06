@@ -73,8 +73,13 @@ public class ProjectController {
 	@RequestMapping("/projectMessage")
 	public Map<String,Object> projectMessage(@RequestBody Projects projects){
 		Map<String,Object> result = new HashMap<String, Object>();
+		Projects pro = new Projects();
 		try {
 			Projects project = projectService.projectMessage(projects);
+			//点击量
+			pro.setId(projects.getId());
+			pro.setClick_count(projects.getClick_count()+1);
+			projectService.projectUpdate(pro);
 			result.put("projectMessage", project);
 			result.put("code", 1);
 			return result;

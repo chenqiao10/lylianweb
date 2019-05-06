@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yijie.yilian.client.model.ScoreRecord;
+import com.yijie.yilian.client.model.User;
 import com.yijie.yilian.client.service.ScoreRecordService;
+import com.yijie.yilian.client.service.UserHandleService;
 import com.yijie.yilian.client.utils.Uuid;
 /**
  * 积分记录
@@ -25,6 +27,9 @@ public class ScoreRecordController {
 	
 	@Autowired
 	private ScoreRecordService scoreRecordService;
+	
+	@Autowired
+	private UserHandleService userHandleService;
 	
 	/**
 	 * 积分记录查询
@@ -56,10 +61,19 @@ public class ScoreRecordController {
 	@RequestMapping("/ScoreRecordInsert")
 	public Map<String, Object> ScoreRecordInsert(@RequestBody ScoreRecord scoreRecord){
 		Map<String, Object> result = new HashMap<String, Object>();
+		User user = new User();
 		try {
-			scoreRecord.setUuid(Uuid.getUuid());
 			scoreRecord.setDate(new Date());
 			Integer code = scoreRecordService.scoreRecordAdd(scoreRecord);
+			//交换项目修改账户积分
+			if(code != 0) {
+				user.setUuid(scoreRecord.getUser_uuid());
+				User u = userHandleService.userLogin(user);
+				if(scoreRecord.getType() == 3){
+					user.setBalance(u.getBalance()-scoreRecord.getScore());
+					userHandleService.userUpdate(user);
+				}
+			}
 			result.put("code", code);
 			return result;
 		} catch (Exception e) {

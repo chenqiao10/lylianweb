@@ -29,7 +29,7 @@ public class UserChangeProject {
 	
 	// 项目 类型
 	private String type;
-
+	
 	private String begin;
 
 	public Integer getId() {

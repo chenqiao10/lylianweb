@@ -10,9 +10,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="id != null and id != ''">
 				and id = #{id}
 			</if>
-			<if test="uuid != null and uuid != ''">
-				and uuid = #{uuid}
-			</if>
 			<if test="date != null and date != ''">
 				and date = #{date}
 			</if>
@@ -38,9 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 	添加积分记录 -->
 	<insert id="scoreRecordInsert" parameterType="com.yijie.data.client.model.ScoreRecord">
 		insert into yl_score_record(
-		uuid,date,type,user_uuid,score
+		date,type,user_uuid,score
 		)values(
-		#{uuid},#{date},#{type},#{user_uuid},#{score}
+		#{date},#{type},#{user_uuid},#{score}
 		)
 	</insert>
 	
@@ -61,9 +58,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="scoreRecordUpdate" parameterType="com.yijie.data.client.model.ScoreRecord">
 		update  yl_score_record
 		<trim prefix="set" suffixOverrides=",">
-			<if test="uuid != null and uuid != ''">
-				 uuid = #{uuid},
-			</if>
 			<if test="date != null and date != ''">
 				 date = #{date},
 			</if>
