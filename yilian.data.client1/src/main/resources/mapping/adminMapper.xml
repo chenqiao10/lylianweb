@@ -5,69 +5,84 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.yijie.data.client.dao.AdminMapper">
 
-<!-- 关联返回map定义 -->
-<resultMap type="com.yijie.data.client.model.Admin" id="AdminMap">  
-    <id property="id" column="id" />  
-    <result property="uuid" column="uuid" />
-    <result property="num" column="num" />
-       <result property="password" column="password" />
-        <result property="name" column="name" />
-</resultMap>
-<!-- 条件拼接 -->
-<sql id="Admin_where">
-    <where>
-        <if test="id != null and id != ''">
-            and id = #{id}
-        </if>
-        <if test="uuid != null and uuid != ''">
-            and uuid = #{uuid}
-        </if>      
-        <if test="num != null and num != ''">
-            and num = #{num}
-        </if>      
-        <if test="password != null and password != ''">
-            and password = #{password}
-        </if>
-        <if test="name != null and name != ''">
-            and name = #{name}
-        </if>
-        
-        
-    </where>
-</sql>
-    
+	<!-- 关联返回map定义 -->
+	<resultMap type="com.yijie.data.client.model.Admin"
+		id="AdminMap">
+		<id property="id" column="id" />
+		<result property="uuid" column="uuid" />
+		<result property="num" column="num" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="status" column="status" />
+	</resultMap>
+	<!-- 条件拼接 -->
+	<sql id="Admin_where">
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="uuid != null and uuid != ''">
+				and uuid = #{uuid}
+			</if>
+			<if test="num != null and num != ''">
+				and num = #{num}
+			</if>
+			<if test="password != null and password != ''">
+				and password = #{password}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+			<if test="status != null and status != ''">
+				and status = #{status}
+			</if>
 
-    
-    
-    <insert id="adminInsert" parameterType="com.yijie.data.client.model.Admin">
-        insert into yl_admin(uuid,num,password,name) value(#{uuid},#{num},#{password},#{name})
-    </insert>
-    
-    <select id="adminSelect" parameterType="com.yijie.data.client.model.Admin" resultMap="AdminMap">
-        select * from yl_admin
-        <include refid="Admin_where"></include>
-       
-    </select>
-    
-    <update id="adminUpdate" parameterType="com.yijie.data.client.model.Admin">
-        update yl_admin
-    <trim prefix="set" suffixOverrides=",">
-        <if test="num != null and num != ''">num = #{num},</if>
-         <if test="password != null and password != ''">password = #{password},
-        </if>
-         <if test="name != null and name != ''">name = #{name},</if>
-        
-    </trim>
-     <where>
-     <if test="uuid != null and uuid != ''">
-            and uuid = #{uuid}
-        </if>
-     </where>
-    </update>
-    
-    <delete id="adminDelete" parameterType="com.yijie.data.client.model.Admin">
-        delete from yl_admin
-        <include refid="Admin_where"></include>
-    </delete>
+
+		</where>
+	</sql>
+
+
+
+
+	<insert id="adminInsert"
+		parameterType="com.yijie.data.client.model.Admin">
+		insert into yl_admin(uuid,num,password,name,status)
+		value(#{uuid},#{num},#{password},#{name},#{status})
+	</insert>
+
+	<select id="adminSelect"
+		parameterType="com.yijie.data.client.model.Admin" resultMap="AdminMap">
+		select * from yl_admin
+		<include refid="Admin_where"></include>
+
+	</select>
+
+	<update id="adminUpdate"
+		parameterType="com.yijie.data.client.model.Admin">
+		update yl_admin
+		<trim prefix="set" suffixOverrides=",">
+			<if test="num != null and num != ''">num = #{num},</if>
+			<if test="password != null and password != ''">password = #{password},
+			</if>
+			<if test="name != null and name != ''">name = #{name},</if>
+			<if test="status != null">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
+		</trim>
+		<where>
+			<if test="uuid != null and uuid != ''">
+				and uuid = #{uuid}
+			</if>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+		</where>
+	</update>
+
+	<delete id="adminDelete"
+		parameterType="com.yijie.data.client.model.Admin">
+		delete from yl_admin
+		<include refid="Admin_where"></include>
+	</delete>
 
 </mapper>

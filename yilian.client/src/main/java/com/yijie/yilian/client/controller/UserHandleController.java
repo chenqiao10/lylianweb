@@ -104,7 +104,14 @@ public class UserHandleController {
 	@RequestMapping("/userRegistForOwn")
 	public Map<String, Object> userRegistForOwn(@RequestBody User user) {
 		Map<String, Object> result = new HashMap<String, Object>();
+		Subject subject = SecurityUtils.getSubject();
+		Md5Hash hash = new Md5Hash(user.getPassword(), user.getNum(), 2);
+		AuthenticationToken token = new UsernamePasswordToken(user.getNum(), hash.toString());
 		// 个人账户默认审核通过
+		subject.login(token);
+		User u = (User) subject.getPrincipal();
+		user.setNum(u.getNum());
+		user.setPassword(u.getPassword());
 		user.setUuid(Uuid.getUuid());
 		user.setAudit(1);
 		user.setLevel(0);
