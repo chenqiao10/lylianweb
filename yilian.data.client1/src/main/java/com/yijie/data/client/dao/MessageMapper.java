@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.yijie.data.client.model.Message;
 
-public interface messageMapper {
+public interface MessageMapper {
 	// 信息添加
 	public void messageInsert(Message message);
 

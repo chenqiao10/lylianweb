@@ -3,8 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.yijie.data.client.dao.messageMapper">
-
+<mapper namespace="com.yijie.data.client.dao.MessageMapper">
 	<!-- 关联返回map定义 -->
 	<resultMap type="com.yijie.data.client.model.Message" id="MessageMap">
 		<id property="id" column="id" />
@@ -43,18 +42,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="status != null ">
 				and status = #{status,jdbcType=INTEGER}
 			</if>
- 
 		</where>
 	</sql>
-
-
-
-
 	<insert id="messageInsert" parameterType="com.yijie.data.client.model.Message">
-		insert into yl_admin(user_id,name,admin_id,status,title,content)
-		value(#{user_id},#{name},#{admin_id},0,#{title},{content})
+		insert into yl_message(user_id,name,admin_id,status,title,content,date)
+		value(#{user_id},#{name},#{admin_id},0,#{title},#{content},#{date})
 	</insert>
-
 	<select id="messageSelect" parameterType="com.yijie.data.client.model.Message"
 		resultMap="MessageMap">
 		select * from yl_message
@@ -83,9 +76,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="user_id != null and user_id != ''">
 				 user_id = #{user_id},
 			</if>
-	<if test="status != null ">
-		status = #{status,jdbcType=INTEGER},
-	</if>
+			<if test="status != null ">
+				status = #{status,jdbcType=INTEGER},
+			</if>
 
 		</trim>
 		<where>
