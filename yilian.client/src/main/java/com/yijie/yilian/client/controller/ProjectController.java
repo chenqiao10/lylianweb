@@ -39,6 +39,7 @@ public class ProjectController {
 		Map<String,Object> result = new HashMap<String, Object>();
 		Integer code = projectService.projectBuild(projects);
 		result.put("code", code);
+		result.put("uuid", projects.getUuid());//项目uuid
 		return result;
 	}
 	
