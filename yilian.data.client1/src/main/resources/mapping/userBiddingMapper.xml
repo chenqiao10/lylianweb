@@ -5,66 +5,75 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.yijie.data.client.dao.UserBiddingMapper">
 
-<!-- 条件拼接 -->
-<sql id="bidding_where">
-        <where>
-        <if test="id != null and id != ''">
-            and id = #{id}
-        </if>
-        <if test="user_uuid != null and user_uuid != ''">
-            and user_uuid = #{user_uuid}
-        </if>
-        <if test="user_phone != null and user_phone != ''">
-            and user_phone = #{user_phone}
-        </if>
-        <if test="tender_uuid != null and tender_uuid != ''">
-            and tender_uuid = #{tender_uuid}
-        </if>
-        <if test="title != null and title != ''">
-        	<bind name="title" value="'%'+title+'%'"/>	
-            and title like #{title}
-        </if>
-        <if test="type != null and type != ''">
-            and type = #{type}
-        </if>
-        <if test="audit != null and audit != ''">
-            and audit = #{audit}
-        </if>
-        </where>
-    </sql>
-    
-    
-    <!-- 分页拼接 -->
-    <sql id="limit_cond">
-        <if test="begin != null and begin != ''">
-            limit #{begin},12
-        </if>
-    </sql>
-    
-    <insert id="userBiddingInsert" parameterType="com.yijie.data.client.model.UserBidding">
-        insert into yl_user_bidding(user_uuid,user_phone,tender_uuid,title,type,price,license,audit) value(#{user_uuid},#{user_phone},#{tender_uuid},#{title},#{type},#{price},#{license},0)
-    </insert>
-    
-    <select id="userBiddingSelect" parameterType="com.yijie.data.client.model.UserBidding" resultType="com.yijie.data.client.model.UserBidding">
-        select * from yl_user_bidding
-        <include refid="bidding_where"></include>
-        <include refid="limit_cond"></include>
-    </select>
-    
-    <update id="userBiddingUpdate" parameterType="com.yijie.data.client.model.UserBidding">
-        update yl_user_bidding
-    <trim prefix="set" suffixOverrides=",">
-        <if test="user_phone != null and user_phone != ''">user_phone = #{user_phone},</if>
-        <if test="price != null and price != ''">price = #{price},</if>
-        <if test="license != null and license != ''">license = #{license},</if>
-        <if test="audit != null and audit != ''">audit = #{audit},</if>
-    </trim>
-    <include refid="bidding_where"></include>
-    </update>
-    
-    <delete id="userBiddingDelete" parameterType="com.yijie.data.client.model.UserBidding">
-        delete from yl_user_bidding
-        <include refid="bidding_where"></include>
-    </delete>
+	<!-- 条件拼接 -->
+	<sql id="bidding_where">
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="user_uuid != null and user_uuid != ''">
+				and user_uuid = #{user_uuid}
+			</if>
+			<if test="user_phone != null and user_phone != ''">
+				and user_phone = #{user_phone}
+			</if>
+			<if test="tender_uuid != null and tender_uuid != ''">
+				and tender_uuid = #{tender_uuid}
+			</if>
+			<if test="title != null and title != ''">
+				<bind name="title" value="'%'+title+'%'" />
+				and title like #{title}
+			</if>
+			<if test="type != null ">
+				type = #{type,jdbcType=INTEGER},
+			</if>
+			<if test="audit != null ">
+				 audit = #{audit,jdbcType=INTEGER},
+			</if>
+		</where>
+	</sql>
+
+
+	<!-- 分页拼接 -->
+	<sql id="limit_cond">
+		<if test="begin != null and begin != ''">
+			limit #{begin},12
+		</if>
+	</sql>
+
+	<insert id="userBiddingInsert"
+		parameterType="com.yijie.data.client.model.UserBidding">
+		insert into
+		yl_user_bidding(user_uuid,user_phone,tender_uuid,title,type,price,license,audit)
+		value(#{user_uuid},#{user_phone},#{tender_uuid},#{title},#{type},#{price},#{license},0)
+	</insert>
+
+	<select id="userBiddingSelect"
+		parameterType="com.yijie.data.client.model.UserBidding"
+		resultType="com.yijie.data.client.model.UserBidding">
+		select * from yl_user_bidding
+		<include refid="bidding_where"></include>
+		<include refid="limit_cond"></include>
+	</select>
+
+	<update id="userBiddingUpdate"
+		parameterType="com.yijie.data.client.model.UserBidding">
+		update yl_user_bidding
+		<trim prefix="set" suffixOverrides=",">
+			<if test="user_phone != null and user_phone != ''">user_phone = #{user_phone},</if>
+			<if test="price != null and price != ''">price = #{price},</if>
+			<if test="license != null and license != ''">license = #{license},</if>
+			<if test="audit != null ">
+				 audit = #{audit,jdbcType=INTEGER},
+			</if>
+		</trim>
+		<include refid="bidding_where"></include>
+	</update>
+
+	<delete id="userBiddingDelete"
+		parameterType="com.yijie.data.client.model.UserBidding">
+		delete from yl_user_bidding
+		<include refid="bidding_where"></include>
+	</delete>
 
 </mapper>

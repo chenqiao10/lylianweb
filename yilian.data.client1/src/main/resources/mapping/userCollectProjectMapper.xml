@@ -3,63 +3,54 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.yijie.data.client.dao.UserCollectProjectMapper">
+<mapper
+	namespace="com.yijie.data.client.dao.UserCollectProjectMapper">
 
-<!-- 条件拼接 -->
-<sql id="project_where">
-    <where>
-        <if test="id != null and id != ''">
-            and id = #{id}
-        </if>
-        <if test="pro_uuid != null and pro_uuid != ''">
-            and pro_uuid = #{pro_uuid}
-        </if>
-        <if test="user_uuid != null and user_uuid != ''">
-            and user_uuid = #{user_uuid}
-        </if>
-        <if test="title != null and title != ''">
-       		<bind name="title" value="'%'+title+'%'"/>	
-            and title like #{title}
-        </if>
-    </where>
-</sql>
-    
-<!-- 分页拼接 -->
-<sql id="limit_cond">
-    <if test="begin !=null">
-			    limit #{begin,jdbcType=INTEGER},12
+	<!-- 条件拼接 -->
+	<sql id="project_where">
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id}
 			</if>
-</sql>
-    
-    
-    <insert id="projectInsert" parameterType="com.yijie.data.client.model.UserCollectProject">
-        insert into yl_userColPro(pro_uuid,user_uuid,title,max_budget,min_budget,type) 
-        values
-        (#{pro_uuid},#{user_uuid},#{title},#{max_budget},#{min_budget},#{type})
-    </insert>
-    <select id="projectSelect" parameterType="com.yijie.data.client.model.UserCollectProject" resultType="com.yijie.data.client.model.UserCollectProject">
-        select * from yl_userColPro
-        <include refid="project_where"></include>
-        <include refid="limit_cond"></include>
-    </select>
-   <select id="projectSele" parameterType="com.yijie.data.client.model.UserCollectPro" resultType="com.yijie.data.client.model.UserCollectPro"> 
-          select * from yl_userColPro
-          <where>
-              <if test="user_uuid != null and user_uuid != ''">
-            	and user_uuid = #{user_uuid} 
-       		  </if>
-       		  <if test="type != null and type != ''">
-            	and type = #{type} 
-       		  </if>
-       		   <if test="max_budget != null and max_budget != ''">
-            	and max_budget = #{max_budget} 
-       		  </if>
-          </where>
-        <include refid="limit_cond"></include>
-    </select>
-    <delete id="projectDelete" parameterType="com.yijie.data.client.model.UserCollectProject">
-        delete from yl_userColPro
-        <include refid="project_where"></include>
-    </delete>
+			<if test="pro_uuid != null and pro_uuid != ''">
+				and pro_uuid = #{pro_uuid}
+			</if>
+			<if test="user_uuid != null and user_uuid != ''">
+				and user_uuid = #{user_uuid}
+			</if>
+			<if test="title != null and title != ''">
+				<bind name="title" value="'%'+title+'%'" />
+				and title like #{title}
+			</if>
+		</where>
+	</sql>
+
+	<!-- 分页拼接 -->
+	<sql id="limit_cond">
+		<if test="begin !=null">
+			limit #{begin,jdbcType=INTEGER},12
+		</if>
+	</sql>
+
+
+	<insert id="projectInsert"
+		parameterType="com.yijie.data.client.model.UserCollectProject">
+		insert into
+		yl_userColPro(pro_uuid,user_uuid,title,max_budget,min_budget,type)
+		values
+		(#{pro_uuid},#{user_uuid},#{title},#{max_budget},#{min_budget},#{type})
+	</insert>
+	<select id="projectSelect"
+		parameterType="com.yijie.data.client.model.UserCollectProject"
+		resultType="com.yijie.data.client.model.UserCollectProject">
+		select * from yl_userColPro
+		<include refid="project_where"></include>
+		<include refid="limit_cond"></include>
+	</select>
+	<delete id="projectDelete"
+		parameterType="com.yijie.data.client.model.UserCollectProject">
+		delete from yl_userColPro
+		<include refid="project_where"></include>
+	</delete>
 
 </mapper>

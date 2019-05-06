@@ -12,26 +12,29 @@ import com.yijie.data.client.service.ScoreRuleService;
 
 @RestController
 @RequestMapping("/user")
-public class ScoreRuleController  {
-    @Autowired
-    ScoreRuleService  ScoreRuleService;
-  
-    @RequestMapping("/scoreRuleSelect")
-    public List<ScoreRule>  scoreRuleSelect(@RequestBody ScoreRule ScoreRule){
-    
-    	return ScoreRuleService.scoreRuleSelect(ScoreRule);	
-    }
-    @RequestMapping("/scoreRuleAdd")
-    public Integer scoreRuleAdd(@RequestBody ScoreRule ScoreRule) {
-		return ScoreRuleService.scoreRuleAdd(ScoreRule);  	
-    }
-    @RequestMapping("/scoreRuleUpdate")
-    public Integer scoreRuleUpdate(@RequestBody ScoreRule ScoreRule) {
-		return ScoreRuleService.scoreRuleUpdate(ScoreRule);
-    }@RequestMapping("/scoreRuleDelete")
-    public Integer scoreRuleDelete(@RequestBody ScoreRule ScoreRule) {
-		return ScoreRuleService.scoreRuleDelete(ScoreRule);
-    	
-    }
-    
+public class ScoreRuleController {
+	@Autowired
+	private ScoreRuleService ScoreRuleService;
+
+	@RequestMapping("/scoreRuleSelect")
+	public List<ScoreRule> scoreRuleSelect(@RequestBody ScoreRule scoreRule) {
+		return ScoreRuleService.scoreRuleSelect(scoreRule);
+	}
+
+	@RequestMapping("/scoreRuleAdd")
+	public Integer scoreRuleAdd(@RequestBody ScoreRule scoreRule) {
+		return ScoreRuleService.scoreRuleAdd(scoreRule);
+	}
+
+	@RequestMapping("/scoreRuleUpdate")
+	public Integer scoreRuleUpdate(@RequestBody ScoreRule scoreRule) {
+		return ScoreRuleService.scoreRuleUpdate(scoreRule);
+	}
+
+	@RequestMapping("/scoreRuleDelete")
+	public Integer scoreRuleDelete(@RequestBody ScoreRule scoreRule) {
+		return ScoreRuleService.scoreRuleDelete(scoreRule);
+
+	}
+
 }

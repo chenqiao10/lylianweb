@@ -51,17 +51,19 @@ public class Projects {
 
 	// 是否通过审核（1.通过，0.未通过，2.审核中）
 	private Integer audit;
-	//点击量
+
+	// 点击量
 	private Integer click_count;
-	//交换次数
+
+	// 交换次数
 	private Integer cha_count;
-	//提交时间
+
+	// 提交时间
 	private Date date;
+
 	// 项目对应附件
-	
-	
 	private List<ProjectDesign> designs;
-	
+
 	// 分页数据（初始条数）
 	private Integer begin;
 

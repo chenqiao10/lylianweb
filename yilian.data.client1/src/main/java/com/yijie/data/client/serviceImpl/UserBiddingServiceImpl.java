@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import com.yijie.data.client.dao.UserBiddingMapper;
 import com.yijie.data.client.model.UserBidding;
 import com.yijie.data.client.service.UserBiddingService;
+
 @Service
-public class UserBiddingServiceImpl implements UserBiddingService{
-	
+public class UserBiddingServiceImpl implements UserBiddingService {
+
 	@Autowired
 	private UserBiddingMapper userBiddingMapper;
 

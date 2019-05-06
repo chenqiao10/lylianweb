@@ -14,29 +14,33 @@ import com.yijie.data.client.service.VisitService;
 @RequestMapping("/admin")
 public class VisitDaoController {
 	@Autowired
-	private VisitService  visitService;
-	//日誌刪除
+	private VisitService visitService;
+
+	// 日誌刪除
 	@RequestMapping("/visitInsert")
-	public Integer  visitInsert(@RequestBody Visit visit) {
-		System.out.println( visit);
-		return visitService.visitInsert( visit);
-		
+	public Integer visitInsert(@RequestBody Visit visit) {
+		System.out.println(visit);
+		return visitService.visitInsert(visit);
+
 	}
+
 	@RequestMapping("/visitDelete")
-	public Integer  visitDelete(@RequestBody Visit visit) {
-		System.out.println( visit);
-		return visitService.visitDelete( visit);
-		
+	public Integer visitDelete(@RequestBody Visit visit) {
+		System.out.println(visit);
+		return visitService.visitDelete(visit);
+
 	}
+
 	@RequestMapping("/visitUpdate")
-	public Integer  visitUpdate(@RequestBody Visit visit) {
-		System.out.println( visit);
-		return visitService.visitUpdate( visit);
-		
+	public Integer visitUpdate(@RequestBody Visit visit) {
+		System.out.println(visit);
+		return visitService.visitUpdate(visit);
+
 	}
+
 	// 项目列表
-		@RequestMapping("/visitSelect")
-		List<Visit> visitSelect (@RequestBody Visit visit){
-			return visitService.visitSelect(visit);
-		}
+	@RequestMapping("/visitSelect")
+	List<Visit> visitSelect(@RequestBody Visit visit) {
+		return visitService.visitSelect(visit);
+	}
 }

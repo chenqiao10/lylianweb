@@ -8,25 +8,29 @@ import java.util.Date;
  *
  */
 public class UserChangeProject {
-	
+
 	// 自增ID
 	private Integer id;
-	
+
 	// 对应项目UUID
 	private String pro_uuid;
-	
+
 	// 交换项目用户UUID
 	private String user_uuid;
+	
 	// 联系电话
 	private String phone;
+	
 	// 项目名称
 	private String title;
-	//交换时间
-	private Date date;
-	//项目 类型
-	private String type;
 	
-	//分页数据
+	// 交换时间
+	private Date date;
+	
+	// 项目 类型
+	private String type;
+
+	// 分页数据
 	private String begin;
 
 	public Integer getId() {

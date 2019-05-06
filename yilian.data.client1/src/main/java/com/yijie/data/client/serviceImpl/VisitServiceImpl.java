@@ -12,7 +12,7 @@ import com.yijie.data.client.service.VisitService;
 @Service
 public class VisitServiceImpl implements VisitService {
 	@Autowired
-	VisitMapper VisitMapper;
+	private VisitMapper VisitMapper;
 
 	@Override
 	public Integer visitInsert(Visit visit) {
@@ -20,26 +20,25 @@ public class VisitServiceImpl implements VisitService {
 			VisitMapper.visitInsert(visit);
 			return 1;
 		} catch (Exception e) {
-
 		}
 		return 0;
 
 	}
+
 //
 	@Override
 	public List<Visit> visitSelect(Visit visit) {
 		try {
 			return VisitMapper.visitSelect(visit);
-
 		} catch (Exception e) {
 			return null;
 		}
 	}
-	//日志刪除
+
+	// 日志刪除
 	@Override
 	public Integer visitDelete(Visit visit) {
 		try {
-
 			VisitMapper.visitDelete(visit);
 			return 1;
 		} catch (Exception e) {
@@ -48,7 +47,8 @@ public class VisitServiceImpl implements VisitService {
 		// TODO 自动生成的方法存根
 
 	}
-//日志更新
+
+	// 日志更新
 	@Override
 	public Integer visitUpdate(Visit visit) {
 		try {

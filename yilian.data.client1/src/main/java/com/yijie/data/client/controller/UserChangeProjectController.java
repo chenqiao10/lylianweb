@@ -19,19 +19,19 @@ public class UserChangeProjectController {
 
 	// 用户已交换项目列表
 	@RequestMapping("/userCheProTable")
-	public List<UserChangeProject> userCheProTable(@RequestBody UserChangeProject userChangeProject){
+	public List<UserChangeProject> userCheProTable(@RequestBody UserChangeProject userChangeProject) {
 		return userChangeProjectService.userCheProTable(userChangeProject);
 	}
 
 	// 新添用户已交换项目
 	@RequestMapping("/userCheProAdd")
-	public Integer userCheProAdd(@RequestBody UserChangeProject userChangeProject){
+	public Integer userCheProAdd(@RequestBody UserChangeProject userChangeProject) {
 		return userChangeProjectService.userCheProAdd(userChangeProject);
 	}
 
 	// 用户已交换项目删除
 	@RequestMapping("/userCheProDelete")
-	public Integer userCheProDelete(@RequestBody UserChangeProject userChangeProject){
+	public Integer userCheProDelete(@RequestBody UserChangeProject userChangeProject) {
 		return userChangeProjectService.userCheProDelete(userChangeProject);
 	}
 

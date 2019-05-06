@@ -27,9 +27,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="date != null and date != ''">
             and date = #{date}
         </if>
-        <if test="type != null and type != ''">
-            and type = #{type}
-        </if>
+			<if test="type != null ">
+				 type = #{type,jdbcType=INTEGER},
+			</if>
     </where>
 </sql>
     

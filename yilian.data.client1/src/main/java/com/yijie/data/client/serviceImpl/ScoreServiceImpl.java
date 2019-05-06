@@ -15,16 +15,16 @@ public class ScoreServiceImpl implements ScoreRuleService {
 	ScoreRuleMapper ScoreRuleMapper;
 
 	@Override
-	public List<ScoreRule> scoreRuleSelect(ScoreRule ScoreRule) {
+	public List<ScoreRule> scoreRuleSelect(ScoreRule scoreRule) {
 		// TODO 自动生成的方法存根
-		return ScoreRuleMapper.scoreRuleSelect(ScoreRule);
+		return ScoreRuleMapper.scoreRuleSelect(scoreRule);
 	}
 
 	@Override
-	public Integer scoreRuleAdd(ScoreRule ScoreRule) {
+	public Integer scoreRuleAdd(ScoreRule scoreRule) {
 		// TODO 自动生成的方法存根
 		try {
-			ScoreRuleMapper.scoreRuleInsert(ScoreRule);
+			ScoreRuleMapper.scoreRuleInsert(scoreRule);
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -33,10 +33,10 @@ public class ScoreServiceImpl implements ScoreRuleService {
 	}
 
 	@Override
-	public Integer scoreRuleUpdate(ScoreRule ScoreRule) {
+	public Integer scoreRuleUpdate(ScoreRule scoreRule) {
 		// TODO 自动生成的方法存根
 		try {
-			ScoreRuleMapper.scoreRuleUpdate(ScoreRule);
+			ScoreRuleMapper.scoreRuleUpdate(scoreRule);
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,10 +45,10 @@ public class ScoreServiceImpl implements ScoreRuleService {
 	}
 
 	@Override
-	public Integer scoreRuleDelete(ScoreRule ScoreRule) {
+	public Integer scoreRuleDelete(ScoreRule scoreRule) {
 		// TODO 自动生成的方法存根
 		try {
-			ScoreRuleMapper.scoreRuleDelete(ScoreRule);
+			ScoreRuleMapper.scoreRuleDelete(scoreRule);
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();

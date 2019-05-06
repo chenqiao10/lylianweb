@@ -41,7 +41,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and user_id = #{user_id}
 			</if>
 			<if test="status != null ">
-			    
 				and status = #{status,jdbcType=INTEGER}
 			</if>
  
@@ -84,10 +83,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="user_id != null and user_id != ''">
 				 user_id = #{user_id},
 			</if>
-			<if test="status != null ">
-			    
-				 status = #{status,jdbcType=INTEGER},
-			</if>
+	<if test="status != null ">
+		status = #{status,jdbcType=INTEGER},
+	</if>
 
 		</trim>
 		<where>

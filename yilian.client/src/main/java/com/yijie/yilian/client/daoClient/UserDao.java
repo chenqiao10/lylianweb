@@ -1,26 +1,33 @@
 package com.yijie.yilian.client.daoClient;
-import java.util.List;
+
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yijie.yilian.client.model.Projects;
 import com.yijie.yilian.client.model.User;
-import com.yijie.yilian.client.model.UserChangeProject;
+
 /**
  * 用户数据接口
+ * 
  * @author chenqiao
  *
  */
-@FeignClient("yilian.data.client")
+@FeignClient("yijie.zuul.api")
 public interface UserDao {
-	@RequestMapping("/user/userLogin")
+	//用户登录
+	@RequestMapping("yilianData/user/userLogin")
 	public User userLogin(User user);
-	@RequestMapping("/user/userTable")
+
+	//用户列表
+	@RequestMapping("yilianData/user/userTable")
 	public User userTable(User user);
-	@RequestMapping("/user/userRegist")
+
+	//用户注册
+	@RequestMapping("yilianData/user/userRegist")
 	public Integer userRegist(User user);
-	@RequestMapping("/user/userUpdate")
+
+	//用户信息修改
+	@RequestMapping("yilianData/user/userUpdate")
 	public Integer userUpdate(User user);
-   
+
 }

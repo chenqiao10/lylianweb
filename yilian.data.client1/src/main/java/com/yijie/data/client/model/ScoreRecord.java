@@ -9,25 +9,25 @@ import java.util.Date;
  *
  */
 public class ScoreRecord {
-	
-	//自增id
+
+	// 自增id
 	private Integer id;
-	
-	//系统生成的UUID
+
+	// 系统生成的UUID
 	private String uuid;
-	
-	//领取时间
+
+	// 领取时间
 	private Date date;
-	
-	//积分类型(0签到 1邀请 2发布 3兑换 4注册)
+
+	// 积分类型(0签到 1邀请 2发布 3兑换 4注册)
 	private String type;
-	
-	//用户id
+
+	// 用户id
 	private String user_uuid;
-	
-	//领取积分
+
+	// 领取积分
 	private String score;
-	
+
 	// 分页数据（初始条数）
 	private Integer begin;
 

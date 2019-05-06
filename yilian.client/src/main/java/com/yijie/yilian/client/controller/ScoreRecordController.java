@@ -1,5 +1,6 @@
 package com.yijie.yilian.client.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yijie.yilian.client.daoClient.ScoreDao;
 import com.yijie.yilian.client.model.ScoreRecord;
 import com.yijie.yilian.client.service.ScoreRecordService;
 import com.yijie.yilian.client.utils.Uuid;
@@ -58,6 +58,7 @@ public class ScoreRecordController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		try {
 			scoreRecord.setUuid(Uuid.getUuid());
+			scoreRecord.setDate(new Date());
 			Integer code = scoreRecordService.scoreRecordAdd(scoreRecord);
 			result.put("code", code);
 			return result;

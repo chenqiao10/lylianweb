@@ -1,6 +1,6 @@
 package com.yijie.yilian.client.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * 积分记录表

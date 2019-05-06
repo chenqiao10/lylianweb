@@ -39,24 +39,23 @@ public class UserHandleServiceImpl implements UserHandleService {
 	public Integer userUpdate(User user) {
 		return userDao.userUpdate(user);
 	}
-/** 添加人User, 添加积分值 score
- * 
- */
+
+	/**
+	 * 添加人User, 添加积分值 score
+	 * 
+	 */
 	@Override
-public Integer scoreAdd(User User, Integer score) {
+	public Integer scoreAdd(User user, Integer score) {
 		// TODO 自动生成的方法存根
 		Integer result = null;
-		User User1 = userDao.userLogin(User);
+		User User1 = userDao.userLogin(user);
 		if (User1 == null) {
-
 			System.out.println(User1 == null);
 		} else {
 			Integer oldscore = User1.getBalance();
 			Integer newscore = oldscore + score;
-			User.setBalance(newscore);
-
-			result = userDao.userUpdate(User);
-
+			user.setBalance(newscore);
+			result = userDao.userUpdate(user);
 		}
 		return result;
 	}
@@ -66,26 +65,21 @@ public Integer scoreAdd(User User, Integer score) {
 	 * 
 	 */
 	@Override
-	public Integer scoreDel(User User, Integer score) {
+	public Integer scoreDel(User user, Integer score) {
 		// TODO 自动生成的方法存根
 		Integer result = null;
-		User User1 = userDao.userLogin(User);
-
+		User User1 = userDao.userLogin(user);
 		if (User1 == null) {
-
 			System.out.println(User1 == null);
 		} else {
 			Integer oldscore = User1.getBalance();
 			if (oldscore >= score) {
-
 				Integer newscore = oldscore + score;
-				User.setBalance(newscore);
-
-				result = userDao.userUpdate(User);
+				user.setBalance(newscore);
+				result = userDao.userUpdate(user);
 			} else {
 				result = 0;
 			}
-
 		}
 		return result;
 	}

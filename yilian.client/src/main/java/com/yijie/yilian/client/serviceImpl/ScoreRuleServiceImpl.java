@@ -12,7 +12,7 @@ import com.yijie.yilian.client.service.ScoreRuleService;
 @Service
 public class ScoreRuleServiceImpl implements ScoreRuleService {
 	@Autowired
-	ScoreDao scoreDao;
+	private ScoreDao scoreDao;
 
 	@Override
 	public List<ScoreRule> scoreRuleSelect(ScoreRule ScoreRule) {

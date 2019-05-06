@@ -10,23 +10,23 @@ import com.yijie.data.client.dao.ProjectsMapper;
 import com.yijie.data.client.model.ProjectDesign;
 import com.yijie.data.client.model.Projects;
 import com.yijie.data.client.service.ProjectService;
+
 @Service
 public class ProjectServiceImpl implements ProjectService {
-	
+
 	@Autowired
 	private ProjectsMapper projectsMapper;
-	
+
 	@Autowired
 	private ProjectDesignMapper projectDesignMapper;
 
-	
 	@Override
-	public Projects projectMessage(Projects pro) {
+	public Projects projectMessage(Projects projects) {
 		try {
-			List<Projects> list = projectsMapper.projectSelect(pro);
-			if(list.size() == 0){
+			List<Projects> list = projectsMapper.projectSelect(projects);
+			if (list.size() == 0) {
 				return null;
-			}else{
+			} else {
 				return list.get(0);
 			}
 		} catch (Exception e) {
@@ -36,9 +36,9 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public List<Projects> projectTable(Projects pro) {
+	public List<Projects> projectTable(Projects projects) {
 		try {
-			List<Projects> list = projectsMapper.projectSelect(pro);
+			List<Projects> list = projectsMapper.projectSelect(projects);
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,9 +47,9 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Integer projectBuild(Projects pro) {
+	public Integer projectBuild(Projects projects) {
 		try {
-			projectsMapper.projectInsert(pro);
+			projectsMapper.projectInsert(projects);
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,9 +58,9 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Integer projectDelete(Projects pro) {
+	public Integer projectDelete(Projects projects) {
 		try {
-			projectsMapper.projectDelete(pro);
+			projectsMapper.projectDelete(projects);
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,9 +69,9 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Integer projectUpdate(Projects pro) {
+	public Integer projectUpdate(Projects projects) {
 		try {
-			projectsMapper.projectUpdate(pro);
+			projectsMapper.projectUpdate(projects);
 			return 1;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,7 +82,7 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public Integer projectDesignAdd(List<ProjectDesign> projectDesigns) {
 		try {
-			for(ProjectDesign projectDesign : projectDesigns){
+			for (ProjectDesign projectDesign : projectDesigns) {
 				projectDesignMapper.projectDesignInsert(projectDesign);
 			}
 			return 1;
@@ -95,7 +95,7 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public Integer projectDesignUpdate(List<ProjectDesign> projectDesigns) {
 		try {
-			for(ProjectDesign projectDesign : projectDesigns){
+			for (ProjectDesign projectDesign : projectDesigns) {
 				projectDesignMapper.projectDesignUpdate(projectDesign);
 			}
 			return 1;

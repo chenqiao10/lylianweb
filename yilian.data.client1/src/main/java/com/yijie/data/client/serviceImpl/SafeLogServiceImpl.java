@@ -12,7 +12,7 @@ import com.yijie.data.client.service.SafeLogService;
 @Service
 public class SafeLogServiceImpl implements SafeLogService {
 	@Autowired
-	SafeLogMapper safeLogMapper;
+	private SafeLogMapper safeLogMapper;
 
 	@Override
 	public Integer logInsert(SafeLog safeLog) {
@@ -30,7 +30,6 @@ public class SafeLogServiceImpl implements SafeLogService {
 		try {
 			List<SafeLog> list = safeLogMapper.logSelect(safeLog);
 			return list;
-
 		} catch (Exception e) {
 			return null;
 		}

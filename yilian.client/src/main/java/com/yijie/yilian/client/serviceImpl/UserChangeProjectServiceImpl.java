@@ -13,18 +13,15 @@ import com.yijie.yilian.client.service.UserChangeProjectService;
 
 @Service
 public class UserChangeProjectServiceImpl implements UserChangeProjectService {
-	@Autowired
-	UserDao userdao;
-	@Autowired
-	UserCheProDao userCheProDao;
 	
-			
+	@Autowired
+	private UserCheProDao userCheProDao;
+
 	@Override
 	public List<UserChangeProject> userCheProTable(UserChangeProject userChangeProject) {
 		/**
 		 *
-		 * 判断是否存在* 
-		 * 存在就redis读取*不存在访问数据库数据然写入redis*
+		 * 判断是否存在* 存在就redis读取*不存在访问数据库数据然写入redis*
 		 */
 		return userCheProDao.userCheProTable(userChangeProject);
 	}
@@ -32,7 +29,7 @@ public class UserChangeProjectServiceImpl implements UserChangeProjectService {
 	@Override
 	public Integer userCheProAdd(UserChangeProject userChangeProject) {
 		/**
-		 *往数据写也往redis写
+		 * 往数据写也往redis写
 		 */
 		return userCheProDao.userCheProAdd(userChangeProject);
 	}
@@ -40,13 +37,10 @@ public class UserChangeProjectServiceImpl implements UserChangeProjectService {
 	@Override
 	public Integer userCheProDelete(UserChangeProject userChangeProject) {
 		/**
-		 * 判断redis是否缓存
-		 * 是就删除缓存并删除数据库数据
-		 * 否就删除数据库数据
+		 * 判断redis是否缓存 是就删除缓存并删除数据库数据 否就删除数据库数据
 		 * 
 		 */
 		return userCheProDao.userCheProDelete(userChangeProject);
-		
 
 	}
 

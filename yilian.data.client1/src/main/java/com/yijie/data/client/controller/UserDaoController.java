@@ -21,36 +21,36 @@ public class UserDaoController {
 
 	@Autowired
 	private UserDaoService userDaoService;
-	
+
 	// 用户登录
 	@RequestMapping("/userLogin")
-	public User userLogin(@RequestBody User user){
+	public User userLogin(@RequestBody User user) {
 		return userDaoService.userLogin(user);
 	}
-	
+
 	// 用户列表
 	@RequestMapping("/userTable")
-	public List<User> userTable(@RequestBody User user){
+	public List<User> userTable(@RequestBody User user) {
 		return userDaoService.userTable(user);
 	}
-	
+
 	// 用户注册
 	@RequestMapping("/userRegist")
-	public Integer userRegist(@RequestBody User user ){
-		
+	public Integer userRegist(@RequestBody User user) {
+
 		return userDaoService.userRegist(user);
 	}
-	
+
 	// 用户信息更新
 	@RequestMapping("/userUpdate")
-	public Integer userUpdate(@RequestBody User user){
+	public Integer userUpdate(@RequestBody User user) {
 		return userDaoService.userUpdate(user);
 	}
-	
+
 	// 用户注销
 	@RequestMapping("/userDelete")
-	public Integer userDelete(@RequestBody User user){
+	public Integer userDelete(@RequestBody User user) {
 		return userDaoService.userDelete(user);
 	}
-	
+
 }

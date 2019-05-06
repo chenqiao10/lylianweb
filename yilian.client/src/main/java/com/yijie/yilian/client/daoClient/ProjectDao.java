@@ -14,37 +14,37 @@ import com.yijie.yilian.client.model.Projects;
  * @author chenqiao
  *
  */
-@FeignClient("yilian.data.client")
+@FeignClient("yijie.zuul.api")
 public interface ProjectDao {
 	// 项目详细信息
-	@RequestMapping("/project/projectMessage")
+	@RequestMapping("yilianData/project/projectMessage")
 	public Projects projectMessage(Projects pro);
 
 	// 项目列表
-	@RequestMapping("/project/projectTable")
+	@RequestMapping("yilianData/project/projectTable")
 	public List<Projects> projectTable(Projects pro);
 
 	// 项目创建
-	@RequestMapping("/project/projectBuild")
+	@RequestMapping("yilianData/project/projectBuild")
 	public Integer projectBuild(Projects pro);
 
 	// 项目删除
-	@RequestMapping("/project/projectDelete")
+	@RequestMapping("yilianData/project/projectDelete")
 	public Integer projectDelete(Projects pro);
 
 	// 项目修改
-	@RequestMapping("/project/projectUpdate")
+	@RequestMapping("yilianData/project/projectUpdate")
 	public Integer projectUpdate(Projects pro);
-	
+
 	// 项目附件添加
-	@RequestMapping("/project/projectDesignAdd")
+	@RequestMapping("yilianData/project/projectDesignAdd")
 	public Integer projectDesignAdd(List<ProjectDesign> projectDesign);
-	
+
 	// 项目附件修改
-	@RequestMapping("/project/projectDesignUpdate")
+	@RequestMapping("yilianData/project/projectDesignUpdate")
 	public Integer projectDesignUpdate(List<ProjectDesign> projectDesign);
 
 	// 项目附件删除
-	@RequestMapping("/project/projectDesignDelete")
+	@RequestMapping("yilianData/project/projectDesignDelete")
 	public Integer projectDesignDelete(ProjectDesign projectDesign);
 }

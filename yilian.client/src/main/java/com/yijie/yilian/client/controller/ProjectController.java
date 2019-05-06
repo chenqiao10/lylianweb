@@ -1,5 +1,6 @@
 package com.yijie.yilian.client.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,9 +34,9 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping("/projectBuild")
-	@ResponseBody
 	public Map<String,Object> projectBuild(@RequestBody Projects projects){
-		projects.setUser_uuid(Uuid.getUuid());
+		projects.setUuid(Uuid.getUuid());
+		projects.setDate(new Date());
 		Map<String,Object> result = new HashMap<String, Object>();
 		Integer code = projectService.projectBuild(projects);
 		result.put("code", code);
@@ -48,7 +49,6 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping("/projectTable")
-	@ResponseBody
 	public Map<String,Object>   projectTable(@RequestBody Projects projects){
 		System.out.println(projects);
 		Map<String,Object> result = new HashMap<String, Object>();
@@ -63,7 +63,6 @@ public class ProjectController {
 			result.put("msg", "系统出错");
 			return result;
 		}
-		
 	}
 	
 	/**
@@ -72,7 +71,6 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping("/projectMessage")
-	@ResponseBody
 	public Map<String,Object> projectMessage(@RequestBody Projects projects){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {
@@ -95,7 +93,6 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping("/projectUpdate")
-	@ResponseBody
 	public Map<String,Object> projectUpdate(@RequestBody Projects projects){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {
@@ -118,7 +115,6 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping("/projectDelete")
-	@ResponseBody
 	public Map<String,Object> projectDelete(@RequestBody Projects projects){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {
@@ -140,7 +136,6 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping("/projectDesignAdd")
-	@ResponseBody
 	public Map<String,Object> projectDesignAdd(@RequestBody List<ProjectDesign> projectDesigns){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {
@@ -162,7 +157,6 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping("/projectDesignUodate")
-	@ResponseBody
 	public Map<String,Object> projectDesignUodate(@RequestBody List<ProjectDesign> projectDesigns){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {
@@ -184,7 +178,6 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping("/projectDesignDelete")
-	@ResponseBody
 	public Map<String,Object> projectDesignDelete(@RequestBody ProjectDesign projectDesign){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {

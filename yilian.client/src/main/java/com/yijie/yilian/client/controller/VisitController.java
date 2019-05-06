@@ -1,5 +1,6 @@
 package com.yijie.yilian.client.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,21 +13,25 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yijie.yilian.client.model.Visit;
 import com.yijie.yilian.client.service.VisitService;
 
-
+/**
+ * @ 访问量模块
+ * @author sunzhu
+ *
+ */
 @RestController
 @RequestMapping("/Visit")
 public class VisitController {
-	
+
 	@Autowired
 	private VisitService visitService;
-	
+
 	/**
 	 * @访问量列表
 	 * @param visit
 	 * @return
 	 */
 	@RequestMapping("/visitTable")
-	public Map<String, Object> visitTable(@RequestBody Visit visit){
+	public Map<String, Object> visitTable(@RequestBody Visit visit) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		try {
 			List<Visit> visitlist = visitService.visitTable(visit);
@@ -41,16 +46,17 @@ public class VisitController {
 			return result;
 		}
 	}
-	
+
 	/**
 	 * @访问记录量添加
 	 * @param visit
 	 * @return
 	 */
 	@RequestMapping("/visitAdd")
-	public Map<String, Object> visitAdd(@RequestBody Visit visit){
+	public Map<String, Object> visitAdd(@RequestBody Visit visit) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		try {
+			visit.setDate(new Date());
 			Integer code = visitService.visitAdd(visit);
 			result.put("code", code);
 			return result;
@@ -62,14 +68,14 @@ public class VisitController {
 			return result;
 		}
 	}
-	
+
 	/**
 	 * @访问记录量修改
 	 * @param visit
 	 * @return
 	 */
 	@RequestMapping("/visitUpdate")
-	public Map<String, Object> visitUpdate(@RequestBody Visit visit){
+	public Map<String, Object> visitUpdate(@RequestBody Visit visit) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		try {
 			Integer code = visitService.visitUpdate(visit);

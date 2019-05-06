@@ -32,7 +32,6 @@ public class TenderController {
 	 * @return
 	 */
 	@RequestMapping("/tenderBuild")
-	@ResponseBody
 	public Map<String,Object> tenderBuild(@RequestBody Tender tender){
 		Map<String,Object> result = new HashMap<String, Object>();
 		Integer code = tenderService.tenderBuild(tender);
@@ -46,7 +45,6 @@ public class TenderController {
 	 * @return
 	 */
 	@RequestMapping("/tenderTable")
-	@ResponseBody
 	public Map<String,Object> tenderTable(@RequestBody Tender tender){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {
@@ -68,7 +66,6 @@ public class TenderController {
 	 * @return
 	 */
 	@RequestMapping("/tenderMessage")
-	@ResponseBody
 	public Map<String,Object> tenderMessage(@RequestBody Tender tender){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {
@@ -90,7 +87,6 @@ public class TenderController {
 	 * @return
 	 */
 	@RequestMapping("/tenderUpdate")
-	@ResponseBody
 	public Map<String,Object> tenderUpdate(@RequestBody Tender tender){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {
@@ -112,7 +108,6 @@ public class TenderController {
 	 * @return
 	 */
 	@RequestMapping("/tenderDelete")
-	@ResponseBody
 	public Map<String,Object> tenderDelete(@RequestBody Tender tender){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {
@@ -133,7 +128,6 @@ public class TenderController {
 	 * @return
 	 */
 	@RequestMapping("/tenderDesignAdd")
-	@ResponseBody
 	public Map<String,Object> tenderDesignAdd(@RequestBody List<TenderDesign> tenderDesigns){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {
@@ -155,7 +149,6 @@ public class TenderController {
 	 * @return
 	 */
 	@RequestMapping("/tenderDesignUodate")
-	@ResponseBody
 	public Map<String,Object> tenderDesignUodate(@RequestBody List<TenderDesign> tenderDesigns){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {
@@ -177,7 +170,6 @@ public class TenderController {
 	 * @return
 	 */
 	@RequestMapping("/tenderDesignDelete")
-	@ResponseBody
 	public Map<String,Object> tenderDesignDelete(@RequestBody TenderDesign tenderDesign){
 		Map<String,Object> result = new HashMap<String, Object>();
 		try {

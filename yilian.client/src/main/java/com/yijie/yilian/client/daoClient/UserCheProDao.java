@@ -13,18 +13,19 @@ import com.yijie.yilian.client.model.UserChangeProject;
  * @author chenqiao
  *
  */
-@FeignClient("yilian.data.client")
+@FeignClient("yijie.zuul.api")
 public interface UserCheProDao {
+	
 	// 用户项目交换列表
-	@RequestMapping("/user/userCheProTable")
+	@RequestMapping("yilianData/user/userCheProTable")
 	public List<UserChangeProject> userCheProTable(UserChangeProject userChangeProject);
 
 	// 删除交换项目
-	@RequestMapping("/user/userCheProDelete")
+	@RequestMapping("yilianData/user/userCheProDelete")
 	public Integer userCheProDelete(UserChangeProject userChangeProject);
 
-	@RequestMapping("/user/userCheProAdd")
 	// 添加交换项目
+	@RequestMapping("yilianData/user/userCheProAdd")
 	public Integer userCheProAdd(UserChangeProject userChangeProject);
 
 }

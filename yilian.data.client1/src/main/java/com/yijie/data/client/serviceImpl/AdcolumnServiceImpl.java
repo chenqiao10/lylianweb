@@ -8,20 +8,23 @@ import org.springframework.stereotype.Service;
 import com.yijie.data.client.dao.AdcolumnMapper;
 import com.yijie.data.client.model.Adcolumn;
 import com.yijie.data.client.service.AdcolumnService;
+
 @Service
-public class AdcolumnServiceImpl implements AdcolumnService{
-@Autowired
-AdcolumnMapper  adcolumnMapper;
+public class AdcolumnServiceImpl implements AdcolumnService {
+	
+	@Autowired
+	private AdcolumnMapper adcolumnMapper;
+
 	@Override
 	public Integer adcolumnInsert(Adcolumn adcolumn) {
-	try {
-		adcolumnMapper.adcolumnInsert(adcolumn);
-		return 1;
-	} catch (Exception e) {
-e.printStackTrace();
-return 0;
-	}
-	
+		try {
+			adcolumnMapper.adcolumnInsert(adcolumn);
+			return 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+
 	}
 
 	@Override
@@ -30,8 +33,8 @@ return 0;
 			adcolumnMapper.adcolumnDelete(adcolumn);
 			return 1;
 		} catch (Exception e) {
-	e.printStackTrace();
-	return 0;
+			e.printStackTrace();
+			return 0;
 		}
 	}
 
@@ -41,19 +44,19 @@ return 0;
 			adcolumnMapper.adcolumnUpdate(adcolumn);
 			return 1;
 		} catch (Exception e) {
-	e.printStackTrace();
-	return 0;
+			e.printStackTrace();
+			return 0;
 		}
 	}
 
 	@Override
 	public List<Adcolumn> adcolumnSelect(Adcolumn adcolumn) {
 		try {
-			List<Adcolumn> list=adcolumnMapper.adcolumnSelect(adcolumn);
+			List<Adcolumn> list = adcolumnMapper.adcolumnSelect(adcolumn);
 			return list;
 		} catch (Exception e) {
-	
-		e.printStackTrace();}
+			e.printStackTrace();
+		}
 		return null;
 	}
 

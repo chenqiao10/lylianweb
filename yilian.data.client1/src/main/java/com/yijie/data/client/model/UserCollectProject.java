@@ -1,18 +1,28 @@
 package com.yijie.data.client.model;
 
 public class UserCollectProject {
+
+	// 主键id
 	private Integer id;
+
 	// 项目id
 	private Integer type;
-	// 预算
+
+	// 最大预算
 	private Integer max_budget;
-	//最小预算
+
+	// 最小预算
 	private Integer min_budget;
-	//项目名称
+
+	// 项目名称
 	private String title;
+
 	// 項目id
 	private String pro_uuid;
+
+	// 用户uuid
 	private String user_uuid;
+
 	// 分页数据（初始条数）
 	private Integer begin;
 

@@ -12,8 +12,10 @@ import com.yijie.yilian.client.service.ProjectService;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
-    @Autowired
-    ProjectDao  projectDao;
+	
+	@Autowired
+	private ProjectDao projectDao;
+
 	@Override
 	public Integer projectBuild(Projects projects) {
 		// TODO Auto-generated method stub
@@ -46,19 +48,19 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public Integer projectDesignAdd(List<ProjectDesign> projectDesign) {
 		// TODO Auto-generated method stub
-		return null;
+		return projectDao.projectDesignAdd(projectDesign);
 	}
 
 	@Override
 	public Integer projectDesignUpdate(List<ProjectDesign> projectDesign) {
 		// TODO Auto-generated method stub
-		return null;
+		return projectDao.projectDesignUpdate(projectDesign);
 	}
 
 	@Override
 	public Integer projectDesignDelete(ProjectDesign projectDesign) {
 		// TODO Auto-generated method stub
-		return null;
+		return projectDao.projectDesignDelete(projectDesign);
 	}
 
 }

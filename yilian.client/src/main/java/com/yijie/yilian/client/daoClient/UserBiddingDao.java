@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yijie.yilian.client.model.UserBidding;
+
 /**
  * 用户竞标接口
  * 
@@ -14,11 +15,11 @@ import com.yijie.yilian.client.model.UserBidding;
  */
 @FeignClient("yijie.zuul.api")
 public interface UserBiddingDao {
-	
+
 	// 用户竞标信息查询
 	@RequestMapping("/yilianData/UserBidding/UserBiddingTable")
 	public List<UserBidding> userBiddingSelect(UserBidding userBidding);
-	
+
 	// 用户竞标信息查询
 	@RequestMapping("/yilianData/UserBidding/UserBiddingTable")
 	public UserBidding userBiddingMessage(UserBidding userBidding);

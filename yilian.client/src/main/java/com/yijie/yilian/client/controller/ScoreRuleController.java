@@ -16,10 +16,15 @@ import com.yijie.yilian.client.utils.Uuid;
 @RestController
 @RequestMapping("/user")
 public class ScoreRuleController {
-	
+
 	@Autowired
-	ScoreRuleService ScoreRuleService;
-	
+	private ScoreRuleService ScoreRuleService;
+
+	/**
+	 * @ 积分策略查询
+	 * @param ScoreRule
+	 * @return
+	 */
 	@RequestMapping("/scoreRuleSelect")
 	public Map<String, Object> scoreRuleSelect(@RequestBody ScoreRule ScoreRule) {
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -39,12 +44,16 @@ public class ScoreRuleController {
 		}
 	}
 
+	/**
+	 * @ 积分策略添加
+	 * @param ScoreRule
+	 * @return
+	 */
 	@RequestMapping("/scoreRuleAdd")
 	public Map<String, Object> scoreRuleAdd(@RequestBody ScoreRule ScoreRule) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		try {
 			Integer code = ScoreRuleService.scoreRuleAdd(ScoreRule);
-
 			result.put("code", code);
 			return result;
 		} catch (Exception e) {
@@ -56,12 +65,16 @@ public class ScoreRuleController {
 		}
 	}
 
+	/**
+	 * @ 积分策略修改
+	 * @param ScoreRule
+	 * @return
+	 */
 	@RequestMapping("/scoreRuleUpdate")
 	public Map<String, Object> scoreRuleUpdate(@RequestBody ScoreRule ScoreRule) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		try {
 			Integer code = ScoreRuleService.scoreRuleUpdate(ScoreRule);
-
 			result.put("code", code);
 			return result;
 		} catch (Exception e) {
@@ -73,6 +86,11 @@ public class ScoreRuleController {
 		}
 	}
 
+	/**
+	 * @ 积分策略删除
+	 * @param ScoreRule
+	 * @return
+	 */
 	@RequestMapping("/scoreRuleDelete")
 	public Map<String, Object> scoreRuleDelete(@RequestBody ScoreRule ScoreRule) {
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -81,7 +99,6 @@ public class ScoreRuleController {
 			result.put("code", code);
 			return result;
 		} catch (Exception e) {
-
 			e.printStackTrace();
 			result.put("code", 0);
 			result.put("msg", "系统出错");

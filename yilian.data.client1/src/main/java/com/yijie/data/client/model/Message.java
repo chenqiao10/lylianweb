@@ -3,40 +3,55 @@ package com.yijie.data.client.model;
 import java.util.Date;
 
 public class Message {
+	
+	//主键id
 	private Integer id;
-	//消息类容
+	
+	// 消息类容
 	private String content;
-	//消息標題
+	
+	// 消息标题
 	private String title;
-	//用户id
+	
+	// 用户id
 	private Integer user_id;
-	//管理员id
+	
+	// 管理员id
 	private Integer admin_id;
-	//消息时间
+	
+	// 消息时间
 	private Date date;
-	//是否读取1biao
+	
+	// 是否读取1已读 0未读
 	private Integer status;
-	//用户名
+	
+	// 用户名
 	private String name;
 
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public Integer getUser_id() {
 		return user_id;
 	}
@@ -44,9 +59,11 @@ public class Message {
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
+
 	public Integer getAdmin_id() {
 		return admin_id;
 	}
+
 	public void setAdmin_id(Integer admin_id) {
 		this.admin_id = admin_id;
 	}
@@ -93,6 +110,7 @@ public class Message {
 		this.status = status;
 		this.name = name;
 	}
+
 	public Message() {
 		super();
 		// TODO 自动生成的构造函数存根

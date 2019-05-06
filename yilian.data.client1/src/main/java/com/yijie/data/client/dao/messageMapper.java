@@ -6,14 +6,14 @@ import com.yijie.data.client.model.Message;
 
 public interface messageMapper {
 	// 信息添加
-	public void messageInsert(Message Message);
+	public void messageInsert(Message message);
 
 	// 聊天信息查看
-	public List<Message> messageSelect(Message Message);
+	public List<Message> messageSelect(Message message);
 
 	// 信息修改
-	public void messageUpdate(Message Message);
+	public void messageUpdate(Message message);
 
 	// 信息删除
-	public void messageDelete(Message Message);
+	public void messageDelete(Message message);
 }

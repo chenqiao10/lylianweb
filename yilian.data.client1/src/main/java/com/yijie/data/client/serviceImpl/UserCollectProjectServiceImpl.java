@@ -9,18 +9,17 @@ import com.yijie.data.client.dao.UserCollectProjectMapper;
 import com.yijie.data.client.model.UserCollectProject;
 import com.yijie.data.client.model.UserCollectProject;
 import com.yijie.data.client.service.UserCollectProjectService;
+
 @Service
 public class UserCollectProjectServiceImpl implements UserCollectProjectService {
-	
+
 	@Autowired
 	private UserCollectProjectMapper userCollectProjectMapper;
-	
-
 
 	@Override
-	public List<UserCollectProject> userColProTable(UserCollectProject userCollectPro) {
+	public List<UserCollectProject> userColProTable(UserCollectProject userCollectProject) {
 		try {
-			List<UserCollectProject> list = userCollectProjectMapper.projectSele(userCollectPro);
+			List<UserCollectProject> list = userCollectProjectMapper.projectSelect(userCollectProject);
 			return list;
 		} catch (Exception e) {
 			e.printStackTrace();

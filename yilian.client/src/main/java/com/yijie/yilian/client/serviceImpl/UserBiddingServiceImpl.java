@@ -24,9 +24,9 @@ public class UserBiddingServiceImpl implements UserBiddingService {
 	public UserBidding biddingMessage(UserBidding userBidding) {
 		// TODO Auto-generated method stub
 		List<UserBidding> list = userBiddingDao.userBiddingSelect(userBidding);
-		if(list.size()!=0) {
+		if (list.size() != 0) {
 			return list.get(0);
-		}else {
+		} else {
 			return null;
 		}
 	}
