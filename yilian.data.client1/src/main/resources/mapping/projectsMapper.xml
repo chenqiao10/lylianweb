@@ -131,7 +131,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</update>
 	<select id="projectCount" resultType="java.lang.Integer"
-		parameterMap="com.yijie.data.client.model.Projects">
+		parameterType="com.yijie.data.client.model.Projects">
 		select count(*) from yl_project
 		<include refid="project_where"></include>
 	</select>
