@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yijie.yilian.client.model.Projects;
 import com.yijie.yilian.client.model.UserChangeProject;
+import com.yijie.yilian.client.service.ProjectService;
 import com.yijie.yilian.client.service.UserChangeProjectService;
 
 /**
@@ -24,7 +26,8 @@ import com.yijie.yilian.client.service.UserChangeProjectService;
 public class UserChangeProjectController {
 	@Autowired
 	private UserChangeProjectService userChangeProjectService;
-
+	@Autowired
+	private ProjectService projectService;
 	/**
 	 * @ 用户项目交换列表
 	 * @param userChangeProject
@@ -58,6 +61,11 @@ public class UserChangeProjectController {
 		try {
 			userChangeProject.setDate(new Date());
 			Integer code = userChangeProjectService.userCheProAdd(userChangeProject);
+			Projects pro=new Projects();
+			pro.setUuid(userChangeProject.getPro_uuid());
+			Projects pro1 = projectService.projectMessage(pro);//查询以前的交换量
+			pro.setCha_count(pro1.getCha_count()+1);
+			projectService.projectUpdate(pro);
 			result.put("code", code);
 			return result;
 		} catch (Exception e) {
