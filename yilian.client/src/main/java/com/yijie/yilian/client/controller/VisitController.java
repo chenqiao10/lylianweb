@@ -1,5 +1,6 @@
 package com.yijie.yilian.client.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -53,13 +54,24 @@ public class VisitController {
 	 * @return
 	 */
 	@RequestMapping("/visitAdd")
-	public Map<String, Object> visitAdd(@RequestBody Visit visit) {
+	public Map<String, Object> visitAdd() {
 		Map<String, Object> result = new HashMap<String, Object>();
+		Visit visit = new Visit();
 		try {
-			visit.setDate(new Date());
-			Integer code = visitService.visitAdd(visit);
-			result.put("code", code);
-			return result;
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd");
+			Date date = new Date();//获取当前时间
+			visit.setDate(sdf.parse(sdf.format(date)));
+			List<Visit> list = visitService.visitTable(visit);
+			if(list.size()!=0) {//没有当天记录
+				visit.setVisit(1);
+				Integer code = visitService.visitAdd(visit);
+				result.put("code", code);
+			}else {//有当天记录
+				Visit v = new Visit();
+				v.setVisit(list.get(0).getVisit()+1);
+				Integer code = visitService.visitUpdate(v);
+				result.put("code", code);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,6 +79,7 @@ public class VisitController {
 			result.put("msg", "系统出错");
 			return result;
 		}
+		return result;
 	}
 
 	/**
