@@ -23,14 +23,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="num != null and num != ''">
 				and num = #{num}
 			</if>
-			<if test="level != null and level != ''">
-				and level = #{level}
+			<if test="level != null">
+				and level = #{level,jdbcType=INTEGER}
 			</if>
 			<if test="audit != null">
 				and audit = #{audit,jdbcType=INTEGER}
 			</if>
-			<if test="registtype != null and registtype != ''">
-				and registtype = #{registtype}
+			<if test="registtype != null">
+				and registtype = #{registtype,jdbcType=INTEGER}
 			</if>
 			<if test="name != null and name != ''">
 				and name = #{name}
