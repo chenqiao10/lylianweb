@@ -3,30 +3,36 @@ package com.yijie.data.client.model;
 import java.util.Date;
 
 public class Message {
-	
-	//主键id
+
+	// 主键id
 	private Integer id;
-	
+
 	// 消息类容
 	private String content;
-	
+
 	// 消息标题
 	private String title;
-	
+
 	// 用户id
 	private Integer user_id;
-	
+
 	// 管理员id
 	private Integer admin_id;
-	
+
 	// 消息时间
 	private Date date;
-	
+
 	// 是否读取1已读 0未读
 	private Integer status;
-	
+
 	// 用户名
 	private String name;
+	
+	//操作人名字
+	private String handle_name;
+	
+	//操作人id
+	private Integer handle_id;
 
 	public Integer getId() {
 		return id;
@@ -92,14 +98,36 @@ public class Message {
 		this.name = name;
 	}
 
+	public String getHandle_name() {
+		return handle_name;
+	}
+
+	public void setHandle_name(String handle_name) {
+		this.handle_name = handle_name;
+	}
+
+	public Integer getHandle_id() {
+		return handle_id;
+	}
+
+	public void setHandle_id(Integer handle_id) {
+		this.handle_id = handle_id;
+	}
+
 	@Override
 	public String toString() {
 		return "Message [id=" + id + ", content=" + content + ", title=" + title + ", user_id=" + user_id
-				+ ", admin_id=" + admin_id + ", date=" + date + ", status=" + status + ", name=" + name + "]";
+				+ ", admin_id=" + admin_id + ", date=" + date + ", status=" + status + ", name=" + name
+				+ ", handle_name=" + handle_name + ", handle_id=" + handle_id + "]";
+	}
+
+	public Message() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Message(Integer id, String content, String title, Integer user_id, Integer admin_id, Date date,
-			Integer status, String name) {
+			Integer status, String name, String handle_name, Integer handle_id) {
 		super();
 		this.id = id;
 		this.content = content;
@@ -109,11 +137,7 @@ public class Message {
 		this.date = date;
 		this.status = status;
 		this.name = name;
+		this.handle_name = handle_name;
+		this.handle_id = handle_id;
 	}
-
-	public Message() {
-		super();
-		// TODO 自动生成的构造函数存根
-	}
-
 }
