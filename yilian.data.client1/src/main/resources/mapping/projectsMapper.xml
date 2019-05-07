@@ -32,9 +32,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.yijie.data.client.model.ProjectDesign">
 		SELECT * FROM yl_project_design WHERE project_id=#{id}
 	</select>
-
-
-
 	<!-- 条件拼接 -->
 	<sql id="project_where">
 		<where>
@@ -139,5 +136,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from yl_project
 		<include refid="project_where"></include>
 	</delete>
-
+<delete id="projectDeleteAll" parameterType="java.util.List">
+		delete from yl_project
+		where id in
+        <foreach item="id" collection="list" open="(" close=")" separator=",">
+           #{id}
+        </foreach>
+	</delete>
 </mapper>

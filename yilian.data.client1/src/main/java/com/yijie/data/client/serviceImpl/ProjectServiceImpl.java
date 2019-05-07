@@ -122,4 +122,19 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectsMapper.projectCount(projects);
 	}
 
+	@Override
+	public Integer projectDeleteAll(List<Projects> list) {
+		
+			try {
+				  projectsMapper.projectDeleteAll(list);
+				return 1;
+			} catch (Exception e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+				return 0;
+			}
+			
+
+	}
+
 }

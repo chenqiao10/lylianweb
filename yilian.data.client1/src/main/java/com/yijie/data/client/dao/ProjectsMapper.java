@@ -21,4 +21,7 @@ public interface ProjectsMapper {
 	// 查询项目条数
 	public Integer projectCount(Projects projects);
 
+	// 批量删除
+	public Integer projectDeleteAll(List<Projects> list);
+
 }
