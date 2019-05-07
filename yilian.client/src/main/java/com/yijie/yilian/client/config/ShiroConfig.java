@@ -25,21 +25,21 @@ public class ShiroConfig {
 		bean.setSecurityManager(securityManager);
 		
 		Map<String,String> filterMap = new LinkedHashMap<>();
-		
-		//认证过滤器
-		//默认拦截
-		filterMap.put("/**", "authc");
-		//项目模块开放
-		filterMap.put("/project/**", "anon");
-		//城市列表请求开放
-		filterMap.put("/city/**", "anon");
-		//流量数据记录请求开放
-		filterMap.put("/visit/**", "anon");
-		//用户申请操作开放
-		filterMap.put("/userHandle/**", "anon");
-		
-		//修改登录请求
-		bean.setLoginUrl("/userHandle/toLogin");
+//		
+//		//认证过滤器
+//		//默认拦截
+//		filterMap.put("/**", "authc");
+//		//项目模块开放
+//		filterMap.put("/project/**", "anon");
+//		//城市列表请求开放
+//		filterMap.put("/city/**", "anon");
+//		//流量数据记录请求开放
+//		filterMap.put("/visit/**", "anon");
+//		//用户申请操作开放
+//		filterMap.put("/userHandle/**", "anon");
+//		
+//		//修改登录请求
+//		bean.setLoginUrl("/userHandle/toLogin");
 		
 		//添加Shiro过滤器
 		bean.setFilterChainDefinitionMap(filterMap);

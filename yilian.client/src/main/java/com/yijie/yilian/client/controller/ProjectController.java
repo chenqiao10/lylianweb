@@ -77,8 +77,8 @@ public class ProjectController {
 		try {
 			Projects project = projectService.projectMessage(projects);
 			//点击量
-			pro.setId(projects.getId());
-			pro.setClick_count(projects.getClick_count()+1);
+			pro.setId(project.getId());
+			pro.setClick_count(project.getClick_count()+1);
 			projectService.projectUpdate(pro);
 			result.put("projectMessage", project);
 			result.put("code", 1);
