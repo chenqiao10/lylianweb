@@ -18,7 +18,6 @@ import com.yijie.data.client.service.UserDaoService;
 @RestController
 @RequestMapping("/user")
 public class UserDaoController {
-
 	@Autowired
 	private UserDaoService userDaoService;
 
