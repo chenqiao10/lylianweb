@@ -2,11 +2,13 @@ package com.yijie.yilian.client.DataClientFall;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.yijie.yilian.client.daoClient.ProjectDao;
 import com.yijie.yilian.client.model.ProjectDesign;
 import com.yijie.yilian.client.model.Projects;
-
-public class DataClientFallback implements ProjectDao{
+@Component
+public class ProjectDaoClientFallback implements ProjectDao{
 
 	@Override
 	public Projects projectMessage(Projects pro) {
@@ -53,6 +55,12 @@ public class DataClientFallback implements ProjectDao{
 	@Override
 	public Integer projectDesignDelete(ProjectDesign projectDesign) {
 		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public Integer projectCount(Projects projects) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

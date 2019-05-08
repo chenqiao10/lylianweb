@@ -172,8 +172,8 @@ public class ProjectController {
 			e.printStackTrace();
 			result.put("code", 0);
 			result.put("msg", "系统出错");
-			return result;
 		}
+		return result;
 	}
 	
 	
@@ -193,8 +193,8 @@ public class ProjectController {
 			e.printStackTrace();
 			result.put("code", 0);
 			result.put("msg", "系统出错");
-			return result;
 		}
+		return result;
 	}
 
 }

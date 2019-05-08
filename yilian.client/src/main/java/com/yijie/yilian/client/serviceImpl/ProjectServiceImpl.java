@@ -63,4 +63,10 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDao.projectDesignDelete(projectDesign);
 	}
 
+	@Override
+	public Integer projectCount(Projects projects) {
+		// TODO Auto-generated method stub
+		return projectDao.projectCount(projects);
+	}
+
 }
