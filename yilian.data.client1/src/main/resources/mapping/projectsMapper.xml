@@ -6,7 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.yijie.data.client.dao.ProjectsMapper">
 
 	<!-- 关联返回map定义 -->
-	<resultMap type="com.yijie.data.client.model.Projects" id="projectMap">
+	<resultMap type="com.yijie.data.client.model.Projects"
+		id="projectMap">
 		<id property="id" column="id" />
 		<result property="uuid" column="uuid" />
 		<result property="user_uuid" column="user_uuid" />
@@ -24,7 +25,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="click_count" column="click_count" />
 		<result property="cha_count" column="cha_count" />
 		<result property="date" column="date" />
-		<association property="designs" column="id" select="getDesign" />
+		<association property="designs" column="id"
+			select="getDesign" />
 	</resultMap>
 
 	<!-- 关联查询对应信息 -->
@@ -83,7 +85,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</sql>
 	<sql id="order"> order by date desc </sql>
 
-	<insert id="projectInsert" parameterType="com.yijie.data.client.model.Projects">
+	<insert id="projectInsert"
+		parameterType="com.yijie.data.client.model.Projects">
 		insert into yl_project(
 		uuid,user_uuid,title,message,area,
 		days,min_budget,max_budget,phone,
@@ -94,7 +97,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		0,0,#{date})
 	</insert>
 
-	<select id="projectSelect" parameterType="com.yijie.data.client.model.Projects"
+	<select id="projectSelect"
+		parameterType="com.yijie.data.client.model.Projects"
 		resultMap="projectMap">
 		select * from yl_project
 		<include refid="project_where"></include>
@@ -102,7 +106,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="limit_cond"></include>
 	</select>
 
-	<update id="projectUpdate" parameterType="com.yijie.data.client.model.Projects">
+	<update id="projectUpdate"
+		parameterType="com.yijie.data.client.model.Projects">
 		update yl_project
 		<trim prefix="set" suffixOverrides=",">
 			<if test="title != null and title != ''">title = #{title},</if>
@@ -132,15 +137,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from yl_project
 		<include refid="project_where"></include>
 	</select>
-	<delete id="projectDelete" parameterType="com.yijie.data.client.model.Projects">
+	<delete id="projectDelete"
+		parameterType="com.yijie.data.client.model.Projects">
 		delete from yl_project
 		<include refid="project_where"></include>
 	</delete>
-<delete id="projectDeleteAll" parameterType="java.util.List">
+	<delete id="projectDeleteAll" parameterType="java.util.List">
 		delete from yl_project
 		where id in
-        <foreach item="id" collection="list" open="(" close=")" separator=",">
-           #{id}
-        </foreach>
+		<foreach item="id" collection="list" open="(" close=")"
+			separator=",">
+			#{id}
+		</foreach>
 	</delete>
 </mapper>

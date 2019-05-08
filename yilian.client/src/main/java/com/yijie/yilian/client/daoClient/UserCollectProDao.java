@@ -28,4 +28,8 @@ public interface UserCollectProDao {
 	// 删除收藏
 	@RequestMapping("yilianData/user/userColProDelete")
 	public Integer userColProDelete(UserCollectProject userCollectProject);
+	
+	// 收藏项目条数
+	@RequestMapping("yilianData/user/userColProCount")
+	public Integer userColProCount(UserCollectProject userCollectProject);
 }

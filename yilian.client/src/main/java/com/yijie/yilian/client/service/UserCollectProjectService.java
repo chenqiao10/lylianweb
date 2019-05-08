@@ -13,4 +13,7 @@ public interface UserCollectProjectService {
 
 	List<UserCollectProject> UserCollectProjecttable(UserCollectProject uesrCollectProject);
 
+	// 收藏项目条数
+	public Integer userColProCount(UserCollectProject userCollectProject);
+
 }

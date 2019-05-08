@@ -87,4 +87,25 @@ public class UserCollectProjectController {
 			return result;
 		}
 	}
+	
+	/**
+	 * 用户项目收藏条数
+	 * 
+	 * @param userCollectProject
+	 * @return
+	 */
+	@RequestMapping("/userColProCount")
+	public Map<String, Object> userColProCount(@RequestBody UserCollectProject userCollectProject) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		try {
+			Integer count = userCollectProjectService.userColProCount(userCollectProject);
+			result.put("count", count);
+			result.put("code", 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("code", 0);
+			result.put("msg", "系统出错");
+		}
+		return result;
+	}
 }

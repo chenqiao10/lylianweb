@@ -27,4 +27,10 @@ public class UserCollectDaoClientFallBack implements UserCollectProDao{
 		return null;
 	}
 
+	@Override
+	public Integer userColProCount(UserCollectProject userCollectProject) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -32,4 +32,10 @@ public class UserCollectProjectServiceImpl implements UserCollectProjectService 
 		return userCollectProDao.userColProDelete(userCollectProject);
 	}
 
+	@Override
+	public Integer userColProCount(UserCollectProject userCollectProject) {
+		// TODO Auto-generated method stub
+		return userCollectProDao.userColProCount(userCollectProject);
+	}
+
 }
