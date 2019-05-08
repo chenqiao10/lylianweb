@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.yijie.yilian.client.daoClient.UserDao;
 import com.yijie.yilian.client.model.User;
 @Component
-public class UserDaoClientFallback implements UserDao{
+public class UserDaoClientFallBack implements UserDao{
 
 	@Override
 	public User userLogin(User user) {

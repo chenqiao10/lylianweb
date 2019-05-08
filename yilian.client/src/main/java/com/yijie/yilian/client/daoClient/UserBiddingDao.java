@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yijie.yilian.client.DataClientFall.UserBiddingDaoClientFallback;
+import com.yijie.yilian.client.DataClientFall.UserBiddingDaoClientFallBack;
 import com.yijie.yilian.client.model.UserBidding;
 
 /**
@@ -14,7 +14,7 @@ import com.yijie.yilian.client.model.UserBidding;
  * @author sunzhu
  *
  */
-@FeignClient(name="yijie.zuul.api", fallback=UserBiddingDaoClientFallback.class)
+@FeignClient(name="yijie.zuul.api", fallback=UserBiddingDaoClientFallBack.class)
 public interface UserBiddingDao {
 
 	// 用户竞标信息查询

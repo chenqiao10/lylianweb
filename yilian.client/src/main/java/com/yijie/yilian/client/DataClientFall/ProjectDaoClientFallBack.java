@@ -7,8 +7,9 @@ import org.springframework.stereotype.Component;
 import com.yijie.yilian.client.daoClient.ProjectDao;
 import com.yijie.yilian.client.model.ProjectDesign;
 import com.yijie.yilian.client.model.Projects;
+
 @Component
-public class ProjectDaoClientFallback implements ProjectDao{
+public class ProjectDaoClientFallBack implements ProjectDao{
 
 	@Override
 	public Projects projectMessage(Projects pro) {

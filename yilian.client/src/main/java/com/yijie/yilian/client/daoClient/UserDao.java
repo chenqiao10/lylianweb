@@ -4,7 +4,7 @@ package com.yijie.yilian.client.daoClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yijie.yilian.client.DataClientFall.UserDaoClientFallback;
+import com.yijie.yilian.client.DataClientFall.UserDaoClientFallBack;
 import com.yijie.yilian.client.model.User;
 
 /**
@@ -13,7 +13,7 @@ import com.yijie.yilian.client.model.User;
  * @author chenqiao
  *
  */
-@FeignClient(name="yijie.zuul.api", fallback=UserDaoClientFallback.class)
+@FeignClient(name="yijie.zuul.api", fallback=UserDaoClientFallBack.class)
 public interface UserDao {
 	//用户登录
 	@RequestMapping("yilianData/user/userLogin")

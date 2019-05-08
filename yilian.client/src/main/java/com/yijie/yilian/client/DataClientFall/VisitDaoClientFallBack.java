@@ -8,7 +8,7 @@ import com.yijie.yilian.client.daoClient.VisitDao;
 import com.yijie.yilian.client.model.Visit;
 
 @Component
-public class VisitDaoClientFallback implements VisitDao{
+public class VisitDaoClientFallBack implements VisitDao{
 
 	@Override
 	public List<Visit> visitSelect(Visit visit) {

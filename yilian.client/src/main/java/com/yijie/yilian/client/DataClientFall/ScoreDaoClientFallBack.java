@@ -8,7 +8,7 @@ import com.yijie.yilian.client.daoClient.ScoreDao;
 import com.yijie.yilian.client.model.ScoreRecord;
 import com.yijie.yilian.client.model.ScoreRule;
 @Component
-public class ScoreDaoClientFallback implements ScoreDao{
+public class ScoreDaoClientFallBack implements ScoreDao{
 
 	@Override
 	public List<ScoreRule> scoreRuleSelect(ScoreRule ScoreRule) {

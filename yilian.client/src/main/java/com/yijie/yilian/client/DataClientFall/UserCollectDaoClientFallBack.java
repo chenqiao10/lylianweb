@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.yijie.yilian.client.daoClient.UserCollectProDao;
 import com.yijie.yilian.client.model.UserCollectProject;
 @Component
-public class UserCollectDaoClientFallback implements UserCollectProDao{
+public class UserCollectDaoClientFallBack implements UserCollectProDao{
 
 	@Override
 	public List<UserCollectProject> userColProTable(UserCollectProject userCollectProject) {

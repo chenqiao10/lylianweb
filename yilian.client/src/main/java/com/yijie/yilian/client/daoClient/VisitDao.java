@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yijie.yilian.client.DataClientFall.VisitDaoClientFallback;
+import com.yijie.yilian.client.DataClientFall.VisitDaoClientFallBack;
 import com.yijie.yilian.client.model.Visit;
 
 /**
@@ -13,7 +13,7 @@ import com.yijie.yilian.client.model.Visit;
  * @author sunzhu
  *
  */
-@FeignClient(name="yijie.zuul.api", fallback=VisitDaoClientFallback.class)
+@FeignClient(name="yijie.zuul.api", fallback = VisitDaoClientFallBack.class)
 public interface VisitDao {
 
 	// 积分记录查询

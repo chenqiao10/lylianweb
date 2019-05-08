@@ -8,7 +8,7 @@ import com.yijie.yilian.client.daoClient.UserBiddingDao;
 import com.yijie.yilian.client.model.UserBidding;
 
 @Component
-public class UserBiddingDaoClientFallback implements UserBiddingDao{
+public class UserBiddingDaoClientFallBack implements UserBiddingDao{
 
 	@Override
 	public List<UserBidding> userBiddingSelect(UserBidding userBidding) {

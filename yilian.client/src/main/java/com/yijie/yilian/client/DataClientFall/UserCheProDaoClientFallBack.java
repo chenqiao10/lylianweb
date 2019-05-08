@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.yijie.yilian.client.daoClient.UserCheProDao;
 import com.yijie.yilian.client.model.UserChangeProject;
 @Component
-public class USerCheProDaoClientFallback implements UserCheProDao{
+public class UserCheProDaoClientFallBack implements UserCheProDao{
 	@Override
 	public List<UserChangeProject> userCheProTable(UserChangeProject userChangeProject) {
 		// TODO 自动生成的方法存根
