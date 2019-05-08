@@ -23,7 +23,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="handle_date != null and handle_date != ''">
 				and handle_date = #{handle_date}
 			</if>
-			
+			 <if test="starttime != null and starttime != ''">
+				and handle_date &gt; cast(#{starttime} as datetime)
+			</if>
+			<if test="endtime != null and endtime != ''">
+				and handle_date &lt; cast(#{endTime} as datetime)
+			</if>
 		</where>
 	</sql>
 
@@ -31,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 分页拼接 -->
 	<sql id="limit_con">
 		<if test="begin !=null">
-			    limit #{begin,jdbcType=INTEGER},12
+			    limit #{begin,jdbcType=INTEGER},24
 			</if>
 	</sql>
 
@@ -84,4 +89,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from yl_safe_log
 		<include refid="log_where"></include>
 	</select>
+	<select id="logCount" resultType="java.lang.Integer"
+		parameterType="com.yijie.data.client.model.SafeLog">
+		select count(*) from yl_safe_log
+		<include refid="log_where"></include>
+	</select>
+
+	 
 </mapper>

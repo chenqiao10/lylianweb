@@ -17,8 +17,11 @@ public interface SafeLogMapper {
 
 	// 日志更新
 	public void logUpdate(SafeLog safeLog);
-	
+
 	// 查询条数
 	public Integer logCount(SafeLog safeLog);
+
+	// 日志查询
+	public List<SafeLog> selectBydate(SafeLog safeLog);
 
 }

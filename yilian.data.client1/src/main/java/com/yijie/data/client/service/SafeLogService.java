@@ -19,4 +19,7 @@ public interface SafeLogService {
 
 	public Integer logCount(SafeLog safelog);
 
+
+	
+
 }
