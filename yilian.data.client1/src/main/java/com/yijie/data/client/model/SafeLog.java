@@ -3,12 +3,30 @@ package com.yijie.data.client.model;
 import java.util.Date;
 
 public class SafeLog {
-	private Integer id;// 安全日志id
-	private String handle_name;// 操作人姓名
-	private Integer handle_id;// 操作人id
-	private String handle;// 具体操作
-	private Date handle_date;// 操作时间
-	private String begin;// 分页字段
+	
+	//主键id
+	private Integer id;	
+	
+	//操作人姓名
+	private String handle_name;
+	
+	//操作人id
+	private Integer handle_id;
+	
+	//具体操作
+	private String handle;
+	
+	//操作时间
+	private Date handle_date;
+	
+	//分页起始数据
+	private Integer begin;
+	
+	//起始时间
+	private String starttime;
+	
+	//结束时间
+	private String endtime;
 
 	public Integer getId() {
 		return id;
@@ -50,15 +68,44 @@ public class SafeLog {
 		this.handle_date = handle_date;
 	}
 
-	public String getBegin() {
+	public Integer getBegin() {
 		return begin;
 	}
 
-	public void setBegin(String begin) {
+	public void setBegin(Integer begin) {
 		this.begin = begin;
 	}
 
-	public SafeLog(Integer id, String handle_name, Integer handle_id, String handle, Date handle_date, String begin) {
+	public String getStarttime() {
+		return starttime;
+	}
+
+	public void setStarttime(String starttime) {
+		this.starttime = starttime;
+	}
+
+	public String getEndtime() {
+		return endtime;
+	}
+
+	public void setEndtime(String endtime) {
+		this.endtime = endtime;
+	}
+
+	@Override
+	public String toString() {
+		return "SafeLog [id=" + id + ", handle_name=" + handle_name + ", handle_id=" + handle_id + ", handle=" + handle
+				+ ", handle_date=" + handle_date + ", begin=" + begin + ", starttime=" + starttime + ", endtime="
+				+ endtime + "]";
+	}
+
+	public SafeLog() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public SafeLog(Integer id, String handle_name, Integer handle_id, String handle, Date handle_date, Integer begin,
+			String starttime, String endtime) {
 		super();
 		this.id = id;
 		this.handle_name = handle_name;
@@ -66,17 +113,9 @@ public class SafeLog {
 		this.handle = handle;
 		this.handle_date = handle_date;
 		this.begin = begin;
+		this.starttime = starttime;
+		this.endtime = endtime;
 	}
 
-	@Override
-	public String toString() {
-		return "SafeLog [id=" + id + ", handle_name=" + handle_name + ", handle_id=" + handle_id + ", handle=" + handle
-				+ ", handle_date=" + handle_date + ", begin=" + begin + "]";
-	}
-
-	public SafeLog() {
-		super();
-		// TODO 自动生成的构造函数存根
-	}
-
+	
 }

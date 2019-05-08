@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="title" column="title" />
 		<result property="status" column="status" />
 		<result property="name" column="name" />
+		<result property="admin_num" column="admin_num" />
 	</resultMap>
 	<!-- 分页拼接 -->
 	<sql id="limit_cond">
@@ -48,12 +49,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="status != null ">
 				and status = #{status,jdbcType=INTEGER}
 			</if>
+			<if test="admin_num != null and admin_num != ''">
+				and admin_num = #{admin_num}
+			</if>
 		</where>
 	</sql>
 	<insert id="messageInsert" parameterType="com.yijie.data.client.model.Message">
 		insert into
-		yl_message(user_id,name,admin_id,status,title,content,date)
-		values(#{user_id},#{name},#{admin_id},0,#{title},#{content},#{date})
+		yl_message(user_id,name,admin_id,status,title,content,date,admin_num)
+		values(#{user_id},#{name},#{admin_id},0,#{title},#{content},#{date},#{admin_num})
 	</insert>
 	<select id="messageSelect" parameterType="com.yijie.data.client.model.Message"
 		resultMap="MessageMap">
@@ -70,6 +74,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 			<if test="admin_id != null and admin_id != ''">
 				admin_id = #{admin_id},
+			</if>
+			<if test="admin_num != null and admin_num != ''">
+				admin_num = #{admin_num},
 			</if>
 			<if test="date != null and date != ''">
 				date = #{date},

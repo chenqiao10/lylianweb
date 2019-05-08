@@ -79,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				name = #{name},
 			</if>
 			<if test="level != null">
-				and level = #{level,jdbcType=INTEGER},
+				level = #{level,jdbcType=INTEGER},
 			</if>
 		
 			<if test="registtype != null and registtype != ''">

@@ -47,6 +47,7 @@ public class UserHandleController {
 				 * result.put("user", u); result.put("msg", msg); return result; } else {
 				 * result.put("code", 0); msg = "账户不存在或密码错误！"; return result; } }
 				 */
+
 	/**
 	 * @描述 用户拦截
 	 * @param user
@@ -59,7 +60,7 @@ public class UserHandleController {
 		result.put("msg", "请先登录");
 		return result;
 	}
-	
+
 	/**
 	 * @描述 用户登录
 	 * @param user
@@ -161,5 +162,26 @@ public class UserHandleController {
 		}
 		return result;
 
+	}
+
+	/**
+	 * @ 用户信息修改
+	 * 
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping("/userUpdate")
+	public Map<String, Object> userUpdate(@RequestBody User user) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			Integer code = userHandleService.userUpdate(user);
+			map.put("code", code);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			map.put("msg", "系统出错");
+			map.put("code", 0);
+		}
+		return map;
 	}
 }
