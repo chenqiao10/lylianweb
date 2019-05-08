@@ -1,5 +1,7 @@
 package com.yijie.yilian.client.DataClientFall;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.yijie.yilian.client.daoClient.UserDao;
@@ -27,6 +29,18 @@ public class UserDaoClientFallBack implements UserDao{
 
 	@Override
 	public Integer userUpdate(User user) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public Integer userCount(User user) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public Integer userDeleteAll(List<User> list) {
 		// TODO 自动生成的方法存根
 		return null;
 	}

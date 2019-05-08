@@ -45,4 +45,5 @@ public class SuperAdminDaoController {
 	public SuperAdmin superAdminLogin(@RequestBody SuperAdmin superAdmin)  {
 		return superAdminService.superAdminLogin(superAdmin);
 	}
+
 }

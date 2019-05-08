@@ -17,7 +17,7 @@ import com.yijie.yilian.client.model.UserChangeProject;
 @FeignClient(name="yijie.zuul.api", fallback=UserCheProDaoClientFallBack.class)
 
 public interface UserCheProDao {
-	
+
 	// 用户项目交换列表
 	@RequestMapping("yilianData/user/userCheProTable")
 	public List<UserChangeProject> userCheProTable(UserChangeProject userChangeProject);
@@ -30,4 +30,7 @@ public interface UserCheProDao {
 	@RequestMapping("yilianData/user/userCheProAdd")
 	public Integer userCheProAdd(UserChangeProject userChangeProject);
 
+	// 添加交换项目
+	@RequestMapping("yilianData/user/userCheProCount")
+	public Integer userCheProCount(UserChangeProject userChangeProject);
 }

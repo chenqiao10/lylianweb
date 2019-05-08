@@ -18,4 +18,9 @@ public interface UserMapper {
 	// 用户账户注销
 	public void userDelete(User user);
 
+	// 批量删除
+	public Integer userDeleteAll(List<User> list);
+
+	// 用户总数
+	public Integer userCount(User user);
 }

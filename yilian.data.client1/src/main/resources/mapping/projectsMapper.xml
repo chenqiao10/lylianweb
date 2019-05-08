@@ -145,9 +145,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="projectDeleteAll" parameterType="java.util.List">
 		delete from yl_project
 		where id in
-		<foreach item="id" collection="list" open="(" close=")"
-			separator=",">
-			#{id}
-		</foreach>
+        <foreach collection="list" item="item" open="("
+                separator="," close=")">
+                #{item.id}  
+        </foreach>
 	</delete>
 </mapper>

@@ -13,7 +13,11 @@ public interface UserDaoService {
 	public Integer userRegist(User user);
 
 	public Integer userUpdate(User user);
-
+	
+	public Integer userCount(User user);
+	
 	public Integer userDelete(User user);
+	
+	public Integer userDeleteAll(List<User> list);
 
 }

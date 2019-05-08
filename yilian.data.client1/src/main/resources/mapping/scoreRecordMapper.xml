@@ -77,4 +77,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</update>
+	<select id="scoreRecordCount" resultType="java.lang.Integer"
+		parameterType="com.yijie.data.client.model.ScoreRecord">
+		select count(*) from yl_score_record
+		<include refid="scoreRecord_where"></include>
+	</select>
 </mapper>

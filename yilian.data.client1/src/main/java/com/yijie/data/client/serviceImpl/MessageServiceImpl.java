@@ -52,5 +52,16 @@ public class MessageServiceImpl implements MessageService {
 			return null;
 		}
 	}
+	@Override
+	public Integer messageCount(Message message) {
+		// TODO 自动生成的方法存根
+		try {
+			return messageMapper.messageCount(message);
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return 0;
+		}
+	}
 
 }

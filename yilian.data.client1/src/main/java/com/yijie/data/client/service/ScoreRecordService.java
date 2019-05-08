@@ -13,5 +13,7 @@ public interface ScoreRecordService {
 	public Integer scoreRecordDelete(ScoreRecord scoreRecord);
 
 	public Integer scoreRecordUpdate(ScoreRecord scoreRecord);
-
+	
+	public Integer scoreRecordCount(ScoreRecord scoreRecord);
+    
 }

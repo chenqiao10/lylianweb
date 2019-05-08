@@ -74,6 +74,7 @@ public class ProjectDaoController {
 	// 项目批量删除
 	@RequestMapping("/projectDeleteAll")
 	public Integer projectDeleteAll(@RequestBody List<Projects> list) {
+		System.out.println(list);
 		return projectService.projectDeleteAll(list);
 	}
 }

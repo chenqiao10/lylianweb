@@ -17,5 +17,8 @@ public interface ScoreRecordMapper {
 
 	// 积分记录删除
 	public void scoreRecordDelete(ScoreRecord scoreRecord);
-
+	// 积分记录总数
+	
+	public Integer scoreRecordCount(ScoreRecord scoreRecord);
+	
 }

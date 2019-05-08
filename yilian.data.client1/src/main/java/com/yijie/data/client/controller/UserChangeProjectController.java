@@ -34,5 +34,9 @@ public class UserChangeProjectController {
 	public Integer userCheProDelete(@RequestBody UserChangeProject userChangeProject) {
 		return userChangeProjectService.userCheProDelete(userChangeProject);
 	}
-
+	// 用户已交换项总数
+	@RequestMapping("/userCheProCount")
+	public Integer userCheProCount(@RequestBody UserChangeProject userChangeProject) {
+		return userChangeProjectService.userCheProCount(userChangeProject);
+	}
 }

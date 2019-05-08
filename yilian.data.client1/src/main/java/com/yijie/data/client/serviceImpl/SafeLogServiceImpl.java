@@ -58,4 +58,16 @@ public class SafeLogServiceImpl implements SafeLogService {
 
 	}
 
+	@Override
+	public Integer logCount(SafeLog safelog) {
+		// TODO 自动生成的方法存根
+		try {
+			return safeLogMapper.logCount(safelog);
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
 }

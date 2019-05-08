@@ -46,4 +46,9 @@ public class SafeLogController {
 	public List<SafeLog> logSelect(@RequestBody SafeLog safelog) {
 		return safeLogService.logSelect(safelog);
 	}
+	// 日誌更新
+	@RequestMapping("/logCount")
+	public Integer logCount(@RequestBody SafeLog safelog) {
+		return safeLogService.logCount(safelog);
+	}
 }

@@ -103,5 +103,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from yl_user
 		<include refid="user_where"></include>
 	</delete>
-
+   <delete id="userDeleteAll" parameterType="java.util.List">
+		delete from yl_user
+		where id in
+        <foreach collection="list" item="item" open="("
+                separator="," close=")">
+                #{item.id}  
+        </foreach>
+	</delete>
+	<select id="userCount" resultType="java.lang.Integer"
+		parameterType="com.yijie.data.client.model.User">
+		select count(*) from yl_user
+		<include refid="user_where"></include>
+	</select>
 </mapper>

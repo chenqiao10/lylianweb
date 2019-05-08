@@ -10,5 +10,6 @@ public interface UserCollectProjectMapper {
 	public List<UserCollectProject> projectSelect(UserCollectProject userCollectProject);
 
 	public void projectDelete(UserCollectProject userCollectProject);
-
+	
+	public Integer collectProCount(UserCollectProject userCollectProject); 
 }

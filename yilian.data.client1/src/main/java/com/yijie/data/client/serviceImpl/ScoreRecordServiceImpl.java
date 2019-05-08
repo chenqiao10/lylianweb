@@ -67,4 +67,16 @@ public class ScoreRecordServiceImpl implements ScoreRecordService {
 		}
 	}
 
+	@Override
+	public Integer scoreRecordCount(ScoreRecord scoreRecord) {
+		try {
+			// TODO 自动生成的方法存根
+			return scoreRecordMapper.scoreRecordCount(scoreRecord);
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
 }

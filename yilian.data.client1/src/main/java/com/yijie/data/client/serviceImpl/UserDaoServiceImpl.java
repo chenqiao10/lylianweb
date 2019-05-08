@@ -74,4 +74,28 @@ public class UserDaoServiceImpl implements UserDaoService {
 		}
 	}
 
+	@Override
+	public Integer userCount(User user) {
+		// TODO 自动生成的方法存根
+		try {
+			return userMapper.userCount(user);
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	@Override
+	public Integer userDeleteAll(List<User> list) {
+		// TODO 自动生成的方法存根
+		try {
+			return userMapper.userDeleteAll(list);
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
 }

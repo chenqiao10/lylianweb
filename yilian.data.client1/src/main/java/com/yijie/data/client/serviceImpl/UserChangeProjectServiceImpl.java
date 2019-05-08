@@ -48,4 +48,16 @@ public class UserChangeProjectServiceImpl implements UserChangeProjectService {
 		}
 	}
 
+	@Override
+	public Integer userCheProCount(UserChangeProject userChangeProject) {
+		// TODO 自动生成的方法存根
+		try {
+			return userChangeProjectMapper.userChangeProCount(userChangeProject);
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
 }

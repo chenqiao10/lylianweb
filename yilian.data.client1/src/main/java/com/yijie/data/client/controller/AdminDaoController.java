@@ -30,7 +30,7 @@ public class AdminDaoController {
 
 	// 管理员删除
 	@RequestMapping("/adminDelete")
-	public Integer adminDelect(@RequestBody Admin admin) {
+	public Integer adminDelete(@RequestBody Admin admin) {
 		return adminService.adminDelete(admin);
 	}
 
@@ -39,9 +39,20 @@ public class AdminDaoController {
 	public Integer adminInsert(@RequestBody Admin admin) {
 		return adminService.adminInsert(admin);
 	}
-
+	// 管理员登录
 	@RequestMapping("/adminLogin")
 	public Admin adminLogin(@RequestBody Admin admin) {
 		return adminService.adminLogin(admin);
 	}
+
+	// 管理员批量删除
+	@RequestMapping("/adminDeleteAll")
+	public Integer adminDeleteAll(@RequestBody List<Admin> list) {
+		return adminService.adminDeleteAll(list);
+	 }
+	// 管理员批量删除
+	@RequestMapping("/adminCount")
+	public Integer adminCount(@RequestBody  Admin admin) {
+		return adminService.adminCount(admin);
+	 }
 }

@@ -19,4 +19,10 @@ public interface AdminService {
 
 	// 管理员登录
 	public Admin adminLogin(Admin admin);
+
+	// 管理员总数
+	public Integer adminCount(Admin admin);
+
+	// 批量删除
+	public Integer adminDeleteAll(List<Admin> list);
 }

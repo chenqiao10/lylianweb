@@ -25,5 +25,11 @@ public class UserCheProDaoClientFallBack implements UserCheProDao{
 		// TODO 自动生成的方法存根
 		return null;
 	}
+
+	@Override
+	public Integer userCheProCount(UserChangeProject userChangeProject) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
      
 }

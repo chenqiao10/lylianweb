@@ -2,6 +2,7 @@ package com.yijie.data.client.dao;
 
 import java.util.List;
 
+import com.yijie.data.client.model.Admin;
 import com.yijie.data.client.model.Projects;
 
 public interface ProjectsMapper {
@@ -22,6 +23,6 @@ public interface ProjectsMapper {
 	public Integer projectCount(Projects projects);
 
 	// 批量删除
-	public Integer projectDeleteAll(List<Projects> list);
-
+	public void projectDeleteAll(List<Projects> list);
+	
 }

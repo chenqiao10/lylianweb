@@ -48,8 +48,12 @@ public interface ProjectDao {
 	// 项目附件删除
 	@RequestMapping("yilianData/project/projectDesignDelete")
 	public Integer projectDesignDelete(ProjectDesign projectDesign);
-	
+
 	// 查询项目条数
 	@RequestMapping("yilianData/project/projectCount")
 	public Integer projectCount(Projects projects);
+	
+	// 项目批量删除
+	@RequestMapping("yilianData/project/projectDeleteAll")
+	public Integer projectDeleteAll(List<Projects> list);
 }

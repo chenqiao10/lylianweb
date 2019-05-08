@@ -48,4 +48,16 @@ public class UserCollectProjectServiceImpl implements UserCollectProjectService 
 		}
 	}
 
+	@Override
+	public Integer collectProCount(UserCollectProject userCollectProject) {
+		// TODO 自动生成的方法存根
+		try {
+			return userCollectProjectMapper.collectProCount(userCollectProject);
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
 }

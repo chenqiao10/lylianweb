@@ -14,5 +14,7 @@ public interface UserCollectProjectService {
 
 	// 删除收藏
 	public Integer userColProDelete(UserCollectProject userCollectProject);
-
+  
+	// 收藏条数
+	public Integer collectProCount(UserCollectProject userCollectProject);
 }

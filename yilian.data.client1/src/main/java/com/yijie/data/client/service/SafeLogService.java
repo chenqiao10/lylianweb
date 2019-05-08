@@ -17,4 +17,6 @@ public interface SafeLogService {
 	// 日志更新
 	public Integer logUpdate(SafeLog safeLog);
 
+	public Integer logCount(SafeLog safelog);
+
 }

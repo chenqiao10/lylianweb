@@ -20,4 +20,6 @@ public interface SuperAdminService {
 	
 		// 管理员登录
 		public SuperAdmin superAdminLogin(SuperAdmin superAdmin);
+
+		
 }

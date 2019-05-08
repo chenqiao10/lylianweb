@@ -13,4 +13,6 @@ public interface MessageService {
 		public Integer messageDelete(Message message);
 		// 信息查询
 		public  List<Message> messageSelect(Message message);
+		// 信息总数
+		public Integer messageCount(Message message);
 }

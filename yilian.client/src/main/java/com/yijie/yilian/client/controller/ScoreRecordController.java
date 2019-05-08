@@ -69,9 +69,11 @@ public class ScoreRecordController {
 			if(code != 0) {
 				user.setUuid(scoreRecord.getUser_uuid());
 				User u = userHandleService.userLogin(user);
-				if(scoreRecord.getType() == 3){
+				if(scoreRecord.getType() == 3&&u.getBalance()>=scoreRecord.getScore()){
 					user.setBalance(u.getBalance()-scoreRecord.getScore());
 					userHandleService.userUpdate(user);
+				}else {
+					result.put("massege","积分余额不足");
 				}
 			}
 			result.put("code", code);

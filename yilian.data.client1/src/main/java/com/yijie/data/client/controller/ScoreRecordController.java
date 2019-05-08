@@ -47,4 +47,10 @@ public class ScoreRecordController {
 		return scoreRecordService.scoreRecordUpdate(scoreRecord);
 	}
 
+	// 修改积分记录
+	@RequestMapping("/ScoreRecordCount")
+	public Integer ScoreRecordCount(@RequestBody ScoreRecord scoreRecord) {
+		return scoreRecordService.scoreRecordCount(scoreRecord);
+	}
+
 }

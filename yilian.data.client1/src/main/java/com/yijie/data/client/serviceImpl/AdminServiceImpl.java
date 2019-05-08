@@ -77,4 +77,27 @@ public class AdminServiceImpl implements AdminService {
 
 	}
 
+	@Override
+	public Integer adminCount(Admin admin) {
+	try {
+		return	adminMapper.adminCount(admin);
+	} catch (Exception e) {
+		// TODO 自动生成的 catch 块
+		e.printStackTrace();
+		return 0;
+
+	}
+	 	}
+
+	@Override
+	public Integer adminDeleteAll(List<Admin> list) {
+			try {
+				return adminMapper.adminDeleteAll(list);
+			} catch (Exception e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+				return 0;
+			}
+	}
+
 }

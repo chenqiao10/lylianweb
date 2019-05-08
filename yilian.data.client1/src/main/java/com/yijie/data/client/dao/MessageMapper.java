@@ -16,4 +16,7 @@ public interface MessageMapper {
 
 	// 信息删除
 	public void messageDelete(Message message);
+
+	// 信息总数
+	public Integer messageCount(Message message);
 }

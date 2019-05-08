@@ -65,4 +65,10 @@ public class ProjectDaoClientFallBack implements ProjectDao{
 		return null;
 	}
 
+	@Override
+	public Integer projectDeleteAll(List<Projects> list) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
 }

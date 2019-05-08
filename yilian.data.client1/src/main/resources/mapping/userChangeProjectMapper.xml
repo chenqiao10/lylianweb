@@ -52,5 +52,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         delete from yl_userChePro
         <include refid="project_where"></include>
     </delete>
-
+	<select id="userChangeProCount" resultType="java.lang.Integer"
+		parameterType="com.yijie.data.client.model.UserChangeProject">
+		select count(*) from yl_userChePro
+		<include refid="project_where"></include>
+	</select>
 </mapper>

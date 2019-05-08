@@ -52,4 +52,15 @@ public class UserDaoController {
 		return userDaoService.userDelete(user);
 	}
 
+	// 用户总数
+	@RequestMapping("/userCount")
+	public Integer userCount(@RequestBody User user) {
+		return userDaoService.userCount(user);
+	}
+
+	// 用户批量刪除
+	@RequestMapping("/userDeleteAll")
+	public Integer userDeleteAll(@RequestBody List<User> list) {
+		return userDaoService.userDeleteAll(list);
+	}
 }

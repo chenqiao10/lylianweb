@@ -34,5 +34,10 @@ public class UserCollectProjectController {
 	public Integer userColProDelete(@RequestBody UserCollectProject userCollectProject) {
 		return userCollectProjectService.userColProDelete(userCollectProject);
 	}
+// 用户已收藏项目总数
+	@RequestMapping("/userColProCount")
+	public Integer userColProCount(@RequestBody UserCollectProject userCollectProject) {
+		return userCollectProjectService.collectProCount(userCollectProject);
+	}
 
 }

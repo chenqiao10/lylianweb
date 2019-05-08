@@ -15,6 +15,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="status" column="status" />
 		<result property="name" column="name" />
 	</resultMap>
+	<!-- 分页拼接 -->
+	<sql id="limit_cond">
+		<if test="begin !=null">
+			limit #{begin,jdbcType=INTEGER},12
+		</if>
+	</sql>
 	<!-- 条件拼接 -->
 	<sql id="message_where">
 		<where>
@@ -33,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="title != null and title != ''">
 				and title = #{title}
 			</if>
-            <if test="name != null and name != ''">
+			<if test="name != null and name != ''">
 				and name = #{name}
 			</if>
 			<if test="user_id != null and user_id != ''">
@@ -45,41 +51,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</sql>
 	<insert id="messageInsert" parameterType="com.yijie.data.client.model.Message">
-		insert into yl_message(user_id,name,admin_id,status,title,content,date)
+		insert into
+		yl_message(user_id,name,admin_id,status,title,content,date)
 		values(#{user_id},#{name},#{admin_id},0,#{title},#{content},#{date})
 	</insert>
 	<select id="messageSelect" parameterType="com.yijie.data.client.model.Message"
 		resultMap="MessageMap">
 		select * from yl_message
 		<include refid="message_where"></include>
-
+		<include refid="limit_cond"></include>
 	</select>
 
 	<update id="messageUpdate" parameterType="com.yijie.data.client.model.Message">
 		update yl_message
 		<trim prefix="set" suffixOverrides=",">
 			<if test="content != null and content != ''">
-				 content = #{content},
+				content = #{content},
 			</if>
 			<if test="admin_id != null and admin_id != ''">
-				 admin_id = #{admin_id},
+				admin_id = #{admin_id},
 			</if>
 			<if test="date != null and date != ''">
-				 date = #{date},
+				date = #{date},
 			</if>
 			<if test="title != null and title != ''">
-				 title = #{title},
+				title = #{title},
 			</if>
-            <if test="name != null and name != ''">
-				 name = #{name},
+			<if test="name != null and name != ''">
+				name = #{name},
 			</if>
 			<if test="user_id != null and user_id != ''">
-				 user_id = #{user_id},
+				user_id = #{user_id},
 			</if>
 			<if test="status != null ">
 				status = #{status,jdbcType=INTEGER},
 			</if>
-
 		</trim>
 		<where>
 			<if test="id != null and id != ''">
@@ -92,5 +98,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from yl_message
 		<include refid="message_where"></include>
 	</delete>
+	<select id="messageCount" resultType="java.lang.Integer"
+		parameterType="com.yijie.data.client.model.Message">
+		select count(*) from yl_message
+		<include refid="message_where"></include>
+	</select>
 
 </mapper>
