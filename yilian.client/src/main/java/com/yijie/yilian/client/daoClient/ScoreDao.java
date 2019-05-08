@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yijie.yilian.client.DataClientFall.ProjectDaoClientFallback;
+import com.yijie.yilian.client.DataClientFall.ScoreDaoClientFallback;
 import com.yijie.yilian.client.model.ScoreRecord;
 import com.yijie.yilian.client.model.ScoreRule;
 
@@ -15,7 +17,7 @@ import com.yijie.yilian.client.model.ScoreRule;
  * @author sunzhu
  *
  */
-@FeignClient("yijie.zuul.api")
+@FeignClient(name="yijie.zuul.api", fallback=ScoreDaoClientFallback.class)
 public interface ScoreDao {
 
 	//积分策略查询

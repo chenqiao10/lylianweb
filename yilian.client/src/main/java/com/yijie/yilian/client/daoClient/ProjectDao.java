@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yijie.yilian.client.DataClientFall.ProjectDaoClientFallback;
 import com.yijie.yilian.client.model.ProjectDesign;
 import com.yijie.yilian.client.model.Projects;
 
@@ -14,7 +15,7 @@ import com.yijie.yilian.client.model.Projects;
  * @author chenqiao
  *
  */
-@FeignClient("yijie.zuul.api")
+@FeignClient(name="yijie.zuul.api", fallback=ProjectDaoClientFallback.class)
 public interface ProjectDao {
 	// 项目详细信息
 	@RequestMapping("yilianData/project/projectMessage")

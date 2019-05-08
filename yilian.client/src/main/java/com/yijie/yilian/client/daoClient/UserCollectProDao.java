@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yijie.yilian.client.DataClientFall.UserCollectDaoClientFallback;
 import com.yijie.yilian.client.model.UserCollectProject;
 
 /**
@@ -13,7 +14,7 @@ import com.yijie.yilian.client.model.UserCollectProject;
  * @author chenqiao
  *
  */
-@FeignClient("yijie.zuul.api")
+@FeignClient(name="yijie.zuul.api", fallback=UserCollectDaoClientFallback.class)
 public interface UserCollectProDao {
 
 	// 收藏列表
