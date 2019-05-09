@@ -18,19 +18,19 @@ public class UserCollectDaoClientFallBack implements UserCollectProDao{
 	@Override
 	public Integer userColProAdd(UserCollectProject userCollectProject) {
 		// TODO 自动生成的方法存根
-		return null;
+		return 0;
 	}
 
 	@Override
 	public Integer userColProDelete(UserCollectProject userCollectProject) {
 		// TODO 自动生成的方法存根
-		return null;
+		return 0;
 	}
 
 	@Override
 	public Integer userColProCount(UserCollectProject userCollectProject) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 }

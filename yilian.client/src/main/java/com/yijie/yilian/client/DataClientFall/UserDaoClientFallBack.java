@@ -24,25 +24,25 @@ public class UserDaoClientFallBack implements UserDao{
 	@Override
 	public Integer userRegist(User user) {
 		// TODO 自动生成的方法存根
-		return null;
+		return 0;
 	}
 
 	@Override
 	public Integer userUpdate(User user) {
 		// TODO 自动生成的方法存根
-		return null;
+		return 0;
 	}
 
 	@Override
 	public Integer userCount(User user) {
 		// TODO 自动生成的方法存根
-		return null;
+		return 0;
 	}
 
 	@Override
 	public Integer userDeleteAll(List<User> list) {
 		// TODO 自动生成的方法存根
-		return null;
+		return 0;
 	}
 
 }
