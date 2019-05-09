@@ -5,52 +5,62 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.yijie.data.client.dao.ScoreRuleMapper">
 
-<!-- 条件拼接 -->
-<sql id="rule_where">
-        <where>
-        <if test="id != null and id != ''">
-            and id = #{id}
-        </if>
-        <if test="uuid != null and uuid != ''">
-            and uuid = #{uuid}
-        </if>
-        <if test="max_budget != null and max_budget != ''">
-            and max_budget = #{max_budget}
-        </if>     
-        <if test="min_budget != null and min_budget != ''">
-            and min_budget = #{min_budget}
-        </if>
-        <if test="min_budget != null and min_budget != ''">
-            and score_budget = #{score_budget}
-        </if>
-        </where>
-    </sql>
-    
-    <insert id="scoreRuleInsert" parameterType="com.yijie.data.client.model.ScoreRule">
-        insert into yl_score_rule(uuid,min_budget,max_budget,score_budget) values(#{uuid},#{min_budget},#{max_budget},#{score_budget})
-    </insert>
-    <select id="scoreRuleSelect" parameterType="com.yijie.data.client.model.ScoreRule" resultType="com.yijie.data.client.model.ScoreRule">
-        select * from yl_score_rule
-     <include refid="rule_where"></include>
-    </select>
-    
-    <update id="scoreRuleUpdate" parameterType="com.yijie.data.client.model.ScoreRule">
-        update yl_score_rule
-    	<trim prefix="set" suffixOverrides=",">
-       	 <if test="min_budget != null and min_budget != ''">min_budget = #{min_budget},</if>
-   		 <if test="max_budget != null and max_budget != ''">max_budget = #{max_budget},</if>
-         <if test="score_budget != null and score_budget != ''">score_budget = #{score_budget},</if>
-    	</trim>
-    <where>
-        <if test="id != null and id != ''">
-            and id = #{id}
-        </if>
-        </where>
-    </update>
-    
-    <delete id="scoreRuleDelete" parameterType="com.yijie.data.client.model.ScoreRule">
-        delete from yl_score_rule
-        <include refid="rule_where"></include>
-    </delete>
+	<!-- 条件拼接 -->
+	<sql id="rule_where">
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="uuid != null and uuid != ''">
+				and uuid = #{uuid}
+			</if>
+			<if test="min_budget != null and min_budget != ''">
+				and min_budget &gt;= #{min_budget}
+			</if>
+			<if test="max_budget != null and max_budget != ''">
+				and max_budget &lt;= #{max_budget}
+			</if>
+			<if test="min_budget != null and min_budget != ''">
+				and score_budget = #{score_budget}
+			</if>
+			<if test="status != null">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
+		</where>
+	</sql>
+
+	<insert id="scoreRuleInsert"
+		parameterType="com.yijie.data.client.model.ScoreRule">
+		insert into yl_score_rule(uuid,min_budget,max_budget,score_budget,status)
+		values(#{uuid},#{min_budget},#{max_budget},#{score_budget},#{status})
+	</insert>
+	<select id="scoreRuleSelect"
+		parameterType="com.yijie.data.client.model.ScoreRule"
+		resultType="com.yijie.data.client.model.ScoreRule">
+		select * from yl_score_rule
+		<include refid="rule_where"></include>
+	</select>
+
+	<update id="scoreRuleUpdate"
+		parameterType="com.yijie.data.client.model.ScoreRule">
+		update yl_score_rule
+		<trim prefix="set" suffixOverrides=",">
+			<if test="min_budget != null and min_budget != ''">min_budget = #{min_budget},</if>
+			<if test="max_budget != null and max_budget != ''">max_budget = #{max_budget},</if>
+			<if test="score_budget != null and score_budget != ''">score_budget = #{score_budget},</if>
+			<if test="status != null and status != ''">status = #{status},</if>
+		</trim>
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+		</where>
+	</update>
+
+	<delete id="scoreRuleDelete"
+		parameterType="com.yijie.data.client.model.ScoreRule">
+		delete from yl_score_rule
+		<include refid="rule_where"></include>
+	</delete>
 
 </mapper>

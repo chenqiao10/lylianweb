@@ -15,6 +15,9 @@ public class ScoreRule {
 
 	// 积分预算
 	private Integer score_budget;
+	
+	//状态值 0禁用 1启用
+	private Integer status;
 
 	// 起始条数
 	private Integer begin;
@@ -59,26 +62,12 @@ public class ScoreRule {
 		this.score_budget = score_budget;
 	}
 
-	@Override
-	public String toString() {
-		return "ScoreRule [begin=" + begin + ",id=" + id + ", uuid=" + uuid + ", max_budget=" + max_budget
-				+ ", min_budget=" + min_budget + ", score_budget=" + score_budget + "]";
+	public Integer getStatus() {
+		return status;
 	}
 
-	public ScoreRule(Integer id, Integer begin, String uuid, double max_budget, double min_budget,
-			Integer score_budget) {
-		super();
-		this.id = id;
-		this.uuid = uuid;
-		this.max_budget = max_budget;
-		this.min_budget = min_budget;
-		this.score_budget = score_budget;
-		this.begin = begin;
-	}
-
-	public ScoreRule() {
-		super();
-		// TODO 自动生成的构造函数存根
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 
 	public Integer getBegin() {
@@ -86,6 +75,29 @@ public class ScoreRule {
 	}
 
 	public void setBegin(Integer begin) {
+		this.begin = begin;
+	}
+
+	@Override
+	public String toString() {
+		return "ScoreRule [id=" + id + ", uuid=" + uuid + ", max_budget=" + max_budget + ", min_budget=" + min_budget
+				+ ", score_budget=" + score_budget + ", status=" + status + ", begin=" + begin + "]";
+	}
+
+	public ScoreRule() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ScoreRule(Integer id, String uuid, double max_budget, double min_budget, Integer score_budget,
+			Integer status, Integer begin) {
+		super();
+		this.id = id;
+		this.uuid = uuid;
+		this.max_budget = max_budget;
+		this.min_budget = min_budget;
+		this.score_budget = score_budget;
+		this.status = status;
 		this.begin = begin;
 	}
 }

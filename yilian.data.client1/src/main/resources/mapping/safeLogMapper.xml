@@ -89,11 +89,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from yl_safe_log
 		<include refid="log_where"></include>
 	</select>
-	<select id="logCount" resultType="java.lang.Integer"
-		parameterType="com.yijie.data.client.model.SafeLog">
-		select count(*) from yl_safe_log
-		<include refid="log_where"></include>
-	</select>
-
-	 
 </mapper>
