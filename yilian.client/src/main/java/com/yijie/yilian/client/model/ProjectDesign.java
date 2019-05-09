@@ -27,11 +27,11 @@ public class ProjectDesign {
 		this.id = id;
 	}
 
-	public String getproject_uuid() {
+	public String getProject_uuid() {
 		return project_uuid;
 	}
 
-	public void setproject_uuid(String project_uuid) {
+	public void setProject_uuid(String project_uuid) {
 		this.project_uuid = project_uuid;
 	}
 
@@ -70,4 +70,5 @@ public class ProjectDesign {
 		this.design = design;
 	}
 
+	
 }
