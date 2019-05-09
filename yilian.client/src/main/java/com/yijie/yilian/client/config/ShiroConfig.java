@@ -24,7 +24,7 @@ public class ShiroConfig {
 		//关联SecurityManager
 		bean.setSecurityManager(securityManager);
 		
-		Map<String,String> filterMap = new LinkedHashMap<>();
+//		Map<String,String> filterMap = new LinkedHashMap<>();
 //		
 //		//认证过滤器
 //		//默认拦截
@@ -41,8 +41,8 @@ public class ShiroConfig {
 //		//修改登录请求
 //		bean.setLoginUrl("/userHandle/toLogin");
 		
-		//添加Shiro过滤器
-		bean.setFilterChainDefinitionMap(filterMap);
+//		//添加Shiro过滤器
+//		bean.setFilterChainDefinitionMap(filterMap);
 		
 		
 		return bean;

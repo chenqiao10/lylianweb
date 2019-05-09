@@ -5,8 +5,8 @@ public class UserCollectProject {
 	// 主键id
 	private Integer id;
 
-	// 项目id
-	private Integer type;
+	// 项目类型
+	private String type;
 
 	// 最大预算
 	private Integer max_budget;
@@ -34,11 +34,11 @@ public class UserCollectProject {
 		this.id = id;
 	}
 
-	public Integer getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(Integer type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
@@ -90,7 +90,19 @@ public class UserCollectProject {
 		this.begin = begin;
 	}
 
-	public UserCollectProject(Integer id, Integer type, Integer max_budget, Integer min_budget, String title,
+	@Override
+	public String toString() {
+		return "UserCollectProject [id=" + id + ", type=" + type + ", max_budget=" + max_budget + ", min_budget="
+				+ min_budget + ", title=" + title + ", pro_uuid=" + pro_uuid + ", user_uuid=" + user_uuid + ", begin="
+				+ begin + "]";
+	}
+
+	public UserCollectProject() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UserCollectProject(Integer id, String type, Integer max_budget, Integer min_budget, String title,
 			String pro_uuid, String user_uuid, Integer begin) {
 		super();
 		this.id = id;
@@ -103,16 +115,6 @@ public class UserCollectProject {
 		this.begin = begin;
 	}
 
-	public UserCollectProject() {
-		super();
-		// TODO 自动生成的构造函数存根
-	}
-
-	@Override
-	public String toString() {
-		return "UserCollectPro [id=" + id + ", type=" + type + ", max_budget=" + max_budget + ", min_budget="
-				+ min_budget + ", title=" + title + ", pro_uuid=" + pro_uuid + ", user_uuid=" + user_uuid + ", begin="
-				+ begin + "]";
-	}
+	
 
 }
