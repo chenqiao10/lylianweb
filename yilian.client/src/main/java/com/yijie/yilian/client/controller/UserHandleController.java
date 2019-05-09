@@ -174,6 +174,10 @@ public class UserHandleController {
 	public Map<String, Object> userUpdate(@RequestBody User user) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
+			if (user.getPassword() != null) {
+				Md5Hash hash = new Md5Hash(user.getPassword(), user.getNum(), 2);
+				user.setPassword(hash.toString());
+			}
 			Integer code = userHandleService.userUpdate(user);
 			map.put("code", code);
 		} catch (Exception e) {
