@@ -101,7 +101,6 @@ public class UserCollectProject {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	public UserCollectProject(Integer id, String type, Integer max_budget, Integer min_budget, String title,
 			String pro_uuid, String user_uuid, Integer begin) {
 		super();
@@ -114,7 +113,5 @@ public class UserCollectProject {
 		this.user_uuid = user_uuid;
 		this.begin = begin;
 	}
-
-	
 
 }

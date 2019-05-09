@@ -16,14 +16,14 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public Integer adminInsert(Admin admin) {
-			try {
-				adminMapper.adminInsert(admin);
-				return 1;
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return 0;
-			}
+		try {
+			adminMapper.adminInsert(admin);
+			return 1;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return 0;
+		}
 	}
 
 	@Override
@@ -45,7 +45,6 @@ public class AdminServiceImpl implements AdminService {
 			adminMapper.adminDelete(admin);
 			return 1;
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			return 0;
 		}

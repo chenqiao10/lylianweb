@@ -57,17 +57,16 @@ public class ProjectDesign {
 				+ design + "]";
 	}
 
-	public ProjectDesign() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public ProjectDesign(Integer id, String project_uuid, String filename, String design) {
 		super();
 		this.id = id;
 		this.project_uuid = project_uuid;
 		this.filename = filename;
 		this.design = design;
+	}
+	public ProjectDesign() {
+		super();
+		// TODO 自动生成的构造函数存根
 	}
 
 	
