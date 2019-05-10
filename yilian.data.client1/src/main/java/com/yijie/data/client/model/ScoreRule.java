@@ -21,6 +21,12 @@ public class ScoreRule {
 
 	// 起始条数
 	private Integer begin;
+	
+	//操作人名字
+	private String handle_name;
+	
+	//操作人id
+	private Integer handle_id;
 
 	public Integer getId() {
 		return id;
@@ -78,10 +84,27 @@ public class ScoreRule {
 		this.begin = begin;
 	}
 
+	public String getHandle_name() {
+		return handle_name;
+	}
+
+	public void setHandle_name(String handle_name) {
+		this.handle_name = handle_name;
+	}
+
+	public Integer getHandle_id() {
+		return handle_id;
+	}
+
+	public void setHandle_id(Integer handle_id) {
+		this.handle_id = handle_id;
+	}
+
 	@Override
 	public String toString() {
 		return "ScoreRule [id=" + id + ", uuid=" + uuid + ", max_budget=" + max_budget + ", min_budget=" + min_budget
-				+ ", score_budget=" + score_budget + ", status=" + status + ", begin=" + begin + "]";
+				+ ", score_budget=" + score_budget + ", status=" + status + ", begin=" + begin + ", handle_name="
+				+ handle_name + ", handle_id=" + handle_id + "]";
 	}
 
 	public ScoreRule() {
@@ -90,7 +113,7 @@ public class ScoreRule {
 	}
 
 	public ScoreRule(Integer id, String uuid, double max_budget, double min_budget, Integer score_budget,
-			Integer status, Integer begin) {
+			Integer status, Integer begin, String handle_name, Integer handle_id) {
 		super();
 		this.id = id;
 		this.uuid = uuid;
@@ -99,5 +122,9 @@ public class ScoreRule {
 		this.score_budget = score_budget;
 		this.status = status;
 		this.begin = begin;
+		this.handle_name = handle_name;
+		this.handle_id = handle_id;
 	}
+
+	
 }

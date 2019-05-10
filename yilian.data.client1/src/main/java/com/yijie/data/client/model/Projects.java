@@ -51,21 +51,24 @@ public class Projects {
 
 	// 是否通过审核（1.通过，0.未通过，2.审核中）
 	private Integer audit;
-
 	// 点击量
 	private Integer click_count;
-
 	// 交换次数
 	private Integer cha_count;
-
 	// 提交时间
 	private Date date;
-
 	// 项目对应附件
+
 	private List<ProjectDesign> designs;
 
 	// 分页数据（初始条数）
 	private Integer begin;
+
+	// 操作人账户
+	private String handle_name;
+
+	// 操作人id
+	private Integer handle_id;
 
 	public Integer getId() {
 		return id;
@@ -219,13 +222,30 @@ public class Projects {
 		this.begin = begin;
 	}
 
+	public String getHandle_name() {
+		return handle_name;
+	}
+
+	public void setHandle_name(String handle_name) {
+		this.handle_name = handle_name;
+	}
+
+	public Integer getHandle_id() {
+		return handle_id;
+	}
+
+	public void setHandle_id(Integer handle_id) {
+		this.handle_id = handle_id;
+	}
+
 	@Override
 	public String toString() {
 		return "Projects [id=" + id + ", uuid=" + uuid + ", user_uuid=" + user_uuid + ", title=" + title + ", message="
 				+ message + ", area=" + area + ", days=" + days + ", min_budget=" + min_budget + ", max_budget="
 				+ max_budget + ", phone=" + phone + ", oicq=" + oicq + ", type=" + type + ", price=" + price
 				+ ", audit=" + audit + ", click_count=" + click_count + ", cha_count=" + cha_count + ", date=" + date
-				+ ", designs=" + designs + ", begin=" + begin + "]";
+				+ ", designs=" + designs + ", begin=" + begin + ", handle_name=" + handle_name + ", handle_id="
+				+ handle_id + "]";
 	}
 
 	public Projects() {
@@ -235,7 +255,8 @@ public class Projects {
 
 	public Projects(Integer id, String uuid, String user_uuid, String title, String message, String area, Integer days,
 			Double min_budget, Double max_budget, String phone, String oicq, String type, Integer price, Integer audit,
-			Integer click_count, Integer cha_count, Date date, List<ProjectDesign> designs, Integer begin) {
+			Integer click_count, Integer cha_count, Date date, List<ProjectDesign> designs, Integer begin,
+			String handle_name, Integer handle_id) {
 		super();
 		this.id = id;
 		this.uuid = uuid;
@@ -256,6 +277,8 @@ public class Projects {
 		this.date = date;
 		this.designs = designs;
 		this.begin = begin;
+		this.handle_name = handle_name;
+		this.handle_id = handle_id;
 	}
 
 }
