@@ -75,6 +75,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="date != null and date != ''">
 				and date = #{date}
 			</if>
+			<if test="min_cha != null and min_cha != ''">
+				and cha_count &lt; #{min_cha}
+			</if>
 		</where>
 	</sql>
 
@@ -152,4 +155,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 #{item.id}  
         </foreach>
 	</delete>
+	
 </mapper>
