@@ -31,23 +31,6 @@ public class UserHandleController {
 	@Autowired
 	private UserHandleService userHandleService;
 
-	/*	*//**
-			 * @描述 用户登录
-			 * @param user
-			 * @return
-			 *//*
-				 * @RequestMapping("/userLogin") public Map<String, Object>
-				 * userLogin(@RequestBody User user) { Map<String, Object> result = new
-				 * HashMap<String, Object>(); String msg = null; if (user.getNum() != null &&
-				 * user.getPassword() != null) {// 根据电话号登录 User u =
-				 * userHandleService.userLogin(user); if (u == null) { result.put("code", 0);
-				 * msg = "账户不存在或密码错误！"; } else if (u.getAudit() == 2) { result.put("code", 0);
-				 * msg = "审核中！"; } else if (u.getAudit() == 0) { result.put("code", 0); msg =
-				 * "账户不存在或密码错误！"; }else { result.put("code", 1); msg = "登录成功！"; }
-				 * result.put("user", u); result.put("msg", msg); return result; } else {
-				 * result.put("code", 0); msg = "账户不存在或密码错误！"; return result; } }
-				 */
-
 	/**
 	 * @描述 用户拦截
 	 * @param user
@@ -180,6 +163,27 @@ public class UserHandleController {
 			}
 			Integer code = userHandleService.userUpdate(user);
 			map.put("code", code);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			map.put("msg", "系统出错");
+			map.put("code", 0);
+		}
+		return map;
+	}
+	/**
+	 * 用戶总数
+	 * @param user
+	 * @return
+	 */
+	
+	@RequestMapping("/userCount")
+	public Map<String, Object> userCount(@RequestBody User user) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			Integer count = userHandleService.userCount(user);
+			map.put("count", count);
+			map.put("code", 1);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

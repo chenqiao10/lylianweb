@@ -18,4 +18,6 @@ public interface UserChangeProjectService {
 
 	public Integer userCheProDelete(UserChangeProject userChangeProject);
 
+	public Integer userCheProCount(UserChangeProject userChangeProject);
+
 }

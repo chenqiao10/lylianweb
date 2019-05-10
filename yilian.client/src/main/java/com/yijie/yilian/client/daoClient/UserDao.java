@@ -42,4 +42,5 @@ public interface UserDao {
 	@RequestMapping("yilianData/user/userDeleteAll")
 	public Integer userDeleteAll(List<User> list);
 
+
 }

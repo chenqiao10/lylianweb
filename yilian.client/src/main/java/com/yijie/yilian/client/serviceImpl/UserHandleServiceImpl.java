@@ -16,13 +16,11 @@ public class UserHandleServiceImpl implements UserHandleService {
 	@Override
 	public User userLogin(User user) {
 		User u = userDao.userLogin(user);
-		System.err.println(u);
 		return u;
 	}
 
 	@Override
 	public Integer userRegist(User user) {
-		// TODO Auto-generated method stub
 		return userDao.userRegist(user);
 	}
 
@@ -84,4 +82,10 @@ public class UserHandleServiceImpl implements UserHandleService {
 		return result;
 	}
 
+	@Override
+	public Integer userCount(User user) {
+		
+		Integer	count =userDao.userCount(user);
+		return count;
+	}
 }

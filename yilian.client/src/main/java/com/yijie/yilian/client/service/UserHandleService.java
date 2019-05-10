@@ -1,6 +1,5 @@
 package com.yijie.yilian.client.service;
 
-
 import com.yijie.yilian.client.model.User;
 
 /**
@@ -26,5 +25,8 @@ public interface UserHandleService {
 
 	// 用户扣除积分
 	public Integer scoreDel(User user, Integer score);
+
+	// 用户总数
+	public Integer userCount(User user);
 
 }

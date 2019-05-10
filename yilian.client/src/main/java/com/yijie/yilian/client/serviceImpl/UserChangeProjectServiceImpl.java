@@ -34,12 +34,15 @@ public class UserChangeProjectServiceImpl implements UserChangeProjectService {
 
 	@Override
 	public Integer userCheProDelete(UserChangeProject userChangeProject) {
-		/**
-		 * 判断redis是否缓存 是就删除缓存并删除数据库数据 否就删除数据库数据
-		 * 
-		 */
+		 
 		return userCheProDao.userCheProDelete(userChangeProject);
 
+	}
+
+	@Override
+	public Integer userCheProCount(UserChangeProject userChangeProject) {
+		// TODO 自动生成的方法存根
+		return userCheProDao.userCheProCount(userChangeProject);
 	}
 
 }

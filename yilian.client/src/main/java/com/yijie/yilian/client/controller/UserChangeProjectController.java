@@ -95,5 +95,24 @@ public class UserChangeProjectController {
 			return result;
 		}
 	}
+	/**
+	 * 
+	 * @param userChangeProject
+	 * @return
+	 */
+	@RequestMapping("/userCheProCount")
+	public Map<String, Object> userCheProCount(@RequestBody UserChangeProject userChangeProject) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		try {
+			Integer code = userChangeProjectService.userCheProCount(userChangeProject);
+			result.put("code", code);
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("code", 0);
+			result.put("msg", "系统出错");
+			return result;
+		}
+	}
 
 }

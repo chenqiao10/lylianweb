@@ -17,22 +17,22 @@ import com.yijie.yilian.client.model.ScoreRule;
  * @author sunzhu
  *
  */
-@FeignClient(name="yijie.zuul.api", fallback=ScoreDaoClientFallBack.class)
+@FeignClient(name = "yijie.zuul.api", fallback = ScoreDaoClientFallBack.class)
 public interface ScoreDao {
 
-	//积分策略查询
+	// 积分策略查询
 	@RequestMapping("yilianData/user/scoreRuleSelect")
 	public List<ScoreRule> scoreRuleSelect(ScoreRule ScoreRule);
 
-	//积分策略添加
+	// 积分策略添加
 	@RequestMapping("yilianData/user/scoreRuleAdd")
 	public Integer scoreRuleAdd(ScoreRule ScoreRule);
 
-	//积分策略修改
+	// 积分策略修改
 	@RequestMapping("yilianData/user/scoreRuleUpdate")
 	public Integer scoreRuleUpdate(ScoreRule ScoreRule);
 
-	//积分策略删除
+	// 积分策略删除
 	@RequestMapping("yilianData/user/scoreRuleDelete")
 	public Integer scoreRuleDelete(ScoreRule ScoreRule);
 
@@ -51,5 +51,9 @@ public interface ScoreDao {
 	// 积分记录删除
 	@RequestMapping("yilianData/user/ScoreRecordUpdate")
 	public Integer scoreRecordDelete(ScoreRecord scoreRecord);
+
+	// 积分记录总数
+	@RequestMapping("yilianData/user/ScoreRecordCount")
+	public Integer ScoreRecordCount(ScoreRecord scoreRecord);
 
 }
