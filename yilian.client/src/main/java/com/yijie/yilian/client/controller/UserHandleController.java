@@ -95,7 +95,7 @@ public class UserHandleController {
 		user.setLevel(0);
 		Integer code = userHandleService.userRegist(user);
 		// 注册给积分积分
-		if (code != 0) {
+		if (code != 0 && user.getInviteUUid() != null) {
 			User user1 = new User();
 			user1.setUuid(user.getInviteUUid());
 			userHandleService.scoreAdd(user1, 10);
@@ -121,9 +121,11 @@ public class UserHandleController {
 		user.setUuid(Uuid.getUuid());
 		Integer code = userHandleService.userRegist(user);
 		// 注册给积分积分
-		User user1 = new User();
-		user1.setUuid(user.getInviteUUid());
-		userHandleService.scoreAdd(user1, 10);
+		if (code != 0 && user.getInviteUUid() != null) {
+			User user1 = new User();
+			user1.setUuid(user.getInviteUUid());
+			userHandleService.scoreAdd(user1, 10);
+		}
 		result.put("code", code);
 		return result;
 	}
@@ -171,12 +173,14 @@ public class UserHandleController {
 		}
 		return map;
 	}
+
 	/**
 	 * 用戶总数
+	 * 
 	 * @param user
 	 * @return
 	 */
-	
+
 	@RequestMapping("/userCount")
 	public Map<String, Object> userCount(@RequestBody User user) {
 		Map<String, Object> map = new HashMap<String, Object>();
