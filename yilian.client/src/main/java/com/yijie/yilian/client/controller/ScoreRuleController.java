@@ -30,7 +30,6 @@ public class ScoreRuleController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		System.out.println(ScoreRule);
 		try {
-			ScoreRule.setUuid(Uuid.getUuid());
 			List<ScoreRule> list = ScoreRuleService.scoreRuleSelect(ScoreRule);
 			result.put("list", list);
 			result.put("code", 1);
@@ -53,6 +52,7 @@ public class ScoreRuleController {
 	public Map<String, Object> scoreRuleAdd(@RequestBody ScoreRule ScoreRule) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		try {
+			ScoreRule.setUuid(Uuid.getUuid());
 			Integer code = ScoreRuleService.scoreRuleAdd(ScoreRule);
 			result.put("code", code);
 			return result;

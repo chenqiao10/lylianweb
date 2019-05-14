@@ -25,14 +25,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="click_count" column="click_count" />
 		<result property="cha_count" column="cha_count" />
 		<result property="date" column="date" />
-		<association property="designs" column="id"
+		<association property="designs" column="uuid"
 			select="getDesign" />
 	</resultMap>
 
 	<!-- 关联查询对应信息 -->
-	<select id="getDesign" parameterType="int"
+	<select id="getDesign" parameterType="java.lang.String"
 		resultType="com.yijie.data.client.model.ProjectDesign">
-		SELECT * FROM yl_project_design WHERE project_id=#{id}
+		SELECT * FROM yl_project_design WHERE project_uuid=#{uuid}
 	</select>
 	<!-- 条件拼接 -->
 	<sql id="project_where">
@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and title like #{title}
 			</if>
 			<if test="area != null and area != ''">
-				<bind name="area" value="'%'area'%'" />
+				<bind name="area" value="'%'+area+'%'" />
 				and area like #{area}
 			</if>
 			<if test="min_budget != null and min_budget != ''">

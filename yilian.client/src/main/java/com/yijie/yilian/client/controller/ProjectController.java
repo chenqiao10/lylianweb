@@ -36,10 +36,13 @@ public class ProjectController {
 	public Map<String, Object> projectBuild(@RequestBody Projects projects) {
 		projects.setUuid(Uuid.getUuid());
 		projects.setDate(new Date());
+		projects.setAudit(2);//默认审核中
 		List<ProjectDesign> designs = projects.getDesigns();
 		for (int i = 0; i < designs.size(); i++) {
 			designs.get(i).setProject_uuid(projects.getUuid());
 		}
+		System.out.println(designs.size() + "#########");
+		projectService.projectDesignAdd(designs);
 		Map<String, Object> result = new HashMap<String, Object>();
 		Integer code = projectService.projectBuild(projects);
 		result.put("code", code);

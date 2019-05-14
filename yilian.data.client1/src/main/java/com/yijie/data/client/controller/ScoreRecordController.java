@@ -24,31 +24,31 @@ public class ScoreRecordController {
 	private ScoreRecordService scoreRecordService;
 
 	// 查询积分记录
-	@RequestMapping("/ScoreRecordSelect")
+	@RequestMapping("/scoreRecordSelect")
 	public List<ScoreRecord> ScoreRecordSelect(@RequestBody ScoreRecord scoreRecord) {
 		return scoreRecordService.scoreRecordTable(scoreRecord);
 	}
 
 	// 添加积分记录
-	@RequestMapping("/ScoreRecordInsert")
+	@RequestMapping("/scoreRecordInsert")
 	public Integer ScoreRecordInsert(@RequestBody ScoreRecord scoreRecord) {
 		return scoreRecordService.scoreRecordAdd(scoreRecord);
 	}
 
 	// 删除积分记录
-	@RequestMapping("/ScoreRecordDelete")
+	@RequestMapping("/scoreRecordDelete")
 	public Integer ScoreRecordDelete(@RequestBody ScoreRecord scoreRecord) {
 		return scoreRecordService.scoreRecordDelete(scoreRecord);
 	}
 
 	// 修改积分记录
-	@RequestMapping("/ScoreRecordUpdate")
+	@RequestMapping("/scoreRecordUpdate")
 	public Integer ScoreRecordUpdate(@RequestBody ScoreRecord scoreRecord) {
 		return scoreRecordService.scoreRecordUpdate(scoreRecord);
 	}
 
 	// 修改积分记录
-	@RequestMapping("/ScoreRecordCount")
+	@RequestMapping("/scoreRecordCount")
 	public Integer ScoreRecordCount(@RequestBody ScoreRecord scoreRecord) {
 		return scoreRecordService.scoreRecordCount(scoreRecord);
 	}

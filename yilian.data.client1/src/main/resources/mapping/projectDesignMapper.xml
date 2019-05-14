@@ -12,16 +12,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             and id = #{id}
         </if>
         <if test="project_id != null and project_id != ''">
-            and project_id = #{project_id}
+            and project_uuid = #{project_uuid}
         </if>
         <if test="filename != null and filename != ''">
             and filename = #{filename}
         </if>
+         <if test="design != null and design != ''">
+            and design = #{design}
+        </if>
+         
         </where>
     </sql>
     
     <insert id="projectDesignInsert" parameterType="com.yijie.data.client.model.ProjectDesign">
-        insert into yl_project_design(project_id,filename,design) value(#{project_id},#{filename},#{design})
+        insert into yl_project_design(project_uuid,filename,design) value(#{project_uuid},#{filename},#{design})
     </insert>
     
     <select id="projectDesignSelect" parameterType="com.yijie.data.client.model.ProjectDesign" resultType="com.yijie.data.client.model.ProjectDesign">
