@@ -196,4 +196,22 @@ public class UserHandleController {
 		}
 		return map;
 	}
+	@RequestMapping("/userQuery")
+	public Map<String, Object> userQuery(@RequestBody User user) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		try {
+			if(user.getUuid()!=null&&user.getId()!=null&&user.getPassword()!=null) {
+				User use=	userHandleService.userLogin(user);
+			result.put("user",use);
+			}else {
+				result.put("msg", "请先登录....");	
+			}
+			return result;
+		} catch (UnknownAccountException e) {
+			result.put("code", 0);
+			result.put("msg", "账户不存在");
+			return result;
+		
+		}
+	}
 }

@@ -42,8 +42,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 分页拼接 -->
 	<sql id="limit_cond">
 		<if test="begin !=null">
-			    limit #{begin,jdbcType=INTEGER},12
-			</if>
+			limit #{begin,jdbcType=INTEGER},12
+		</if>
 	</sql>
 
 	<insert id="userInsert"
@@ -89,6 +89,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="uuid != null and uuid != ''">
 				and uuid = #{uuid}
 			</if>
+			<if test="num != null and num != ''">
+				and num = #{num}
+			</if>
 		</where>
 	</update>
 	<delete id="userDelete"
@@ -96,13 +99,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from yl_user
 		<include refid="user_where"></include>
 	</delete>
-   <delete id="userDeleteAll" parameterType="java.util.List">
+	<delete id="userDeleteAll" parameterType="java.util.List">
 		delete from yl_user
 		where id in
-        <foreach collection="list" item="item" open="("
-                separator="," close=")">
-                #{item.id}  
-        </foreach>
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.id}
+		</foreach>
 	</delete>
 	<select id="userCount" resultType="java.lang.Integer"
 		parameterType="com.yijie.data.client.model.User">

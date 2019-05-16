@@ -14,6 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="uuid != null and uuid != ''">
 				and uuid = #{uuid}
 			</if>
+			<if test="min_budget_choose != null and min_budget_choose != ''">
+				and min_budget = #{min_budget_choose}
+			</if>
 			<if test="min_budget != null and min_budget != ''">
 				and min_budget &gt;= #{min_budget}
 			</if>
