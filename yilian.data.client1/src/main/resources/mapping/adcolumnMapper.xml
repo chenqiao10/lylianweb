@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="uuid" column="uuid" />
 		<result property="title" column="title" />
 		<result property="imgurl" column="imgurl" />
+		<result property="status" column="status" />
 	</resultMap>
 
 
@@ -32,6 +33,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="imgurl != null and imgurl != ''">
 				and imgurl = #{imgurl}
 			</if>
+			<if test="status != null">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
 
 		</where>
 	</sql>
@@ -41,7 +45,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="adcolumnInsert"
 		parameterType="com.yijie.data.client.model.Adcolumn">
-		insert into yl_adcolumn(uuid,title,imgurl) value(#{uuid},#{title},#{imgurl})
+		insert into yl_adcolumn(uuid,title,imgurl,status)
+		value(#{uuid},#{title},#{imgurl},#{status})
 	</insert>
 
 	<select id="adcolumnSelect"
@@ -58,6 +63,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<trim prefix="set" suffixOverrides=",">
 			<if test="title != null and title != ''">title = #{title},</if>
 			<if test="imgurl != null and imgurl != ''">imgurl = #{imgurl}, </if>
+			<if test="status != null">
+				 status = #{status,jdbcType=INTEGER}
+			</if>
 		</trim>
 		<where>
 			<if test="uuid != null and uuid != ''">

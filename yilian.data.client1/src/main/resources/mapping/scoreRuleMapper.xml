@@ -14,16 +14,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="uuid != null and uuid != ''">
 				and uuid = #{uuid}
 			</if>
-			<if test="min_budget_choose != null and min_budget_choose != ''">
-				and min_budget = #{min_budget_choose}
-			</if>
 			<if test="min_budget != null and min_budget != ''">
-				and min_budget &gt;= #{min_budget}
+				and min_budget &lt;= #{min_budget}
 			</if>
 			<if test="max_budget != null and max_budget != ''">
-				and max_budget &lt;= #{max_budget}
+				and max_budget &gt;= #{max_budget}
 			</if>
-			<if test="min_budget != null and min_budget != ''">
+			<if test="score_budget != null and score_budget != ''">
 				and score_budget = #{score_budget}
 			</if>
 			<if test="status != null">
@@ -34,7 +31,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="scoreRuleInsert"
 		parameterType="com.yijie.data.client.model.ScoreRule">
-		insert into yl_score_rule(uuid,min_budget,max_budget,score_budget,status)
+		insert into
+		yl_score_rule(uuid,min_budget,max_budget,score_budget,status)
 		values(#{uuid},#{min_budget},#{max_budget},#{score_budget},#{status})
 	</insert>
 	<select id="scoreRuleSelect"
@@ -51,7 +49,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="min_budget != null and min_budget != ''">min_budget = #{min_budget},</if>
 			<if test="max_budget != null and max_budget != ''">max_budget = #{max_budget},</if>
 			<if test="score_budget != null and score_budget != ''">score_budget = #{score_budget},</if>
-			<if test="status != null and status != ''">status = #{status},</if>
+			<if test="status != null">
+				and status = #{status,jdbcType=INTEGER}
+			</if>
 		</trim>
 		<where>
 			<if test="id != null and id != ''">

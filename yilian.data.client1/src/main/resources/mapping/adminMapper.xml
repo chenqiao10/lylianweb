@@ -31,20 +31,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and password = #{password}
 			</if>
 			<if test="name != null and name != ''">
-				and name = #{name}
+				<bind name="name" value="'%'+name+'%'" />
+				and name like #{name}
 			</if>
-			<if test="status != null and status != ''">
-				and status = #{status}
+			<if test="status !=null">
+				and status = #{status,jdbcType=INTEGER}
 			</if>
-
-
 		</where>
 	</sql>
-<!-- 分页拼接 -->
+	<!-- 分页拼接 -->
 	<sql id="limit_cond">
 		<if test="begin !=null">
-			    limit #{begin,jdbcType=INTEGER},12
-			</if>
+			limit #{begin,jdbcType=INTEGER},12
+		</if>
 	</sql>
 
 
@@ -59,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.yijie.data.client.model.Admin" resultMap="AdminMap">
 		select * from yl_admin
 		<include refid="Admin_where"></include>
-        <include refid="limit_cond"></include>
+		<include refid="limit_cond"></include>
 	</select>
 
 	<update id="adminUpdate"
@@ -71,7 +70,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 			<if test="name != null and name != ''">name = #{name},</if>
 			<if test="status != null">
-				and status = #{status,jdbcType=INTEGER}
+				status = #{status,jdbcType=INTEGER}
 			</if>
 		</trim>
 		<where>
@@ -89,13 +88,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from yl_admin
 		<include refid="Admin_where"></include>
 	</delete>
- 	<delete id="adminDeleteAll" parameterType="java.util.List">
+	<delete id="adminDeleteAll" parameterType="java.util.List">
 		delete from yl_admin
 		where id in
-        <foreach collection="list" item="item" open="("
-                separator="," close=")">
-                #{item.id}  
-        </foreach>
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.id}
+		</foreach>
 	</delete>
 	<select id="adminCount" resultType="java.lang.Integer"
 		parameterType="com.yijie.data.client.model.Admin">

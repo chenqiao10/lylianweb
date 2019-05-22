@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="visit != null and visit != ''">
 				and visit = #{visit}
 			</if>
-			<if test="date != null and date != ''">
+			<if test="date != null">
 				and date = #{date}
 			</if>
 			
@@ -53,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update yl_visit
 		<trim prefix="set" suffixOverrides=",">
 			<if test="visit != null and visit != ''">visit = #{visit},</if>
-			<if test="date != null and date != ''">date = #{date},</if>
+			<if test="date != null">date = #{date},</if>
 		</trim>
 		<where>
 			<if test="id != null and id != ''">

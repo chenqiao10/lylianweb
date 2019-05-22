@@ -34,7 +34,5 @@ public class ScoreRuleController {
 	@RequestMapping("/scoreRuleDelete")
 	public Integer scoreRuleDelete(@RequestBody ScoreRule scoreRule) {
 		return ScoreRuleService.scoreRuleDelete(scoreRule);
-
 	}
-
 }

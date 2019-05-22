@@ -1,6 +1,6 @@
 package com.yijie.yilian.client.controller;
 
-
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,7 +81,7 @@ public class MessageController {
 		}
 		return map;
 	}
-	
+
 	/**
 	 * @ 推送消息批量删除
 	 * 
@@ -104,4 +104,50 @@ public class MessageController {
 		}
 		return map;
 	}
+
+	/**
+	 * @ 推送消息修改
+	 * 
+	 * @param message
+	 * @return
+	 */
+	@RequestMapping("messageUpdate")
+	public Map<String, Object> messageUpdate(@RequestBody Message message) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			if (message.getId() != null) {
+				message.setStatus(1);
+				Integer code = messageService.messageUpdate(message);
+				map.put("code", code);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			map.put("code", 0);
+		}
+		return map;
+	}
+
+	/**
+	 * @ 推送消息删除
+	 * 
+	 * @param message
+	 * @return
+	 */
+	@RequestMapping("messageDelete")
+	public Map<String, Object> messageDelete(@RequestBody Message message) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			if (message.getId() != null) {
+				Integer code = messageService.messageDelete(message);
+				map.put("code", code);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			map.put("code", 0);
+		}
+		return map;
+	}
+
 }

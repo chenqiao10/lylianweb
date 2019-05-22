@@ -69,10 +69,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="click_count != null and click_count != ''">
 				and click_count = #{click_count}
 			</if>
-			<if test="cha_count != null and cha_count != ''">
-				and cha_count = #{cha_count}
+			<if test="cha_count != null">
+				and cha_count = #{cha_count,jdbcType=INTEGER}
 			</if>
-			<if test="date != null and date != ''">
+			<if test="date != null">
 				and date = #{date}
 			</if>
 			<if test="min_cha != null and min_cha != ''">
@@ -98,7 +98,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		oicq,type,price,audit,click_count,cha_count,date)
 		value(#{uuid},#{user_uuid},#{title},
 		#{message},#{area},#{days},#{min_budget},
-		#{max_budget},#{phone},#{oicq},#{type},0,#{audit},
+		#{max_budget},#{phone},#{oicq},#{type},#{price},#{audit},
 		0,0,#{date})
 	</insert>
 
@@ -126,7 +126,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 			<if test="click_count != null and click_count != ''">click_count = #{click_count},</if>
 			<if test="cha_count != null and click_count != ''">cha_count = #{cha_count},</if>
-			<if test="date != null and date != ''">date = #{date},</if>
+			<if test="date != null">date = #{date},</if>
 		</trim>
 		<where>
 			<if test="uuid != null and uuid != ''">
@@ -145,15 +145,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="projectDelete"
 		parameterType="com.yijie.data.client.model.Projects">
 		delete from yl_project
-		<include refid="project_where"></include>
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+		</where>
 	</delete>
 	<delete id="projectDeleteAll" parameterType="java.util.List">
 		delete from yl_project
 		where id in
-        <foreach collection="list" item="item" open="("
-                separator="," close=")">
-                #{item.id}  
-        </foreach>
+		<foreach collection="list" item="item" open="(" separator=","
+			close=")">
+			#{item.id}
+		</foreach>
 	</delete>
-	
+
 </mapper>

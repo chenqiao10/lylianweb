@@ -20,13 +20,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="handle != null and handle != ''">
 				and handle = #{handle}
 			</if>
-			<if test="handle_date != null and handle_date != ''">
+			<if test="handle_date != null">
 				and handle_date = #{handle_date}
 			</if>
-			 <if test="starttime != null and starttime != ''">
+			 <if test="starttime != null">
 				and handle_date &gt; cast(#{starttime} as datetime)
 			</if>
-			<if test="endtime != null and endtime != ''">
+			<if test="endtime != null">
 				and handle_date &lt; cast(#{endTime} as datetime)
 			</if>
 		</where>
@@ -68,7 +68,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="handle_name != null and handle_name != ''">
 				 handle_name = #{handle_name},
 			</if>
-			<if test="handle_date != null and handle_date != ''">
+			<if test="handle_date != null">
 				 handle_date = #{handle_date},
 			</if>
 		</trim>

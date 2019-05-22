@@ -19,6 +19,9 @@ public class Adcolumn {
 
 	// 图片地址
 	private String imgurl;
+	
+	//启用禁用
+	private Integer status;
 
 	public Integer getId() {
 		return id;
@@ -52,22 +55,33 @@ public class Adcolumn {
 		this.imgurl = imgurl;
 	}
 
-	public Adcolumn(Integer id, String uuid, String title, String imgurl) {
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Adcolumn [id=" + id + ", uuid=" + uuid + ", title=" + title + ", imgurl=" + imgurl + ", status="
+				+ status + "]";
+	}
+
+	public Adcolumn() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Adcolumn(Integer id, String uuid, String title, String imgurl, Integer status) {
 		super();
 		this.id = id;
 		this.uuid = uuid;
 		this.title = title;
 		this.imgurl = imgurl;
+		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "Adcolumn [id=" + id + ", uuid=" + uuid + ", title=" + title + ", imgurl=" + imgurl + "]";
-	}
-
-	public Adcolumn() {
-		super();
-		// TODO 自动生成的构造函数存根
-	}
-
+	
 }

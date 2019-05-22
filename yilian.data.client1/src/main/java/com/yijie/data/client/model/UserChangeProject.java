@@ -31,14 +31,10 @@ public class UserChangeProject {
 	private String type;
 
 	// 分页数据
-	private String begin;
+	private Integer begin;
 
 	public Integer getId() {
 		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getPro_uuid() {
@@ -89,12 +85,16 @@ public class UserChangeProject {
 		this.type = type;
 	}
 
-	public String getBegin() {
+	public Integer getBegin() {
 		return begin;
 	}
 
-	public void setBegin(String begin) {
+	public void setBegin(Integer begin) {
 		this.begin = begin;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	@Override
@@ -109,7 +109,7 @@ public class UserChangeProject {
 	}
 
 	public UserChangeProject(Integer id, String pro_uuid, String user_uuid, String phone, String title, Date date,
-			String type, String begin) {
+			String type, Integer begin) {
 		super();
 		this.id = id;
 		this.pro_uuid = pro_uuid;
@@ -120,4 +120,6 @@ public class UserChangeProject {
 		this.type = type;
 		this.begin = begin;
 	}
+
+	
 }

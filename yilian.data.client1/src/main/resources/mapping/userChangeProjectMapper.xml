@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="phone != null and phone != ''">
             and phone = #{phone}
         </if>
-        <if test="date != null and date != ''">
+        <if test="date != null">
             and date = #{date}
         </if>
 			<if test="type != null and type != ''">

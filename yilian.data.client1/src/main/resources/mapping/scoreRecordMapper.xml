@@ -10,11 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="id != null and id != ''">
 				and id = #{id}
 			</if>
-			<if test="date != null and date != ''">
-				and date = #{date}
+			<if test="date != null">
+				and date = cast(#{date} as date)
 			</if>
 			<if test="type != null ">
-				 type = #{type,jdbcType=INTEGER},
+				and type = #{type,jdbcType=INTEGER}
 			</if>
 			<if test="user_uuid != null and user_uuid != ''">
 				and user_uuid = #{user_uuid}
@@ -24,51 +24,56 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</sql>
-	
+
 	<!-- 分页拼接 -->
 	<sql id="limit_cond">
 		<if test="begin !=null">
-			    limit #{begin,jdbcType=INTEGER},12
-			</if>
+			limit #{begin,jdbcType=INTEGER},12
+		</if>
 	</sql>
 
-	<!-- 	添加积分记录 -->
-	<insert id="scoreRecordInsert" parameterType="com.yijie.data.client.model.ScoreRecord">
+	<!-- 添加积分记录 -->
+	<insert id="scoreRecordInsert"
+		parameterType="com.yijie.data.client.model.ScoreRecord">
 		insert into yl_score_record(
 		date,type,user_uuid,score
 		)values(
 		#{date},#{type},#{user_uuid},#{score}
 		)
 	</insert>
-	
-	<!-- 	查询积分记录 -->
-	<select id="scoreRecordSelect" resultType="com.yijie.data.client.model.ScoreRecord" parameterType="com.yijie.data.client.model.ScoreRecord">
+
+	<!-- 查询积分记录 -->
+	<select id="scoreRecordSelect"
+		resultType="com.yijie.data.client.model.ScoreRecord"
+		parameterType="com.yijie.data.client.model.ScoreRecord">
 		select * from yl_score_record
 		<include refid="scoreRecord_where"></include>
 		<include refid="limit_cond"></include>
 	</select>
-	
-	<!-- 	删除积分记录 -->
-	<delete id="scoreRecordDelete" parameterType="com.yijie.data.client.model.ScoreRecord">
+
+	<!-- 删除积分记录 -->
+	<delete id="scoreRecordDelete"
+		parameterType="com.yijie.data.client.model.ScoreRecord">
 		delete from yl_score_record
 		<include refid="scoreRecord_where"></include>
 	</delete>
-	
-	<!-- 	修改积分记录 -->
-	<update id="scoreRecordUpdate" parameterType="com.yijie.data.client.model.ScoreRecord">
-		update  yl_score_record
+
+	<!-- 修改积分记录 -->
+	<update id="scoreRecordUpdate"
+		parameterType="com.yijie.data.client.model.ScoreRecord">
+		update yl_score_record
 		<trim prefix="set" suffixOverrides=",">
-			<if test="date != null and date != ''">
-				 date = #{date},
+			<if test="date != null">
+				date = #{date},
 			</if>
 			<if test="type != null ">
-				 type = #{type,jdbcType=INTEGER},
+				type = #{type,jdbcType=INTEGER},
 			</if>
 			<if test="user_uuid != null and user_uuid != ''">
-				 user_uuid = #{user_uuid},
+				user_uuid = #{user_uuid},
 			</if>
 			<if test="score != null and score != ''">
-				 score = #{score},
+				score = #{score},
 			</if>
 		</trim>
 		<where>
