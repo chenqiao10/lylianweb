@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</sql>
-
+	<sql id="order"> order by date desc </sql>
 	<!-- 分页拼接 -->
 	<sql id="limit_cond">
 		<if test="begin !=null">
@@ -48,6 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.yijie.data.client.model.ScoreRecord">
 		select * from yl_score_record
 		<include refid="scoreRecord_where"></include>
+		<include refid="order"></include>
 		<include refid="limit_cond"></include>
 	</select>
 

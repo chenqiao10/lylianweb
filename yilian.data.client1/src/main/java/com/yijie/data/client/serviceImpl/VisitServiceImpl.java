@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yijie.data.client.dao.VisitMapper;
 import com.yijie.data.client.model.Visit;
 import com.yijie.data.client.service.VisitService;
 
 @Service
+@Transactional
 public class VisitServiceImpl implements VisitService {
 	@Autowired
 	private VisitMapper VisitMapper;

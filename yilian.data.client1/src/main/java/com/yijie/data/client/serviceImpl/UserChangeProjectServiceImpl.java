@@ -4,17 +4,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yijie.data.client.dao.UserChangeProjectMapper;
 import com.yijie.data.client.model.UserChangeProject;
 import com.yijie.data.client.service.UserChangeProjectService;
+
 @Service
+@Transactional
 public class UserChangeProjectServiceImpl implements UserChangeProjectService {
-	
+
 	@Autowired
 	private UserChangeProjectMapper userChangeProjectMapper;
 
-	
 	@Override
 	public List<UserChangeProject> userCheProTable(UserChangeProject userChangeProject) {
 		try {

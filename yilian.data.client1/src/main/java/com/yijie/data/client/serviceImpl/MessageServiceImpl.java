@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.yijie.data.client.dao.MessageMapper;
 import com.yijie.data.client.model.Message;
 import com.yijie.data.client.service.MessageService;
+
 @Service
+@Transactional
 public class MessageServiceImpl implements MessageService {
 	@Autowired
 	private MessageMapper messageMapper;
@@ -23,6 +27,7 @@ public class MessageServiceImpl implements MessageService {
 		}
 
 	}
+
 	@Override
 	public Integer messageUpdate(Message message) {
 		try {
@@ -33,6 +38,7 @@ public class MessageServiceImpl implements MessageService {
 			return 0;
 		}
 	}
+
 	@Override
 	public Integer messageDelete(Message message) {
 		try {
@@ -43,6 +49,7 @@ public class MessageServiceImpl implements MessageService {
 			return 0;
 		}
 	}
+
 	@Override
 	public List<Message> messageSelect(Message message) {
 		try {
@@ -52,6 +59,7 @@ public class MessageServiceImpl implements MessageService {
 			return null;
 		}
 	}
+
 	@Override
 	public Integer messageCount(Message message) {
 		// TODO 自动生成的方法存根

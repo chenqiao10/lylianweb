@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yijie.data.client.dao.UserCollectProjectMapper;
 import com.yijie.data.client.model.UserCollectProject;
 import com.yijie.data.client.service.UserCollectProjectService;
 
 @Service
+@Transactional
 public class UserCollectProjectServiceImpl implements UserCollectProjectService {
 
 	@Autowired

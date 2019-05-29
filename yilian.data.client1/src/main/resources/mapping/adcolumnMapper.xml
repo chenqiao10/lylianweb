@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="uuid" column="uuid" />
 		<result property="title" column="title" />
 		<result property="imgurl" column="imgurl" />
+		<result property="weburl" column="weburl" />
 		<result property="status" column="status" />
 	</resultMap>
 
@@ -33,6 +34,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="imgurl != null and imgurl != ''">
 				and imgurl = #{imgurl}
 			</if>
+			<if test="weburl != null and weburl != ''">
+				and weburl = #{weburl}
+			</if>
 			<if test="status != null">
 				and status = #{status,jdbcType=INTEGER}
 			</if>
@@ -45,8 +49,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="adcolumnInsert"
 		parameterType="com.yijie.data.client.model.Adcolumn">
-		insert into yl_adcolumn(uuid,title,imgurl,status)
-		value(#{uuid},#{title},#{imgurl},#{status})
+		insert into yl_adcolumn(uuid,title,imgurl,status,weburl)
+		value(#{uuid},#{title},#{imgurl},#{status},#{weburl})
 	</insert>
 
 	<select id="adcolumnSelect"
@@ -63,8 +67,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<trim prefix="set" suffixOverrides=",">
 			<if test="title != null and title != ''">title = #{title},</if>
 			<if test="imgurl != null and imgurl != ''">imgurl = #{imgurl}, </if>
+			<if test="weburl != null and weburl != ''">weburl = #{weburl}, </if>
 			<if test="status != null">
-				 status = #{status,jdbcType=INTEGER}
+				status = #{status,jdbcType=INTEGER}
 			</if>
 		</trim>
 		<where>

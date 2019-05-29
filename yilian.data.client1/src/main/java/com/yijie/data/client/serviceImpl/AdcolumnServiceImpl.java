@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yijie.data.client.dao.AdcolumnMapper;
 import com.yijie.data.client.model.Adcolumn;
 import com.yijie.data.client.service.AdcolumnService;
 
 @Service
+@Transactional
 public class AdcolumnServiceImpl implements AdcolumnService {
 	
 	@Autowired

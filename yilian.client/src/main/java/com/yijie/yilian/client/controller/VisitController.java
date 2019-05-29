@@ -1,6 +1,5 @@
 package com.yijie.yilian.client.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -58,9 +57,7 @@ public class VisitController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		Visit visit = new Visit();
 		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MMM-dd");
-			Date date = new Date();//获取当前时间
-			visit.setDate(sdf.parse(sdf.format(date)));
+			visit.setDate(new Date());
 			List<Visit> list = visitService.visitTable(visit);
 			if(list.size()!=0) {//没有当天记录
 				visit.setVisit(1);

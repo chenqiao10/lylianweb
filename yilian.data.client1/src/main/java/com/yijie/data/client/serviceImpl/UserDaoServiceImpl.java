@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yijie.data.client.dao.UserMapper;
 import com.yijie.data.client.model.User;
 import com.yijie.data.client.service.UserDaoService;
 
 @Service
+@Transactional
 public class UserDaoServiceImpl implements UserDaoService {
 	
 	@Autowired

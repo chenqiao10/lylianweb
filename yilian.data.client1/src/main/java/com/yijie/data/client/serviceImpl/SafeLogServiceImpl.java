@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yijie.data.client.dao.SafeLogMapper;
 import com.yijie.data.client.model.SafeLog;
 import com.yijie.data.client.service.SafeLogService;
 
 @Service
+@Transactional
 public class SafeLogServiceImpl implements SafeLogService {
 	@Autowired
 	private SafeLogMapper safeLogMapper;

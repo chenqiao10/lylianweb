@@ -11,12 +11,14 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yijie.yilian.client.model.User;
 import com.yijie.yilian.client.service.UserHandleService;
+import com.yijie.yilian.client.utils.RedisUtil;
 import com.yijie.yilian.client.utils.Uuid;
 
 /**
@@ -30,6 +32,9 @@ public class UserHandleController {
 
 	@Autowired
 	private UserHandleService userHandleService;
+
+	@Autowired
+	private RedisTemplate<String, Object> redisTemplate;
 
 	/**
 	 * @描述 用户拦截
@@ -137,8 +142,10 @@ public class UserHandleController {
 	 */
 	@RequestMapping("/userPhoneExist")
 	public Map<String, Object> userPhoneExist(@RequestBody String num) {
+		System.err.println(num);
 		Map<String, Object> result = new HashMap<String, Object>();
 		User user = userHandleService.userPhoneExist(num);
+		System.out.println(user);
 		if (user == null) {
 			result.put("code", 1);
 		} else {
@@ -159,7 +166,7 @@ public class UserHandleController {
 	public Map<String, Object> userUpdate(@RequestBody User user) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			if (user.getPassword() != null) {
+			if (user.getPassword() != null && user.getNum() != null) {
 				Md5Hash hash = new Md5Hash(user.getPassword(), user.getNum(), 2);
 				user.setPassword(hash.toString());
 			}
@@ -196,22 +203,68 @@ public class UserHandleController {
 		}
 		return map;
 	}
+
 	@RequestMapping("/userQuery")
 	public Map<String, Object> userQuery(@RequestBody User user) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		try {
-			if(user.getUuid()!=null&&user.getId()!=null&&user.getPassword()!=null) {
-				User use=	userHandleService.userLogin(user);
-			result.put("user",use);
-			}else {
-				result.put("msg", "请先登录....");	
+			if (user.getId() != null && user.getNum()!=null) {
+				User use = userHandleService.userLogin(user);
+				result.put("user", use);
+			} else {
+				result.put("msg", "请先登录....");
 			}
 			return result;
 		} catch (UnknownAccountException e) {
 			result.put("code", 0);
 			result.put("msg", "账户不存在");
 			return result;
-		
+
 		}
+	}
+
+	/**
+	 * @描述 用户短信登录
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping("/userMsgLogin")
+	public Map<String, Object> userMsgLogin(String num, String yzm) {
+		User user = new User();
+		Map<String, Object> result = new HashMap<String, Object>();
+		RedisUtil redisUtil = new RedisUtil();
+		try {
+			String key = "pr:" + num;
+			String phoneRev = (String) redisUtil.get(redisTemplate, key);// 缓存中的验证码
+			System.out.println(phoneRev);
+			System.out.println(num);
+			user.setNum(num);
+			User u = userHandleService.userLogin(user);
+			if (phoneRev != null) {
+				if (phoneRev.equals(yzm)) {
+					if (u != null) {
+						if (u.getAudit() != 1) {
+							result.put("msg", "审核中");
+						} else {
+							result.put("user", u);
+							result.put("msg", "登录成功");
+						}
+					} else {
+						result.put("msg", "账户不存在");
+					}
+				} else {
+					result.put("msg", "验证码错误");
+				}
+			} else {
+				result.put("msg", "验证码无效");
+			}
+			result.put("code", 1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("code", 0);
+			result.put("msg", "验证码错误");
+			return result;
+		}
+		return result;
 	}
 }

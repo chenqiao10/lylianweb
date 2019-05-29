@@ -1,30 +1,30 @@
 package com.yijie.yilian.client.model;
 
 /**
- * 广告轮播模块
+ * 广告栏位
  * 
- * @author sunzhu
+ * @author chenqiao
  *
  */
 public class Adcolumn {
-	
-	//广告轮播id
+
+	// 广告自增id
 	private Integer id;
-	
-	//广告轮播uuid
+
+	// 广告轮播uuid
 	private String uuid;
-	
-	//图片地址
-	private String imgurl;
-	
-	//广告标题
+
+	// 广告标题
 	private String title;
-	
-	//操作人名字
-	private String handle_name;
-	
-	//操作人id
-	private Integer handle_id;
+
+	// 图片地址
+	private String imgurl;
+
+	// 启用禁用
+	private Integer status;
+
+	// 图片跳转路径
+	private String weburl;
 
 	public Integer getId() {
 		return id;
@@ -42,14 +42,6 @@ public class Adcolumn {
 		this.uuid = uuid;
 	}
 
-	public String getImgurl() {
-		return imgurl;
-	}
-
-	public void setImgurl(String imgurl) {
-		this.imgurl = imgurl;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -58,26 +50,34 @@ public class Adcolumn {
 		this.title = title;
 	}
 
-	public String getHandle_name() {
-		return handle_name;
+	public String getImgurl() {
+		return imgurl;
 	}
 
-	public void setHandle_name(String handle_name) {
-		this.handle_name = handle_name;
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
 	}
 
-	public Integer getHandle_id() {
-		return handle_id;
+	public Integer getStatus() {
+		return status;
 	}
 
-	public void setHandle_id(Integer handle_id) {
-		this.handle_id = handle_id;
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public String getWeburl() {
+		return weburl;
+	}
+
+	public void setWeburl(String weburl) {
+		this.weburl = weburl;
 	}
 
 	@Override
 	public String toString() {
-		return "Adcolumn [id=" + id + ", uuid=" + uuid + ", imgurl=" + imgurl + ", title=" + title + ", handle_name="
-				+ handle_name + ", handle_id=" + handle_id + "]";
+		return "Adcolumn [id=" + id + ", uuid=" + uuid + ", title=" + title + ", imgurl=" + imgurl + ", status="
+				+ status + ", weburl=" + weburl + "]";
 	}
 
 	public Adcolumn() {
@@ -85,14 +85,14 @@ public class Adcolumn {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Adcolumn(Integer id, String uuid, String imgurl, String title, String handle_name, Integer handle_id) {
+	public Adcolumn(Integer id, String uuid, String title, String imgurl, Integer status, String weburl) {
 		super();
 		this.id = id;
 		this.uuid = uuid;
-		this.imgurl = imgurl;
 		this.title = title;
-		this.handle_name = handle_name;
-		this.handle_id = handle_id;
+		this.imgurl = imgurl;
+		this.status = status;
+		this.weburl = weburl;
 	}
 
 }

@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="date" column="date" />
 	</resultMap>
 
-	
+
 
 	<!-- 条件拼接 -->
 	<sql id="visit_where">
@@ -25,13 +25,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and visit = #{visit}
 			</if>
 			<if test="date != null">
-				and date = #{date}
+				and date = cast(#{date} as date)
 			</if>
-			
+
 		</where>
 	</sql>
 
-	
+
 
 
 	<insert id="visitInsert"
@@ -53,11 +53,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update yl_visit
 		<trim prefix="set" suffixOverrides=",">
 			<if test="visit != null and visit != ''">visit = #{visit},</if>
-			<if test="date != null">date = #{date},</if>
 		</trim>
 		<where>
-			<if test="id != null and id != ''">
-				and id = #{id}
+			<if test="date != null">
+				and date = cast(#{date} as date)
 			</if>
 		</where>
 	</update>

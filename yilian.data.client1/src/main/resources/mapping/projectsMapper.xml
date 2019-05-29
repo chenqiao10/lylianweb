@@ -121,6 +121,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="days != null and days != ''">days = #{days},</if>
 			<if test="phone != null and phone != ''">phone = #{phone},</if>
 			<if test="oicq != null and oicq != ''">oicq = #{oicq},</if>
+			<if test="price != null and price != ''">price = #{price},</if>
 			<if test="audit !=null">
 				audit = #{audit,jdbcType=INTEGER}
 			</if>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yijie.data.client.dao.SuperAdminMapper;
 import com.yijie.data.client.model.Admin;
@@ -11,6 +12,7 @@ import com.yijie.data.client.model.SuperAdmin;
 import com.yijie.data.client.service.SuperAdminService;
 
 @Service
+@Transactional
 public class SuperAdminServiceImpl implements SuperAdminService {
 	@Autowired
 	SuperAdminMapper superAdminMapper;
