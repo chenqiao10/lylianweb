@@ -100,7 +100,8 @@ public class UserHandleController {
 		user.setLevel(0);
 		Integer code = userHandleService.userRegist(user);
 		// 注册给积分积分
-		if (code != 0 && user.getInviteUUid() != null) {
+		if (code != 0 && !(user.getInviteUUid() == null || "".equals(user.getInviteUUid()))) {
+			System.out.println(user.getInviteUUid());
 			User user1 = new User();
 			user1.setUuid(user.getInviteUUid());
 			userHandleService.scoreAdd(user1, 10);
@@ -126,7 +127,7 @@ public class UserHandleController {
 		user.setUuid(Uuid.getUuid());
 		Integer code = userHandleService.userRegist(user);
 		// 注册给积分积分
-		if (code != 0 && user.getInviteUUid() != null) {
+		if (code != 0 && !(user.getInviteUUid() == null || "".equals(user.getInviteUUid()))) {
 			User user1 = new User();
 			user1.setUuid(user.getInviteUUid());
 			userHandleService.scoreAdd(user1, 10);
@@ -166,7 +167,7 @@ public class UserHandleController {
 	public Map<String, Object> userUpdate(@RequestBody User user) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			if (user.getPassword() != null && user.getNum() != null) {
+			if (!(user.getPassword() == null || "".equals(user.getPassword())) && !(user.getNum() == null || "".equals(user.getNum()))) {
 				Md5Hash hash = new Md5Hash(user.getPassword(), user.getNum(), 2);
 				user.setPassword(hash.toString());
 			}
@@ -208,7 +209,7 @@ public class UserHandleController {
 	public Map<String, Object> userQuery(@RequestBody User user) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		try {
-			if (user.getId() != null && user.getNum()!=null) {
+			if (user.getId() != 0 || !(user.getNum() == null || "".equals(user.getNum()))) {
 				User use = userHandleService.userLogin(user);
 				result.put("user", use);
 			} else {
@@ -236,8 +237,6 @@ public class UserHandleController {
 		try {
 			String key = "pr:" + num;
 			String phoneRev = (String) redisUtil.get(redisTemplate, key);// 缓存中的验证码
-			System.out.println(phoneRev);
-			System.out.println(num);
 			user.setNum(num);
 			User u = userHandleService.userLogin(user);
 			if (phoneRev != null) {

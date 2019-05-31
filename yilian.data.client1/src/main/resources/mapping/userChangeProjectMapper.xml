@@ -3,55 +3,79 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.yijie.data.client.dao.UserChangeProjectMapper">
+<mapper
+	namespace="com.yijie.data.client.dao.UserChangeProjectMapper">
 
-<!-- 条件拼接 -->
-<sql id="project_where">
-    <where>
-        <if test="id != null and id != ''">
-            and id = #{id}
-        </if>
-        <if test="pro_uuid != null and pro_uuid != ''">
-            and pro_uuid = #{pro_uuid}
-        </if>
-        <if test="user_uuid != null and user_uuid != ''">
-            and user_uuid = #{user_uuid}
-        </if>
-        <if test="title != null and title != ''">
-         	<bind name="title" value="'%'+title+'%'"/>	
-            and title like #{title}
-        </if>
-        <if test="phone != null and phone != ''">
-            and phone = #{phone}
-        </if>
-        <if test="date != null">
-            and date = #{date}
-        </if>
-			<if test="type != null and type != ''">
-            and type = #{type}
-        </if>   
-         </where>
-</sql>
-<!-- 分页拼接 -->
-<sql id="limit_cond">
-   <if test="begin !=null">
-			    limit #{begin,jdbcType=INTEGER},12
+
+	<resultMap
+		type="com.yijie.data.client.model.UserChangeProject" id="userMap">
+		<id property="id" column="id" />
+		<result property="pro_uuid" column="pro_uuid" />
+		<result property="user_uuid" column="user_uuid" />
+		<result property="title" column="title" />
+		<result property="phone" column="phone" />
+		<result property="date" column="date" />
+		<result property="type" column="type" />
+		<association property="num" column="user_uuid"
+			select="getUser" />
+	</resultMap>
+	<!-- 关联查询对应信息 -->
+	<select id="getUser" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		SELECT num FROM yl_user WHERE uuid=#{user_uuid}
+	</select>
+	<!-- 条件拼接 -->
+	<sql id="project_where">
+		<where>
+			<if test="id != null and id != ''">
+				and id = #{id}
 			</if>
-</sql>
-    <insert id="projectInsert" parameterType="com.yijie.data.client.model.UserChangeProject">
-        insert into yl_userChePro(pro_uuid,user_uuid,title,date,phone,type) 
-        values(#{pro_uuid},#{user_uuid},#{title},#{date},#{phone},#{type})
-    </insert>
-    <select id="projectSelect" parameterType="com.yijie.data.client.model.UserChangeProject" resultType="com.yijie.data.client.model.UserChangeProject">
-        select * from yl_userChePro
-        <include refid="project_where"></include>
-        <include refid="limit_cond"></include>
-    </select>
-    
-    <delete id="projectDelete" parameterType="com.yijie.data.client.model.UserChangeProject">
-        delete from yl_userChePro
-        <include refid="project_where"></include>
-    </delete>
+			<if test="pro_uuid != null and pro_uuid != ''">
+				and pro_uuid = #{pro_uuid}
+			</if>
+			<if test="user_uuid != null and user_uuid != ''">
+				and user_uuid = #{user_uuid}
+			</if>
+			<if test="title != null and title != ''">
+				<bind name="title" value="'%'+title+'%'" />
+				and title like #{title}
+			</if>
+			<if test="phone != null and phone != ''">
+				and phone = #{phone}
+			</if>
+			<if test="date != null">
+				and date = #{date}
+			</if>
+			<if test="type != null and type != ''">
+				and type = #{type}
+			</if>
+		</where>
+	</sql>
+	<!-- 分页拼接 -->
+	<sql id="limit_cond">
+		<if test="begin !=null">
+			limit #{begin,jdbcType=INTEGER},12
+		</if>
+	</sql>
+	<insert id="projectInsert"
+		parameterType="com.yijie.data.client.model.UserChangeProject">
+		insert into
+		yl_userChePro(pro_uuid,user_uuid,title,date,phone,type)
+		values(#{pro_uuid},#{user_uuid},#{title},#{date},#{phone},#{type})
+	</insert>
+	<select id="projectSelect"
+		parameterType="com.yijie.data.client.model.UserChangeProject"
+		resultMap="userMap">
+		select * from yl_userChePro
+		<include refid="project_where"></include>
+		<include refid="limit_cond"></include>
+	</select>
+
+	<delete id="projectDelete"
+		parameterType="com.yijie.data.client.model.UserChangeProject">
+		delete from yl_userChePro
+		<include refid="project_where"></include>
+	</delete>
 	<select id="userChangeProCount" resultType="java.lang.Integer"
 		parameterType="com.yijie.data.client.model.UserChangeProject">
 		select count(*) from yl_userChePro

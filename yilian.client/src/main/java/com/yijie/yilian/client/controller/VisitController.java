@@ -59,14 +59,13 @@ public class VisitController {
 		try {
 			visit.setDate(new Date());
 			List<Visit> list = visitService.visitTable(visit);
-			if(list.size()!=0) {//没有当天记录
+			if(list.isEmpty()) {//没有当天记录
 				visit.setVisit(1);
 				Integer code = visitService.visitAdd(visit);
 				result.put("code", code);
 			}else {//有当天记录
-				Visit v = new Visit();
-				v.setVisit(list.get(0).getVisit()+1);
-				Integer code = visitService.visitUpdate(v);
+				visit.setVisit(list.get(0).getVisit()+1);
+				Integer code = visitService.visitUpdate(visit);
 				result.put("code", code);
 			}
 		} catch (Exception e) {

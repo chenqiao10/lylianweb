@@ -23,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			limit #{begin,jdbcType=INTEGER},12
 		</if>
 	</sql>
+	<sql id="order"> order by date desc </sql>
 	<!-- 条件拼接 -->
 	<sql id="message_where">
 		<where>
@@ -66,6 +67,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultMap="MessageMap">
 		select * from yl_message
 		<include refid="message_where"></include>
+		<include refid="order"></include>
 		<include refid="limit_cond"></include>
 	</select>
 

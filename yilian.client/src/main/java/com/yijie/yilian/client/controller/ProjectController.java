@@ -57,7 +57,6 @@ public class ProjectController {
 	 */
 	@RequestMapping("/projectTable")
 	public Map<String, Object> projectTable(@RequestBody Projects projects) {
-		System.out.println(projects);
 		Map<String, Object> result = new HashMap<String, Object>();
 		try {
 			List<Projects> projectTable = projectService.projectTable(projects);

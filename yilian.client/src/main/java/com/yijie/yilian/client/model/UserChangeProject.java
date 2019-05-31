@@ -17,20 +17,24 @@ public class UserChangeProject {
 
 	// 交换项目用户UUID
 	private String user_uuid;
-	
+
 	// 联系电话
 	private String phone;
-	
+
 	// 项目名称
 	private String title;
-	
+
 	// 交换时间
 	private Date date;
-	
+
 	// 项目 类型
 	private String type;
-	
-	private String begin;
+
+	// 分页数据
+	private Integer begin;
+
+	// 兑换人账户
+	private String num;
 
 	public Integer getId() {
 		return id;
@@ -88,18 +92,27 @@ public class UserChangeProject {
 		this.type = type;
 	}
 
-	public String getBegin() {
+	public Integer getBegin() {
 		return begin;
 	}
 
-	public void setBegin(String begin) {
+	public void setBegin(Integer begin) {
 		this.begin = begin;
+	}
+
+	public String getNum() {
+		return num;
+	}
+
+	public void setNum(String num) {
+		this.num = num;
 	}
 
 	@Override
 	public String toString() {
 		return "UserChangeProject [id=" + id + ", pro_uuid=" + pro_uuid + ", user_uuid=" + user_uuid + ", phone="
-				+ phone + ", title=" + title + ", date=" + date + ", type=" + type + ", begin=" + begin + "]";
+				+ phone + ", title=" + title + ", date=" + date + ", type=" + type + ", begin=" + begin + ", num=" + num
+				+ "]";
 	}
 
 	public UserChangeProject() {
@@ -108,7 +121,7 @@ public class UserChangeProject {
 	}
 
 	public UserChangeProject(Integer id, String pro_uuid, String user_uuid, String phone, String title, Date date,
-			String type, String begin) {
+			String type, Integer begin, String num) {
 		super();
 		this.id = id;
 		this.pro_uuid = pro_uuid;
@@ -118,7 +131,7 @@ public class UserChangeProject {
 		this.date = date;
 		this.type = type;
 		this.begin = begin;
+		this.num = num;
 	}
 
-	
 }

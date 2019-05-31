@@ -11,7 +11,7 @@ import com.yijie.data.client.model.Visit;
 import com.yijie.data.client.service.VisitService;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/visit")
 public class VisitDaoController {
 	@Autowired
 	private VisitService visitService;

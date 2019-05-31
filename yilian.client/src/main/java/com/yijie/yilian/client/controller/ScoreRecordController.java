@@ -104,7 +104,8 @@ public class ScoreRecordController {
 				if (u.getBalance() >= scoreRecord.getScore()) {
 					user.setBalance(u.getBalance() - scoreRecord.getScore());
 				} else {
-					result.put("massege", "积分余额不足");
+					result.put("code", 3);//积分不足
+					return result;
 				}
 			} else if (scoreRecord.getType() == 0 && scoreRecord.getDate() != null
 					&& scoreRecord.getUser_uuid() != null) {
@@ -113,6 +114,7 @@ public class ScoreRecordController {
 				// 判断是否签到
 				if (list.size() != 0) {
 					result.put("audit", 1);
+					return result;
 				} else {
 					user.setBalance(u.getBalance() + scoreRecord.getScore());
 					result.put("audit", 0);
