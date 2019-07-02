@@ -1,0 +1,5 @@
+yilian.client客户端服务
+yilian.data.client1数据端服务，可按功能业务拆分
+yilian_manager管理端服务
+yilian.file为文件服务
+zuul.Api微服务网关
